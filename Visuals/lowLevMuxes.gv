@@ -1,0 +1,73 @@
+digraph {
+	inputs [shape=trapezium, width=5.0]
+	outputs [shape=invtrapezium, width=5.0]
+	op_1 [label="&"]
+	op_2 [label="&"]
+	op_3 [label="&"]
+	op_4 [label="&"]
+	op_5 [label="&"]
+	op_6 [label="&"]
+	op_7 [label="&&"]
+	op_8 [label="&&"]
+	op_9 [label="!"]
+	op_10 [label="!"]
+	op_11 [label="&&"]
+	op_12 [label="&&"]
+	op_13 [label="||"]
+	op_14 [label="||"]
+	op_15 [label="&&"]
+	op_16 [label="!"]
+	op_17 [label="&&"]
+	op_18 [label="||"]
+	assign_1 [label="="]
+	assign_2 [label="="]
+	assign_3 [label="="]
+	assign_4 [label="="]
+	assign_5 [label="="]
+
+	inputs -> op_1 [label="control[0]"];
+	inputs -> op_1 [label="control[0]"];
+	inputs -> op_2 [label="control[0]"];
+	op_1 -> op_2;
+	inputs -> op_3 [label="control[0]"];
+	op_2 -> op_3;
+	op_3 -> assign_1;
+
+	inputs -> op_4 [label="control[1]"];
+	inputs -> op_4 [label="control[1]"];
+	inputs -> op_5 [label="control[1]"];
+	op_4 -> op_5;
+	inputs -> op_6 [label="control[1]"];
+	op_5 -> op_6;
+	op_6 -> assign_2;
+
+	inputs -> op_7 [label="bad"];
+	assign_1 -> op_7 [label="selector0"];
+	inputs -> op_8 [label="bad"];
+	assign_2 -> op_8 [label="selector1"];
+
+	assign_1 -> op_9 [label="selector0"];
+	assign_2 -> op_10 [label="selector1"];
+
+	inputs -> op_11 [label="good"];
+	op_9 -> op_11;
+	inputs -> op_12 [label="good"];
+	op_10 -> op_12;
+
+	op_11 -> op_13;
+	op_7 -> op_13;
+	op_13 -> assign_3;
+	op_12 -> op_14;
+	op_8 -> op_14;
+	op_14 -> assign_4;
+
+	assign_4 -> op_15 [label="interimB"];
+	assign_1 -> op_15 [label="selector0"];
+	assign_1 -> op_16 [label="selector0"];
+	assign_3 -> op_17 [label="interimA"];
+	op_16 -> op_17;
+	op_17 -> op_18;
+	op_15 -> op_18;
+	op_18 -> assign_5;
+	assign_5 -> outputs [label="output"];
+}

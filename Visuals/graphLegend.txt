@@ -1,0 +1,18 @@
+Solid lines represent dataflow lines that allow data to pass between nodes
+
+Dotted lines represent control flow lines that activate or deactivate
+signal assignments
+
+Point nodes represent a combination of like-named signals (only one
+can exist at a global level), where only one incident dataflow line is
+active at any time
+       The simulator must pass the value of the most recent input line
+       to toggle to the output
+
+Oval nodes represent combinational operations
+
+Rectangle nodes labeled "reg" represent flip-flops
+
+Subdivided rectangle nodes represent control structures
+
+Trapezoids represent terminals for input and output signal information

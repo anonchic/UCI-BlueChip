@@ -1,0 +1,58 @@
+digraph {
+	inputs [shape=trapezium, width=5]
+	outputs [shape=invtrapezium, width=5]
+	when_else_1 [shape=record, label="<f0> when|<f1> else"]
+	when_else_2 [shape=record, label="<f0> when|<f1> else"]
+	when_else_3 [shape=record, label="<f0> when|<f1> else"]
+	comb_assign_1 [label="="]
+	comb_assign_2 [label="="]
+	comb_assign_3 [label="="]
+	comb_assign_4 [label="="]
+	comb_assign_5 [label="="]
+	comb_assign_6 [label="="]
+	cmp_1 [label="=="]
+	cmp_2 [label="=="]
+	cmp_3 [label="=="]
+	constant_value_1 [label="0"]
+	constant_value_2 [label="0"]
+	constant_value_3 [label="0"]
+	merge_1 [label="", shape=point];
+	merge_2 [label="", shape=point];
+	merge_3 [label="", shape=point];
+
+	inputs -> cmp_1 [label="control[0]"];
+	constant_value_1 -> cmp_1 [label="0"];
+	cmp_1 -> when_else_1:f0;
+
+	inputs -> cmp_2 [label="control[1]"];
+	constant_value_2 -> cmp_2 [label="0"];
+	cmp_2 -> when_else_2:f0;
+
+	inputs -> cmp_3 [label="control[0]"];
+	constant_value_3 -> cmp_3 [label="0"];
+	cmp_3 -> when_else_3:f0;
+
+	inputs -> comb_assign_1 [label="good"];
+	comb_assign_1 -> merge_1 [label="interimA"];
+	merge_1 -> comb_assign_5 [label="interimA"];
+	comb_assign_5 -> merge_3 [label="output"];
+	merge_3 -> outputs [label="output"];
+	when_else_1:f0 -> comb_assign_1 [style=dotted];
+
+	inputs -> comb_assign_2 [label="bad"];
+	comb_assign_2 -> merge_1 [label="interimA"];
+	when_else_1:f1 -> comb_assign_2 [style=dotted];
+
+	inputs -> comb_assign_3 [label="good"];
+	comb_assign_3 -> merge_2 [label="interimB"];
+	merge_2 -> comb_assign_6 [label="interimB"];
+	when_else_2:f0 -> comb_assign_3 [style=dotted];
+
+	inputs -> comb_assign_4 [label="bad"];
+	comb_assign_4 -> merge_2 [label="interimB"];
+	comb_assign_6 -> merge_3 [label="output"];
+	when_else_2:f1 -> comb_assign_4 [style=dotted];
+
+	when_else_3:f0 -> comb_assign_5 [style=dotted];
+	when_else_3:f1 -> comb_assign_6 [style=dotted];
+}

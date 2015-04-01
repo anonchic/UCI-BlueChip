@@ -1,0 +1,62 @@
+digraph {
+	inputs [shape=trapezium, width=5]
+	outputs [shape=invtrapezium, width=5]
+	if_else_1 [shape=record, label="<f0> if|<f1> else"]
+	if_else_2 [shape=record, label="<f0> if|<f1> else"]
+	if_else_3 [shape=record, label="<f0> if|<f1> else"]
+	assign_1 [label="="]
+	assign_2 [label="="]
+	assign_3 [label="="]
+	assign_4 [label="="]
+	assign_5 [label="="]
+	assign_6 [label="="]
+	assign_7 [label="="]
+	cmp_1 [label="=="]
+	cmp_2 [label="=="]
+	cmp_3 [label="=="]
+	constant_value_1 [label="0"]
+	constant_value_2 [label="0"]
+	constant_value_3 [label="0"]
+	reg_1 [shape=box, label="reg"]
+	reg_2 [shape=box, label="reg"]
+	reg_3 [shape=box, label="reg"]
+	merge_1 [shape=point, label=""]
+	merge_2 [shape=point, label=""]
+	merge_3 [shape=point, label=""]
+
+	inputs -> cmp_1 [label="control[0]"];
+	constant_value_1 -> cmp_1 [label="0"];
+	cmp_1 -> if_else_1:f0;
+	inputs -> assign_1 [label="good"];
+	if_else_1:f0 -> assign_1 [style=dotted];
+	inputs -> assign_2 [label="bad"];
+	if_else_1:f1 -> assign_2 [style=dotted];
+	assign_1 -> merge_1;
+	assign_2 -> merge_1;
+	merge_1 -> reg_1;				// interimA
+
+	inputs -> cmp_2 [label="control[1]"];
+	constant_value_2 -> cmp_2 [label="0"];
+	cmp_2 -> if_else_2:f0;
+	inputs -> assign_3 [label="good"];
+	if_else_2:f0 -> assign_3 [style=dotted];
+	inputs -> assign_4 [label="bad"];
+	if_else_2:f1 -> assign_4 [style=dotted];
+	assign_3 -> merge_2;
+	assign_4 -> merge_2;
+	merge_2 -> reg_2;				// interimB
+
+	inputs -> assign_5 [label="control[0]"];
+	assign_5 -> reg_3;				// selectB
+
+	reg_3 -> cmp_3 [label="selectB"];
+	constant_value_3 -> cmp_3 [label="0"];
+	cmp_3 -> if_else_3:f0;
+	if_else_3:f0 -> assign_6 [style=dotted];
+	reg_1 -> assign_6 [label="interimA"];
+	if_else_3:f1 -> assign_7 [style=dotted];
+	reg_2 -> assign_7 [label="interimB"];
+	assign_6 -> merge_3 [label="output"];
+	assign_7 -> merge_3 [label="output"];
+	merge_3 -> outputs [label="output"];	// output
+}

@@ -1,0 +1,115 @@
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/hackState&00&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.error&0&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.error&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rpin.error&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.error&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.error&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/rfi.ren1&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/de_ren1&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/rfi.ren2&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/de_ren2&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgo.error&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dummy&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgo.error&1&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_halt&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_halt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgi.halt&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.pwd&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rpin.pwd&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.pwd&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.error&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rpin.error&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/sidle&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.error&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.x.ctrl.pc&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.x.ctrl.pc&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.ctrl.pc&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.m.ctrl.pc&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.m.ctrl.pc&3
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.ctrl.pc&3
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.e.ctrl.pc&3
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.e.ctrl.pc&4
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.e.ctrl.pc&4
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.a.ctrl.pc&4
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.a.ctrl.pc&5
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.ctrl.pc&5
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.d.pc&5
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.d.pc&6
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.pc&6
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/ir.addr&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&/testbench/cpu/l3/cpu__0/u0/p0/iu0/irin.addr&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_vectt&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&00&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&1&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.x.result ( 6 downto 0 )&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.x.result ( 6 downto 0 )&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.result ( 6 downto 0 )&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.x.ctrl.tt&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.x.ctrl.tt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.ctrl.tt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.m.ctrl.tt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.m.ctrl.tt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.ctrl.tt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.e.ctrl.tt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.e.ctrl.tt&3
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.e.ctrl.tt&3
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.a.ctrl.tt&3
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.a.ctrl.tt&4
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.ctrl.tt&4
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&000000&4
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dsur.tt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dsuin.tt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.pwd&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.pwd&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.pwd&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.pwd&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rpin.pwd&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.pwd&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.pwd&/testbench/cpu/l3/cpu__0/u0/p0/iu0/ir.pwd&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.pwd&/testbench/cpu/l3/cpu__0/u0/p0/iu0/irin.pwd&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.error&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.error&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rp.error&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vp.error&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rpin.error&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_trap_address ( 31 downto 2 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/ir.addr&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_trap_address ( 31 downto 2 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/irin.addr&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_trap_address ( 31 downto 2 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vir.addr&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tbufcnt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/tbufcntx&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tbufcnt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dsur.tbufcnt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/vdsu.tbufcnt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dsuin.tbufcnt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.except&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/xc_exception&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.svt&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.svt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.w.s.svt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.svt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.w.s.svt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.dwt&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.dwt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.w.s.dwt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.dwt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.w.s.dwt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.ef&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.ef&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.w.s.ef&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.w.s.ef&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.w.s.ef&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.data ( 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dco.data ( 0 )&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.data ( 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.x.data ( 0 )&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.data ( 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.x.data ( 0 )&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.data ( 1 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dco.data ( 1 )&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.data ( 1 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.x.data ( 1 )&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.data ( 1 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.x.data ( 1 )&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.x.mexc&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dco.mexc&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mul&0&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mul&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.m.mul&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mul&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.m.mul&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mac&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.e.mac&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mac&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.e.mac&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mac&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.e.mac&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mac&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.m.mac&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.m.mac&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.m.mac&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.rfa1&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgi.daddr ( 8 downto 2 )&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/de_raddr1 ( 6 downto 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgi.daddr ( 8 downto 2 )&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.ctrl.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.a.ctrl.tt&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.ctrl.tt&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.a.ctrl.tt&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.d.step&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.d.step&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.step&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgi.step&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.a.step&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.a.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.a.step&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/dbgi.step&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.d.step&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.step&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.d.step&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.inst ( 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/ico.data ( 0 )&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.inst ( 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.d.inst ( 0 )&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.inst ( 0 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.d.inst ( 0 )&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.inst ( 1 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/ico.data ( 1 )&0
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.inst ( 1 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/r.d.inst ( 1 )&1
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.inst ( 1 )&/testbench/cpu/l3/cpu__0/u0/p0/iu0/rin.d.inst ( 1 )&2
+/testbench/cpu/l3/cpu__0/u0/p0/iu0/comb/v.d.mexc&/testbench/cpu/l3/cpu__0/u0/p0/iu0/ico.mexc&0

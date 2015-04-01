@@ -1,0 +1,937 @@
+digraph
+{
+	"rp.error" [style=filled]
+	"comb/v.x.data" [style=filled]
+	"ir.addr" [style=filled]
+	"comb/v.d.pc" [style=filled]
+	"r.d.step" [style=filled]
+	"dbgi.daddr" [style=filled]
+	"rin.x.result" [style=filled]
+	"rp.pwd" [style=filled]
+	"dco.mexc" [style=filled]
+	"comb/v.e.mac" [style=filled]
+	"rin.w.s.ef" [style=filled]
+	"r.x.data" [style=filled]
+	"comb/xc_exception" [style=filled]
+	"comb/v.m.ctrl.tt" [style=filled]
+	"comb/vp.error" [style=filled]
+	"comb/vdsu.tt" [style=filled]
+	"r.a.step" [style=filled]
+	"rin.m.ctrl.tt" [style=filled]
+	"comb/v.d.inst" [style=filled]
+	"comb/v.a.ctrl.tt" [style=filled]
+	"rfi.ren1" [style=filled]
+	"dbgo.error" [style=filled]
+	"r.w.s.dwt" [style=filled]
+	"comb/v.w.s.dwt" [style=filled]
+	"comb/v.w.s.ef" [style=filled]
+	"r.m.ctrl.tt" [style=filled]
+	"rin.d.pc" [style=filled]
+	"rin.x.ctrl.pc" [style=filled]
+	"r.x.result" [style=filled]
+	"r.d.inst" [style=filled]
+	"comb/de_raddr1" [style=filled]
+	"comb/v.x.ctrl.tt" [style=filled]
+	"rin.d.step" [style=filled]
+	"dco.data" [style=filled]
+	"r.d.pc" [style=filled]
+	"rin.m.ctrl.pc" [style=filled]
+	"rin.m.mul" [style=filled]
+	"r.w.s.ps" [style=filled]
+	"ir.pwd" [style=filled]
+	"irin.addr" [style=filled]
+	"comb/v.a.ctrl.pc" [style=filled]
+	"comb/xc_halt" [style=filled]
+	"comb/vir.addr" [style=filled]
+	"comb/vir.pwd" [style=filled]
+	"rin.w.s.dwt" [style=filled]
+	"dsur.tbufcnt" [style=filled]
+	"hackStateM2" [style=filled]
+	"comb/v.m.mul" [style=filled]
+	"comb/v.e.ctrl.pc" [style=filled]
+	"comb/v.w.s.svt" [style=filled]
+	"r.e.ctrl.pc" [style=filled]
+	"r.m.mac" [style=filled]
+	"comb/vdsu.tbufcnt" [style=filled]
+	"rin.x.data" [style=filled]
+	"comb/v.e.ctrl.tt" [style=filled]
+	"rpin.error" [style=filled]
+	"rin.w.s.s" [style=filled]
+	"comb/v.d.step" [style=filled]
+	"r.a.ctrl.tt" [style=filled]
+	"comb/v.x.result" [style=filled]
+	"comb/v.a.step" [style=filled]
+	"hackStateM1" [style=filled]
+	"rpin.pwd" [style=filled]
+	"irin.pwd" [style=filled]
+	"comb/v.w.except" [style=filled]
+	"comb/de_ren2" [style=filled]
+	"rin.m.mac" [style=filled]
+	"r.x.ctrl.tt" [style=filled]
+	"rin.w.s.svt" [style=filled]
+	"comb/vp.pwd" [style=filled]
+	"dsur.tt" [style=filled]
+	"dbgi.halt" [style=filled]
+	"r.x.ctrl.pc" [style=filled]
+	"comb/v.w.s.s" [style=filled]
+	"rin.w.s.ps" [style=filled]
+	"comb/tbufcntx" [style=filled]
+	"comb/xc_vectt" [style=filled]
+	"r.e.mac" [style=filled]
+	"comb/xc_trap_address" [style=filled]
+	"comb/de_ren1" [style=filled]
+	"comb/v.x.mexc" [style=filled]
+	"comb/v.d.mexc" [style=filled]
+	"comb/v.m.ctrl.pc" [style=filled]
+	"dsuin.tt" [style=filled]
+	"rin.e.mac" [style=filled]
+	"dummy" [style=filled]
+	"comb/v.m.mac" [style=filled]
+	"r.a.ctrl.pc" [style=filled]
+	"comb/v.x.ctrl.pc" [style=filled]
+	"rin.a.ctrl.tt" [style=filled]
+	"rin.a.step" [style=filled]
+	"rfi.ren2" [style=filled]
+	"r.w.s.ef" [style=filled]
+	"rin.e.ctrl.pc" [style=filled]
+	"r.w.s.s" [style=filled]
+	"rin.x.ctrl.tt" [style=filled]
+	"ico.data" [style=filled]
+	"rin.d.inst" [style=filled]
+	"comb/v.w.s.ps" [style=filled]
+	"ico.mexc" [style=filled]
+	"r.w.s.svt" [style=filled]
+	"comb/sidle" [style=filled]
+	"dsuin.tbufcnt" [style=filled]
+	"r.m.ctrl.pc" [style=filled]
+	"comb/v.a.rfa1" [style=filled]
+	"dbgi.step" [style=filled]
+	"rin.a.ctrl.pc" [style=filled]
+	"rin.e.ctrl.tt" [style=filled]
+	"r.m.mul" [style=filled]
+	"r.e.ctrl.tt" [style=filled]
+	"r.x.debug" [style=filled, style=dotted]
+	"comb/v.e.op1" [style=filled, style=dotted]
+	"comb/ex_jump_address" [style=filled, style=dotted]
+	"rin.d.annul" [style=filled, style=dotted]
+	"comb/v.d.annul" [style=filled, style=dotted]
+	"rin.x.debug" [style=filled, style=dotted]
+	"comb/v.f.pc" [style=filled, style=dotted]
+	"comb/v.e.op2" [style=filled, style=dotted]
+	"rin.f.pc" [style=filled, style=dotted]
+	"r.e.alucin" [style=filled, style=dotted]
+	"rin.x.mexc" [style=filled, style=dotted]
+	"ico.idle" [style=filled, style=dotted]
+	"rin.e.op2" [style=filled, style=dotted]
+	"comb/v.w.s.tba" [style=filled, style=dotted]
+	"comb/v.x.nerror" [style=filled, style=dotted]
+	"comb/ex_add_res" [style=filled, style=dotted]
+	"rin.w.except" [style=filled, style=dotted]
+	"rin.a.rfa1" [style=filled, style=dotted]
+	"r.x.mexc" [style=filled, style=dotted]
+	"r.a.rfa1" [style=filled, style=dotted]
+	"comb/v.x.debug" [style=filled, style=dotted]
+	"comb/ex_op2" [style=filled, style=dotted]
+	"comb/ex_force_a2" [style=filled, style=dotted]
+	"rin.e.alucin" [style=filled, style=dotted]
+	"comb/ex_op1" [style=filled, style=dotted]
+	"r.w.except" [style=filled, style=dotted]
+	"r.w.s.tba" [style=filled, style=dotted]
+	"dco.scanen" [style=filled, style=dotted]
+	"rin.x.nerror" [style=filled, style=dotted]
+	"comb/v.e.alucin" [style=filled, style=dotted]
+	"rin.d.mexc" [style=filled, style=dotted]
+	"r.d.annul" [style=filled, style=dotted]
+	"rin.e.op1" [style=filled, style=dotted]
+	"r.f.pc" [style=filled, style=dotted]
+	"r.e.op2" [style=filled, style=dotted]
+	"rin.w.s.tba" [style=filled, style=dotted]
+	"r.x.nerror" [style=filled, style=dotted]
+	"r.d.mexc" [style=filled, style=dotted]
+	"r.e.op1" [style=filled, style=dotted]
+	"dco.idle" [style=filled, style=dotted]
+	"comb/de_inst" -> "comb/de_rs2";
+	"comb/de_inst" -> "comb/v.a.ctrl.inst";
+	"comb/de_inull" -> "ici.inull";
+	"comb/de_raddr1" -> "comb/v.a.rfa1";
+	"comb/de_raddr1" -> "rfi.raddr1";
+	"comb/de_raddr2" -> "comb/v.a.rfa2";
+	"comb/de_raddr2" -> "rfi.raddr2";
+	"comb/de_ren1" -> "rfi.ren1";
+	"comb/de_ren2" -> "rfi.ren2";
+	"comb/diagdata" -> "dbgo.data";
+	"comb/dsign" -> "divi.y";
+	"comb/ex_add_res" -> "comb/ex_jump_address";
+	"comb/ex_add_res" -> "dci.eaddress";
+	"comb/ex_edata2" -> "dci.edata";
+	"comb/ex_force_a2" -> "comb/ex_add_res";
+	"comb/ex_jump_address" -> "comb/v.f.pc";
+	"comb/ex_op1" -> "comb/ex_add_res";
+	"comb/ex_op1" -> "divi.op1";
+	"comb/ex_op1" -> "muli.op1";
+	"comb/ex_op2" -> "comb/ex_add_res";
+	"comb/ex_op2" -> "comb/mul_op2";
+	"comb/ex_op2" -> "divi.op2";
+	"comb/icnt" -> "dbgo.icnt";
+	"comb/me_icc" -> "comb/v.x.icc";
+	"comb/me_iflush" -> "dci.flush";
+	"comb/me_iflush" -> "ici.flush";
+	"comb/me_nullify2" -> "dci.nullify";
+	"comb/mul_op2" -> "muli.op2";
+	"comb/npc" -> "ici.rpc";
+	"comb/sidle" -> "dbgo.idle";
+	"comb/tbufcntx" -> "comb/vdsu.tbufcnt";
+	"comb/tbufi" -> "tbi";
+	"comb/v.a.ctrl.annul" -> "comb/v.a.ctrl.rett";
+	"comb/v.a.ctrl.annul" -> "comb/v.a.ctrl.wicc";
+	"comb/v.a.ctrl.annul" -> "comb/v.a.ctrl.wreg";
+	"comb/v.a.ctrl.annul" -> "comb/v.a.ctrl.wy";
+	"comb/v.a.ctrl.annul" -> "rin.a.ctrl.annul";
+	"comb/v.a.ctrl.cnt" -> "rin.a.ctrl.cnt";
+	"comb/v.a.ctrl.inst" -> "rin.a.ctrl.inst";
+	"comb/v.a.ctrl.ld" -> "rin.a.ctrl.ld";
+	"comb/v.a.ctrl.pc" -> "rin.a.ctrl.pc";
+	"comb/v.a.ctrl.rd" -> "rin.a.ctrl.rd";
+	"comb/v.a.ctrl.rett" -> "rin.a.ctrl.rett";
+	"comb/v.a.ctrl" -> "rin.a.ctrl";
+	"comb/v.a.ctrl.trap" -> "rin.a.ctrl.trap";
+	"comb/v.a.ctrl.tt" -> "rin.a.ctrl.tt";
+	"comb/v.a.ctrl.wicc" -> "rin.a.ctrl.wicc";
+	"comb/v.a.ctrl.wreg" -> "rin.a.ctrl.wreg";
+	"comb/v.a.ctrl.wy" -> "rin.a.ctrl.wy";
+	"comb/v.a.cwp" -> "rin.a.cwp";
+	"comb/v.a.divstart" -> "rin.a.divstart";
+	"comb/v.a.et" -> "rin.a.et";
+	"comb/v.a.imm" -> "rin.a.imm";
+	"comb/v.a.jmpl" -> "rin.a.jmpl";
+	"comb/v.a.mulstart" -> "rin.a.mulstart";
+	"comb/v.a.rfa1" -> "rin.a.rfa1";
+	"comb/v.a.rfa2" -> "rin.a.rfa2";
+	"comb/v.a.rfe1" -> "comb/de_ren1";
+	"comb/v.a.rfe1" -> "rin.a.rfe1";
+	"comb/v.a.rfe2" -> "comb/de_ren2";
+	"comb/v.a.rfe2" -> "rin.a.rfe2";
+	"comb/v.a.step" -> "rin.a.step";
+	"comb/v.a.su" -> "ici.su";
+	"comb/v.a.su" -> "rin.a.su";
+	"comb/v.d.annul" -> "rin.d.annul";
+	"comb/v.d.cnt" -> "rin.d.cnt";
+	"comb/v.d.cwp" -> "rin.d.cwp";
+	"comb/v.d.inst" -> "rin.d.inst";
+	"comb/v.d.inull" -> "rin.d.inull";
+	"comb/v.d.mexc" -> "rin.d.mexc";
+	"comb/v.d.pc" -> "rin.d.pc";
+	"comb/v.d.set" -> "rin.d.set";
+	"comb/v.d.step" -> "rin.d.step";
+	"comb/vdsu.crdy" -> "dsuin.crdy";
+	"comb/vdsu" -> "dsuin";
+	"comb/vdsu.err" -> "dsuin.err";
+	"comb/vdsu.tbufcnt" -> "dsuin.tbufcnt";
+	"comb/vdsu.tt" -> "dsuin.tt";
+	"comb/v.e.alucin" -> "rin.e.alucin";
+	"comb/v.e.ctrl.annul" -> "rin.e.ctrl.annul";
+	"comb/v.e.ctrl.inst" -> "rin.e.ctrl.inst";
+	"comb/v.e.ctrl.ld" -> "rin.e.ctrl.ld";
+	"comb/v.e.ctrl.pc" -> "rin.e.ctrl.pc";
+	"comb/v.e.ctrl.rd" -> "rin.e.ctrl.rd";
+	"comb/v.e.ctrl.rett" -> "rin.e.ctrl.rett";
+	"comb/v.e.ctrl" -> "rin.e.ctrl";
+	"comb/v.e.ctrl.trap" -> "rin.e.ctrl.trap";
+	"comb/v.e.ctrl.tt" -> "rin.e.ctrl.tt";
+	"comb/v.e.ctrl.wicc" -> "rin.e.ctrl.wicc";
+	"comb/v.e.ctrl.wreg" -> "rin.e.ctrl.wreg";
+	"comb/v.e.cwp" -> "rin.e.cwp";
+	"comb/v.e.et" -> "rin.e.et";
+	"comb/v.e.jmpl" -> "rin.e.jmpl";
+	"comb/v.e.mac" -> "rin.e.mac";
+	"comb/v.e.op1" -> "rin.e.op1";
+	"comb/v.e.op2" -> "rin.e.op2";
+	"comb/v.e.sari" -> "rin.e.sari";
+	"comb/v.e.shcnt" -> "rin.e.shcnt";
+	"comb/v.e.su" -> "rin.e.su";
+	"comb/v.e.ymsb" -> "rin.e.ymsb";
+	"comb/v.f.branch" -> "ici.rbranch";
+	"comb/v.f.branch" -> "rin.f.branch";
+	"comb/v.f.pc" -> "comb/npc";
+	"comb/v.f.pc" -> "rin.f.pc";
+	"comb/vir.addr" -> "irin.addr";
+	"comb/vir" -> "irin";
+	"comb/vir.pwd" -> "irin.pwd";
+	"comb/v.m.ctrl.annul" -> "rin.m.ctrl.annul";
+	"comb/v.m.ctrl.ld" -> "rin.m.ctrl.ld";
+	"comb/v.m.ctrl.pc" -> "rin.m.ctrl.pc";
+	"comb/v.m.ctrl.rd" -> "rin.m.ctrl.rd";
+	"comb/v.m.ctrl.rett" -> "rin.m.ctrl.rett";
+	"comb/v.m.ctrl" -> "rin.m.ctrl";
+	"comb/v.m.ctrl.trap" -> "rin.m.ctrl.trap";
+	"comb/v.m.ctrl.tt" -> "rin.m.ctrl.tt";
+	"comb/v.m.ctrl.wicc" -> "rin.m.ctrl.wicc";
+	"comb/v.m.ctrl.wreg" -> "rin.m.ctrl.wreg";
+	"comb/v.m.dci.asi" -> "rin.m.dci.asi";
+	"comb/v.m.dci.dsuen" -> "rin.m.dci.dsuen";
+	"comb/v.m.dci.enaddr" -> "dci.eenaddr";
+	"comb/v.m.dci.enaddr" -> "rin.m.dci.enaddr";
+	"comb/v.m.dci.lock" -> "rin.m.dci.lock";
+	"comb/v.m.dci.read" -> "rin.m.dci.read";
+	"comb/v.m.dci" -> "rin.m.dci";
+	"comb/v.m.dci.signed" -> "rin.m.dci.signed";
+	"comb/v.m.dci.size" -> "rin.m.dci.size";
+	"comb/v.m.dci.write" -> "rin.m.dci.write";
+	"comb/v.m.icc" -> "rin.m.icc";
+	"comb/v.m.mac" -> "rin.m.mac";
+	"comb/v.m.mul" -> "rin.m.mul";
+	"comb/v.m.nalign" -> "rin.m.nalign";
+	"comb/v.m.result" -> "rin.m.result";
+	"comb/v.m.su" -> "rin.m.su";
+	"comb/v.m.werr" -> "rin.m.werr";
+	"comb/v.m.y" -> "rin.m.y";
+	"comb/vp.error" -> "rpin.error";
+	"comb/vp.pwd" -> "rpin.pwd";
+	"comb/vp" -> "rpin";
+	"comb/v" -> "rin";
+	"comb/v.w.except" -> "rin.w.except";
+	"comb/vwpr" -> "wprin";
+	"comb/v.w.result" -> "rin.w.result";
+	"comb/v.w.s.asr18" -> "rin.w.s.asr18";
+	"comb/v.w.s.cwp" -> "rin.w.s.cwp";
+	"comb/v.w.s.dwt" -> "rin.w.s.dwt";
+	"comb/v.w.s.ef" -> "rin.w.s.ef";
+	"comb/v.w.s.et" -> "rin.w.s.et";
+	"comb/v.w.s.ps" -> "rin.w.s.ps";
+	"comb/v.w.s.s" -> "rin.w.s.s";
+	"comb/v.w.s.svt" -> "rin.w.s.svt";
+	"comb/v.w.s.tba" -> "rin.w.s.tba";
+	"comb/v.w.s.tt" -> "rin.w.s.tt";
+	"comb/v.w.wa" -> "rin.w.wa";
+	"comb/v.w.wreg" -> "rin.w.wreg";
+	"comb/v.x.annul_all" -> "comb/v.a.ctrl.annul";
+	"comb/v.x.annul_all" -> "comb/v.e.ctrl.annul";
+	"comb/v.x.annul_all" -> "comb/v.e.ctrl.wicc";
+	"comb/v.x.annul_all" -> "comb/v.e.ctrl.wreg";
+	"comb/v.x.annul_all" -> "comb/v.m.ctrl.annul";
+	"comb/v.x.annul_all" -> "comb/v.m.ctrl.wicc";
+	"comb/v.x.annul_all" -> "comb/v.m.ctrl.wreg";
+	"comb/v.x.annul_all" -> "comb/v.x.ctrl.annul";
+	"comb/v.x.annul_all" -> "comb/v.x.ctrl.wicc";
+	"comb/v.x.annul_all" -> "rin.x.annul_all";
+	"comb/v.x.ctrl.annul" -> "rin.x.ctrl.annul";
+	"comb/v.x.ctrl.pc" -> "rin.x.ctrl.pc";
+	"comb/v.x.ctrl.rd" -> "rin.x.ctrl.rd";
+	"comb/v.x.ctrl.rett" -> "rin.x.ctrl.rett";
+	"comb/v.x.ctrl" -> "rin.x.ctrl";
+	"comb/v.x.ctrl.trap" -> "rin.x.ctrl.trap";
+	"comb/v.x.ctrl.tt" -> "comb/me_newtt";
+	"comb/v.x.ctrl.tt" -> "rin.x.ctrl.tt";
+	"comb/v.x.ctrl.wicc" -> "rin.x.ctrl.wicc";
+	"comb/v.x.ctrl.wreg" -> "rin.x.ctrl.wreg";
+	"comb/v.x.data" -> "rin.x.data";
+	"comb/v.x.dci" -> "rin.x.dci";
+	"comb/v.x.dci.signed" -> "comb/me_signed";
+	"comb/v.x.dci.signed" -> "rin.x.dci.signed";
+	"comb/v.x.dci.size" -> "comb/me_size";
+	"comb/v.x.dci.size" -> "rin.x.dci.size";
+	"comb/v.x.debug" -> "rin.x.debug";
+	"comb/v.x.icc" -> "rin.x.icc";
+	"comb/v.x.intack" -> "rin.x.intack";
+	"comb/v.x.ipend" -> "dbgo.ipend";
+	"comb/v.x.ipend" -> "rin.x.ipend";
+	"comb/v.x.laddr" -> "comb/me_laddr";
+	"comb/v.x.laddr" -> "rin.x.laddr";
+	"comb/v.x.mac" -> "rin.x.mac";
+	"comb/v.x.mexc" -> "rin.x.mexc";
+	"comb/v.x.nerror" -> "rin.x.nerror";
+	"comb/v.x.npc" -> "rin.x.npc";
+	"comb/v.x.result" -> "rin.x.result";
+	"comb/v.x.rstate" -> "rin.x.rstate";
+	"comb/v.x.set" -> "rin.x.set";
+	"comb/v.x.y" -> "rin.x.y";
+	"comb/xc_exception" -> "comb/v.w.except";
+	"comb/xc_halt" -> "dbgo.halt";
+	"comb/xc_result" -> "comb/v.w.result";
+	"comb/xc_result" -> "comb/xc_df_result";
+	"comb/xc_result" -> "rfi.wdata";
+	"comb/xc_trap_address" -> "comb/v.f.pc";
+	"comb/xc_vectt" -> "comb/vdsu.tt";
+	"comb/xc_vectt" -> "comb/v.w.s.tt";
+	"comb/xc_vectt" -> "comb/xc_trap_address";
+	"comb/xc_waddr" -> "comb/v.w.wa";
+	"comb/xc_waddr" -> "rfi.waddr";
+	"comb/xc_wreg" -> "comb/v.w.wreg";
+	"comb/xc_wreg" -> "rfi.wren";
+	"dbgi.daddr" -> "comb/de_raddr1";
+	"dbgi.halt" -> "comb/xc_halt";
+	"dbgi.step" -> "comb/v.d.step";
+	"dco.data" -> "comb/v.x.data";
+	"dco.idle" -> "comb/sidle";
+	"dco.mexc" -> "comb/v.x.mexc";
+	"dco.scanen" -> "rfi.ren1";
+	"dco.scanen" -> "rfi.ren2";
+	"dco.scanen" -> "rfi.wren";
+	"dco.set" -> "comb/v.x.set";
+	"dco.testen" -> "rfi.diag";
+	"dsuin.crdy" -> "dsur.crdy";
+	"dsuin" -> "dsur";
+	"dsuin.err" -> "dsur.err";
+	"dsuin.tbufcnt" -> "dsur.tbufcnt";
+	"dsuin.tt" -> "dsur.tt";
+	"dsur" -> "comb/vdsu";
+	"dsur.crdy" -> "comb/vdsu.crdy";
+	"dsur.crdy" -> "dbgo.crdy";
+	"dsur.crdy" [shape=box]
+	"dsur.err" -> "comb/vdsu.err";
+	"dsur.err" [shape=box]
+	"dsur" [shape=box]
+	"dsur.tbufcnt" -> "comb/vdsu.tbufcnt";
+	"dsur.tbufcnt" [shape=box]
+	"dsur.tt" -> "comb/vdsu.tt";
+	"dsur.tt" [shape=box]
+	"dummy" -> "dbgo.error";
+	"hackStateM1" -> "r.w.s.s";
+	"hackStateM1" [shape=box]
+	"hackStateM2" -> "r.w.s.s";
+	"hackStateM2" [shape=box]
+	"holdn" -> "comb/icnt";
+	"holdn" -> "comb/v.w.wreg";
+	"holdn" -> "dci.intack";
+	"holdn" -> "irqo.intack";
+	"holdn" -> "rfi.wren";
+	"ico.data" -> "comb/v.d.inst";
+	"ico.idle" -> "comb/sidle";
+	"ico.mexc" -> "comb/v.d.mexc";
+	"ico.set" -> "comb/v.d.set";
+	"ir.addr" -> "comb/vir.addr";
+	"ir.addr" -> "comb/xc_trap_address";
+	"ir.addr" [shape=box]
+	"ir" -> "comb/vir";
+	"irin.addr" -> "ir.addr";
+	"irin" -> "ir";
+	"irin.pwd" -> "ir.pwd";
+	"ir.pwd" -> "comb/vir.pwd";
+	"ir.pwd" [shape=box]
+	"ir" [shape=box]
+	"r.a.ctrl.annul" -> "comb/v.a.ctrl.annul";
+	"r.a.ctrl.annul" -> "comb/v.e.ctrl.annul";
+	"r.a.ctrl.annul" -> "comb/v.e.ctrl.rett";
+	"r.a.ctrl.annul" -> "divi.start";
+	"r.a.ctrl.annul" -> "muli.start";
+	"r.a.ctrl.annul" [shape=box]
+	"r.a.ctrl.cnt" -> "comb/v.a.ctrl.cnt";
+	"r.a.ctrl.cnt" [shape=box]
+	"r.a.ctrl" -> "comb/v.a.ctrl";
+	"r.a.ctrl" -> "comb/v.e.ctrl";
+	"r.a.ctrl.inst" -> "comb/dsign";
+	"r.a.ctrl.inst" -> "comb/v.a.ctrl.inst";
+	"r.a.ctrl.inst" -> "comb/v.e.ctrl.inst";
+	"r.a.ctrl.inst" [shape=box]
+	"r.a.ctrl.ld" -> "comb/v.a.ctrl.ld";
+	"r.a.ctrl.ld" -> "comb/v.e.ctrl.ld";
+	"r.a.ctrl.ld" [shape=box]
+	"r.a.ctrl.pc" -> "comb/v.a.ctrl.pc";
+	"r.a.ctrl.pc" -> "comb/v.e.ctrl.pc";
+	"r.a.ctrl.pc" [shape=box]
+	"r.a.ctrl.rd" -> "comb/v.a.ctrl.rd";
+	"r.a.ctrl.rd" -> "comb/v.e.ctrl.rd";
+	"r.a.ctrl.rd" [shape=box]
+	"r.a.ctrl.rett" -> "comb/v.a.ctrl.rett";
+	"r.a.ctrl.rett" -> "comb/v.e.ctrl.rett";
+	"r.a.ctrl.rett" [shape=box]
+	"r.a.ctrl" [shape=box]
+	"r.a.ctrl.trap" -> "comb/v.a.ctrl.trap";
+	"r.a.ctrl.trap" -> "comb/v.e.ctrl.trap";
+	"r.a.ctrl.trap" [shape=box]
+	"r.a.ctrl.tt" -> "comb/v.a.ctrl.tt";
+	"r.a.ctrl.tt" -> "comb/v.e.ctrl.tt";
+	"r.a.ctrl.tt" [shape=box]
+	"r.a.ctrl.wicc" -> "comb/v.a.ctrl.wicc";
+	"r.a.ctrl.wicc" -> "comb/v.e.ctrl.wicc";
+	"r.a.ctrl.wicc" [shape=box]
+	"r.a.ctrl.wreg" -> "comb/v.a.ctrl.wreg";
+	"r.a.ctrl.wreg" -> "comb/v.e.ctrl.wreg";
+	"r.a.ctrl.wreg" [shape=box]
+	"r.a.ctrl.wy" -> "comb/v.a.ctrl.wy";
+	"r.a.ctrl.wy" [shape=box]
+	"r.a.cwp" -> "comb/v.a.cwp";
+	"r.a.cwp" -> "comb/v.e.cwp";
+	"r.a.cwp" [shape=box]
+	"r.a.divstart" -> "comb/v.a.divstart";
+	"r.a.divstart" -> "divi.start";
+	"r.a.divstart" [shape=box]
+	"r.a.et" -> "comb/v.a.et";
+	"r.a.et" -> "comb/v.e.et";
+	"r.a.et" [shape=box]
+	"r.a.imm" -> "comb/v.a.imm";
+	"r.a.imm" [shape=box]
+	"r.a.jmpl" -> "comb/v.a.jmpl";
+	"r.a.jmpl" -> "comb/v.e.jmpl";
+	"r.a.jmpl" [shape=box]
+	"r.a.mulstart" -> "comb/v.a.mulstart";
+	"r.a.mulstart" -> "muli.start";
+	"r.a.mulstart" [shape=box]
+	"r.a.rfa1" -> "comb/de_raddr1";
+	"r.a.rfa1" -> "comb/v.a.rfa1";
+	"r.a.rfa1" [shape=box]
+	"r.a.rfa2" -> "comb/de_raddr2";
+	"r.a.rfa2" -> "comb/v.a.rfa2";
+	"r.a.rfa2" [shape=box]
+	"r.a.rfe1" -> "comb/de_ren1";
+	"r.a.rfe1" -> "comb/v.a.rfe1";
+	"r.a.rfe1" [shape=box]
+	"r.a.rfe2" -> "comb/de_ren2";
+	"r.a.rfe2" -> "comb/v.a.rfe2";
+	"r.a.rfe2" [shape=box]
+	"r.a.step" -> "comb/v.a.step";
+	"r.a.step" [shape=box]
+	"r.a.su" -> "comb/v.a.su";
+	"r.a.su" -> "comb/v.e.su";
+	"r.a.su" [shape=box]
+	"r" -> "comb/v";
+	"r.d.annul" -> "comb/v.d.annul";
+	"r.d.annul" -> "comb/v.d.step";
+	"r.d.annul" [shape=box]
+	"r.d.cnt" -> "comb/v.a.ctrl.cnt";
+	"r.d.cnt" -> "comb/v.d.cnt";
+	"r.d.cnt" [shape=box]
+	"r.d.cwp" -> "comb/v.a.cwp";
+	"r.d.cwp" -> "comb/v.d.cwp";
+	"r.d.cwp" [shape=box]
+	"r.d.inst" -> "comb/de_inst";
+	"r.d.inst" -> "comb/v.d.inst";
+	"r.d.inst" [shape=box]
+	"r.d.inull" -> "comb/v.d.inull";
+	"r.d.inull" [shape=box]
+	"r.d.mexc" -> "comb/v.a.ctrl.trap";
+	"r.d.mexc" -> "comb/v.d.mexc";
+	"r.d.mexc" [shape=box]
+	"r.d.pc" -> "comb/v.a.ctrl.pc";
+	"r.d.pc" -> "comb/v.d.pc";
+	"r.d.pc" -> "ici.dpc";
+	"r.d.pc" [shape=box]
+	"r.d.set" -> "comb/v.d.set";
+	"r.d.set" [shape=box]
+	"r.d.step" -> "comb/v.a.step";
+	"r.d.step" -> "comb/v.d.step";
+	"r.d.step" [shape=box]
+	"r.e.alucin" -> "comb/ex_add_res";
+	"r.e.alucin" -> "comb/v.e.alucin";
+	"r.e.alucin" [shape=box]
+	"r.e.ctrl.annul" -> "comb/v.e.ctrl.annul";
+	"r.e.ctrl.annul" -> "comb/v.m.ctrl.annul";
+	"r.e.ctrl.annul" -> "comb/v.m.ctrl.rett";
+	"r.e.ctrl.annul" [shape=box]
+	"r.e.ctrl" -> "comb/v.e.ctrl";
+	"r.e.ctrl" -> "comb/v.m.ctrl";
+	"r.e.ctrl.inst" -> "comb/dsign";
+	"r.e.ctrl.inst" -> "comb/ex_sari";
+	"r.e.ctrl.inst" -> "comb/v.e.ctrl.inst";
+	"r.e.ctrl.inst" -> "divi.op1";
+	"r.e.ctrl.inst" -> "divi.op2";
+	"r.e.ctrl.inst" -> "divi.signed";
+	"r.e.ctrl.inst" -> "muli.mac";
+	"r.e.ctrl.inst" -> "muli.op1";
+	"r.e.ctrl.inst" -> "muli.op2";
+	"r.e.ctrl.inst" -> "muli.signed";
+	"r.e.ctrl.inst" [shape=box]
+	"r.e.ctrl.ld" -> "comb/v.e.ctrl.ld";
+	"r.e.ctrl.ld" -> "comb/v.m.ctrl.ld";
+	"r.e.ctrl.ld" [shape=box]
+	"r.e.ctrl.pc" -> "comb/v.e.ctrl.pc";
+	"r.e.ctrl.pc" -> "comb/v.m.ctrl.pc";
+	"r.e.ctrl.pc" [shape=box]
+	"r.e.ctrl.rd" -> "comb/v.e.ctrl.rd";
+	"r.e.ctrl.rd" -> "comb/v.m.ctrl.rd";
+	"r.e.ctrl.rd" [shape=box]
+	"r.e.ctrl.rett" -> "comb/v.e.ctrl.rett";
+	"r.e.ctrl.rett" -> "comb/v.m.ctrl.rett";
+	"r.e.ctrl.rett" [shape=box]
+	"r.e.ctrl" [shape=box]
+	"r.e.ctrl.trap" -> "comb/v.e.ctrl.trap";
+	"r.e.ctrl.trap" -> "comb/v.m.ctrl.trap";
+	"r.e.ctrl.trap" [shape=box]
+	"r.e.ctrl.tt" -> "comb/v.e.ctrl.tt";
+	"r.e.ctrl.tt" -> "comb/v.m.ctrl.tt";
+	"r.e.ctrl.tt" [shape=box]
+	"r.e.ctrl.wicc" -> "comb/v.e.ctrl.wicc";
+	"r.e.ctrl.wicc" -> "comb/v.m.ctrl.wicc";
+	"r.e.ctrl.wicc" [shape=box]
+	"r.e.ctrl.wreg" -> "comb/v.e.ctrl.wreg";
+	"r.e.ctrl.wreg" -> "comb/v.m.ctrl.wreg";
+	"r.e.ctrl.wreg" [shape=box]
+	"r.e.cwp" -> "comb/v.e.cwp";
+	"r.e.cwp" [shape=box]
+	"r.e.et" -> "comb/v.e.et";
+	"r.e.et" [shape=box]
+	"r.e.jmpl" -> "comb/v.e.jmpl";
+	"r.e.jmpl" [shape=box]
+	"r.e.mac" -> "comb/v.e.mac";
+	"r.e.mac" -> "comb/v.m.mac";
+	"r.e.mac" [shape=box]
+	"r.e.op1" -> "comb/ex_op1";
+	"r.e.op1" -> "comb/v.e.op1";
+	"r.e.op1" [shape=box]
+	"r.e.op2" -> "comb/ex_op2";
+	"r.e.op2" -> "comb/v.e.op2";
+	"r.e.op2" [shape=box]
+	"r.e.sari" -> "comb/ex_sari";
+	"r.e.sari" -> "comb/v.e.sari";
+	"r.e.sari" [shape=box]
+	"r.e.shcnt" -> "comb/ex_shcnt";
+	"r.e.shcnt" -> "comb/v.e.shcnt";
+	"r.e.shcnt" [shape=box]
+	"r.e.su" -> "comb/v.e.su";
+	"r.e.su" -> "comb/v.m.su";
+	"r.e.su" -> "dci.esu";
+	"r.e.su" [shape=box]
+	"r.e.ymsb" -> "comb/ex_ymsb";
+	"r.e.ymsb" -> "comb/v.e.ymsb";
+	"r.e.ymsb" [shape=box]
+	"r.f.branch" -> "comb/v.f.branch";
+	"r.f.branch" -> "ici.fbranch";
+	"r.f.branch" [shape=box]
+	"r.f.pc" -> "comb/npc";
+	"r.f.pc" -> "comb/v.f.pc";
+	"r.f.pc" -> "comb/xc_trap_address";
+	"r.f.pc" -> "ici.fpc";
+	"r.f.pc" [shape=box]
+	"rin.a.ctrl.annul" -> "r.a.ctrl.annul";
+	"rin.a.ctrl.cnt" -> "r.a.ctrl.cnt";
+	"rin.a.ctrl.inst" -> "r.a.ctrl.inst";
+	"rin.a.ctrl.ld" -> "r.a.ctrl.ld";
+	"rin.a.ctrl.pc" -> "r.a.ctrl.pc";
+	"rin.a.ctrl" -> "r.a.ctrl";
+	"rin.a.ctrl.rd" -> "r.a.ctrl.rd";
+	"rin.a.ctrl.rett" -> "r.a.ctrl.rett";
+	"rin.a.ctrl.trap" -> "r.a.ctrl.trap";
+	"rin.a.ctrl.tt" -> "r.a.ctrl.tt";
+	"rin.a.ctrl.wicc" -> "r.a.ctrl.wicc";
+	"rin.a.ctrl.wreg" -> "r.a.ctrl.wreg";
+	"rin.a.ctrl.wy" -> "r.a.ctrl.wy";
+	"rin.a.cwp" -> "r.a.cwp";
+	"rin.a.divstart" -> "r.a.divstart";
+	"rin.a.et" -> "r.a.et";
+	"rin.a.imm" -> "r.a.imm";
+	"rin.a.jmpl" -> "r.a.jmpl";
+	"rin.a.mulstart" -> "r.a.mulstart";
+	"rin.a.rfa1" -> "r.a.rfa1";
+	"rin.a.rfa2" -> "r.a.rfa2";
+	"rin.a.rfe1" -> "r.a.rfe1";
+	"rin.a.rfe2" -> "r.a.rfe2";
+	"rin.a.step" -> "r.a.step";
+	"rin.a.su" -> "r.a.su";
+	"rin.d.annul" -> "r.d.annul";
+	"rin.d.cnt" -> "r.d.cnt";
+	"rin.d.cwp" -> "r.d.cwp";
+	"rin.d.inst" -> "r.d.inst";
+	"rin.d.inull" -> "r.d.inull";
+	"rin.d.mexc" -> "r.d.mexc";
+	"rin.d.pc" -> "r.d.pc";
+	"rin.d.set" -> "r.d.set";
+	"rin.d.step" -> "r.d.step";
+	"rin.e.alucin" -> "r.e.alucin";
+	"rin.e.ctrl.annul" -> "r.e.ctrl.annul";
+	"rin.e.ctrl.inst" -> "r.e.ctrl.inst";
+	"rin.e.ctrl.ld" -> "r.e.ctrl.ld";
+	"rin.e.ctrl.pc" -> "r.e.ctrl.pc";
+	"rin.e.ctrl.rd" -> "r.e.ctrl.rd";
+	"rin.e.ctrl" -> "r.e.ctrl";
+	"rin.e.ctrl.rett" -> "r.e.ctrl.rett";
+	"rin.e.ctrl.trap" -> "r.e.ctrl.trap";
+	"rin.e.ctrl.tt" -> "r.e.ctrl.tt";
+	"rin.e.ctrl.wicc" -> "r.e.ctrl.wicc";
+	"rin.e.ctrl.wreg" -> "r.e.ctrl.wreg";
+	"rin.e.cwp" -> "r.e.cwp";
+	"rin.e.et" -> "r.e.et";
+	"rin.e.jmpl" -> "r.e.jmpl";
+	"rin.e.mac" -> "r.e.mac";
+	"rin.e.op1" -> "r.e.op1";
+	"rin.e.op2" -> "r.e.op2";
+	"rin.e.sari" -> "r.e.sari";
+	"rin.e.shcnt" -> "r.e.shcnt";
+	"rin.e.su" -> "r.e.su";
+	"rin.e.ymsb" -> "r.e.ymsb";
+	"rin.f.branch" -> "r.f.branch";
+	"rin.f.pc" -> "r.f.pc";
+	"rin.m.ctrl.annul" -> "r.m.ctrl.annul";
+	"rin.m.ctrl.ld" -> "r.m.ctrl.ld";
+	"rin.m.ctrl.pc" -> "r.m.ctrl.pc";
+	"rin.m.ctrl.rd" -> "r.m.ctrl.rd";
+	"rin.m.ctrl.rett" -> "r.m.ctrl.rett";
+	"rin.m.ctrl" -> "r.m.ctrl";
+	"rin.m.ctrl.trap" -> "r.m.ctrl.trap";
+	"rin.m.ctrl.tt" -> "r.m.ctrl.tt";
+	"rin.m.ctrl.wicc" -> "r.m.ctrl.wicc";
+	"rin.m.ctrl.wreg" -> "r.m.ctrl.wreg";
+	"rin.m.dci.asi" -> "r.m.dci.asi";
+	"rin.m.dci.dsuen" -> "r.m.dci.dsuen";
+	"rin.m.dci.enaddr" -> "r.m.dci.enaddr";
+	"rin.m.dci.lock" -> "r.m.dci.lock";
+	"rin.m.dci.read" -> "r.m.dci.read";
+	"rin.m.dci" -> "r.m.dci";
+	"rin.m.dci.signed" -> "r.m.dci.signed";
+	"rin.m.dci.size" -> "r.m.dci.size";
+	"rin.m.dci.write" -> "r.m.dci.write";
+	"rin.m.icc" -> "r.m.icc";
+	"rin.m.mac" -> "r.m.mac";
+	"rin.m.mul" -> "r.m.mul";
+	"rin.m.nalign" -> "r.m.nalign";
+	"rin.m.result" -> "r.m.result";
+	"rin.m.su" -> "r.m.su";
+	"rin.m.werr" -> "r.m.werr";
+	"rin.m.y" -> "r.m.y";
+	"rin" -> "r";
+	"rin.w.except" -> "r.w.except";
+	"rin.w.result" -> "r.w.result";
+	"rin.w.s.asr18" -> "r.w.s.asr18";
+	"rin.w.s.cwp" -> "r.w.s.cwp";
+	"rin.w.s.dwt" -> "r.w.s.dwt";
+	"rin.w.s.ef" -> "r.w.s.ef";
+	"rin.w.s.et" -> "r.w.s.et";
+	"rin.w.s.ps" -> "r.w.s.ps";
+	"rin.w.s.s" -> "hackStateM1";
+	"rin.w.s.s" -> "hackStateM2";
+	"rin.w.s.s" -> "r.w.s.s";
+	"rin.w.s.svt" -> "r.w.s.svt";
+	"rin.w.s.tba" -> "r.w.s.tba";
+	"rin.w.s.tt" -> "r.w.s.tt";
+	"rin.w.wa" -> "r.w.wa";
+	"rin.w.wreg" -> "r.w.wreg";
+	"rin.x.annul_all" -> "r.x.annul_all";
+	"rin.x.ctrl.annul" -> "r.x.ctrl.annul";
+	"rin.x.ctrl.pc" -> "r.x.ctrl.pc";
+	"rin.x.ctrl.rd" -> "r.x.ctrl.rd";
+	"rin.x.ctrl.rett" -> "r.x.ctrl.rett";
+	"rin.x.ctrl" -> "r.x.ctrl";
+	"rin.x.ctrl.trap" -> "r.x.ctrl.trap";
+	"rin.x.ctrl.tt" -> "r.x.ctrl.tt";
+	"rin.x.ctrl.wicc" -> "r.x.ctrl.wicc";
+	"rin.x.ctrl.wreg" -> "r.x.ctrl.wreg";
+	"rin.x.data" -> "r.x.data";
+	"rin.x.dci" -> "r.x.dci";
+	"rin.x.dci.signed" -> "r.x.dci.signed";
+	"rin.x.dci.size" -> "r.x.dci.size";
+	"rin.x.debug" -> "r.x.debug";
+	"rin.x.icc" -> "r.x.icc";
+	"rin.x.intack" -> "r.x.intack";
+	"rin.x.ipend" -> "r.x.ipend";
+	"rin.x.laddr" -> "r.x.laddr";
+	"rin.x.mac" -> "r.x.mac";
+	"rin.x.mexc" -> "r.x.mexc";
+	"rin.x.nerror" -> "r.x.nerror";
+	"rin.x.npc" -> "r.x.npc";
+	"rin.x.result" -> "r.x.result";
+	"rin.x.rstate" -> "r.x.rstate";
+	"rin.x.set" -> "r.x.set";
+	"rin.x.y" -> "r.x.y";
+	"r.m.ctrl.annul" -> "comb/v.m.ctrl.annul";
+	"r.m.ctrl.annul" -> "comb/v.x.ctrl.annul";
+	"r.m.ctrl.annul" -> "comb/v.x.ctrl.rett";
+	"r.m.ctrl.annul" -> "dci.lock";
+	"r.m.ctrl.annul" [shape=box]
+	"r.m.ctrl" -> "comb/v.m.ctrl";
+	"r.m.ctrl" -> "comb/v.x.ctrl";
+	"r.m.ctrl.ld" -> "comb/v.m.ctrl.ld";
+	"r.m.ctrl.ld" [shape=box]
+	"r.m.ctrl.pc" -> "comb/v.m.ctrl.pc";
+	"r.m.ctrl.pc" -> "comb/v.x.ctrl.pc";
+	"r.m.ctrl.pc" [shape=box]
+	"r.m.ctrl.rd" -> "comb/v.m.ctrl.rd";
+	"r.m.ctrl.rd" -> "comb/v.x.ctrl.rd";
+	"r.m.ctrl.rd" [shape=box]
+	"r.m.ctrl.rett" -> "comb/v.m.ctrl.rett";
+	"r.m.ctrl.rett" -> "comb/v.x.ctrl.rett";
+	"r.m.ctrl.rett" [shape=box]
+	"r.m.ctrl" [shape=box]
+	"r.m.ctrl.trap" -> "comb/v.m.ctrl.trap";
+	"r.m.ctrl.trap" -> "comb/v.x.ctrl.trap";
+	"r.m.ctrl.trap" [shape=box]
+	"r.m.ctrl.tt" -> "comb/v.m.ctrl.tt";
+	"r.m.ctrl.tt" -> "comb/v.x.ctrl.tt";
+	"r.m.ctrl.tt" [shape=box]
+	"r.m.ctrl.wicc" -> "comb/v.m.ctrl.wicc";
+	"r.m.ctrl.wicc" -> "comb/v.x.ctrl.wicc";
+	"r.m.ctrl.wicc" [shape=box]
+	"r.m.ctrl.wreg" -> "comb/v.m.ctrl.wreg";
+	"r.m.ctrl.wreg" -> "comb/v.x.ctrl.wreg";
+	"r.m.ctrl.wreg" [shape=box]
+	"r.m.dci.asi" -> "comb/v.m.dci.asi";
+	"r.m.dci.asi" -> "dci.asi";
+	"r.m.dci.asi" [shape=box]
+	"r.m.dci" -> "comb/v.m.dci";
+	"r.m.dci" -> "comb/v.x.dci";
+	"r.m.dci.dsuen" -> "comb/v.m.dci.dsuen";
+	"r.m.dci.dsuen" -> "dci.dsuen";
+	"r.m.dci.dsuen" [shape=box]
+	"r.m.dci.enaddr" -> "comb/v.m.dci.enaddr";
+	"r.m.dci.enaddr" -> "dci.enaddr";
+	"r.m.dci.enaddr" [shape=box]
+	"r.m.dci.lock" -> "comb/v.m.dci.lock";
+	"r.m.dci.lock" -> "dci.lock";
+	"r.m.dci.lock" [shape=box]
+	"r.m.dci.read" -> "comb/v.m.dci.read";
+	"r.m.dci.read" -> "dci.read";
+	"r.m.dci.read" [shape=box]
+	"r.m.dci" [shape=box]
+	"r.m.dci.signed" -> "comb/v.m.dci.signed";
+	"r.m.dci.signed" -> "comb/v.x.dci.signed";
+	"r.m.dci.signed" [shape=box]
+	"r.m.dci.size" -> "comb/v.m.dci.size";
+	"r.m.dci.size" -> "comb/v.x.dci.size";
+	"r.m.dci.size" -> "dci.size";
+	"r.m.dci.size" [shape=box]
+	"r.m.dci.write" -> "comb/v.m.dci.write";
+	"r.m.dci.write" -> "dci.write";
+	"r.m.dci.write" [shape=box]
+	"r.m.icc" -> "comb/de_icc";
+	"r.m.icc" -> "comb/v.m.icc";
+	"r.m.icc" [shape=box]
+	"r.m.mac" -> "comb/v.m.mac";
+	"r.m.mac" -> "comb/v.x.mac";
+	"r.m.mac" [shape=box]
+	"r.m.mul" -> "comb/v.m.mul";
+	"r.m.mul" [shape=box]
+	"r.m.nalign" -> "comb/v.m.nalign";
+	"r.m.nalign" [shape=box]
+	"r.m.result" -> "comb/v.m.result";
+	"r.m.result" -> "comb/v.x.laddr";
+	"r.m.result" -> "dci.maddress";
+	"r.m.result" [shape=box]
+	"r.m.su" -> "comb/v.m.su";
+	"r.m.su" -> "dci.msu";
+	"r.m.su" [shape=box]
+	"r.m.werr" -> "comb/v.m.werr";
+	"r.m.werr" [shape=box]
+	"r.m.y" -> "comb/v.m.y";
+	"r.m.y" -> "divi.y";
+	"r.m.y" [shape=box]
+	"rp" -> "comb/vp";
+	"rp.error" -> "comb/sidle";
+	"rp.error" -> "comb/vp.error";
+	"rp.error" -> "comb/v.x.nerror";
+	"rp.error" [shape=box]
+	"rpin.error" -> "rp.error";
+	"rpin.pwd" -> "rp.pwd";
+	"rpin" -> "rp";
+	"rp.pwd" -> "comb/sidle";
+	"rp.pwd" -> "comb/vp.pwd";
+	"rp.pwd" -> "dbgo.pwd";
+	"rp.pwd" -> "irqo.pwd";
+	"rp.pwd" [shape=box]
+	"rp" [shape=box]
+	"r" [shape=box]
+	"rstn" -> "comb/xc_rstn";
+	"r.w.except" -> "comb/v.w.except";
+	"r.w.except" [shape=box]
+	"r.w.result" -> "comb/v.w.result";
+	"r.w.result" [shape=box]
+	"r.w.s.asr18" -> "comb/v.w.s.asr18";
+	"r.w.s.asr18" -> "muli.acc";
+	"r.w.s.asr18" [shape=box]
+	"r.w.s.cwp" -> "comb/v.w.s.cwp";
+	"r.w.s.cwp" -> "comb/xc_waddr";
+	"r.w.s.cwp" [shape=box]
+	"r.w.s.dwt" -> "comb/v.w.s.dwt";
+	"r.w.s.dwt" [shape=box]
+	"r.w.s.ef" -> "comb/v.w.s.ef";
+	"r.w.s.ef" [shape=box]
+	"r.w.s.et" -> "comb/v.w.s.et";
+	"r.w.s.et" [shape=box]
+	"r.w.s.ps" -> "comb/v.w.s.ps";
+	"r.w.s.ps" [shape=box]
+	"r.w.s.s" -> "comb/v.w.s.ps";
+	"r.w.s.s" -> "comb/v.w.s.s";
+	"r.w.s.s" [shape=box]
+	"r.w.s.svt" -> "comb/v.w.s.svt";
+	"r.w.s.svt" [shape=box]
+	"r.w.s.tba" -> "comb/v.w.s.tba";
+	"r.w.s.tba" -> "comb/xc_trap_address";
+	"r.w.s.tba" [shape=box]
+	"r.w.s.tt" -> "comb/v.w.s.tt";
+	"r.w.s.tt" -> "irqo.irl";
+	"r.w.s.tt" [shape=box]
+	"r.w.wa" -> "comb/v.w.wa";
+	"r.w.wa" [shape=box]
+	"r.w.wreg" -> "comb/v.w.wreg";
+	"r.w.wreg" [shape=box]
+	"r.x.annul_all" -> "comb/v.x.annul_all";
+	"r.x.annul_all" -> "divi.flush";
+	"r.x.annul_all" -> "muli.flush";
+	"r.x.annul_all" [shape=box]
+	"r.x.ctrl.annul" -> "comb/v.x.ctrl.annul";
+	"r.x.ctrl.annul" [shape=box]
+	"r.x.ctrl" -> "comb/v.x.ctrl";
+	"r.x.ctrl.pc" -> "comb/vir.addr";
+	"r.x.ctrl.pc" -> "comb/v.x.ctrl.pc";
+	"r.x.ctrl.pc" -> "comb/xc_result";
+	"r.x.ctrl.pc" [shape=box]
+	"r.x.ctrl.rd" -> "comb/v.x.ctrl.rd";
+	"r.x.ctrl.rd" -> "comb/xc_waddr";
+	"r.x.ctrl.rd" [shape=box]
+	"r.x.ctrl.rett" -> "comb/v.x.ctrl.rett";
+	"r.x.ctrl.rett" [shape=box]
+	"r.x.ctrl" [shape=box]
+	"r.x.ctrl.trap" -> "comb/v.x.ctrl.trap";
+	"r.x.ctrl.trap" -> "comb/xc_trap";
+	"r.x.ctrl.trap" [shape=box]
+	"r.x.ctrl.tt" -> "comb/v.x.ctrl.tt";
+	"r.x.ctrl.tt" -> "comb/xc_vectt";
+	"r.x.ctrl.tt" [shape=box]
+	"r.x.ctrl.wicc" -> "comb/v.x.ctrl.wicc";
+	"r.x.ctrl.wicc" [shape=box]
+	"r.x.ctrl.wreg" -> "comb/v.x.ctrl.wreg";
+	"r.x.ctrl.wreg" -> "comb/xc_wreg";
+	"r.x.ctrl.wreg" [shape=box]
+	"r.x.data" -> "comb/ex_op1";
+	"r.x.data" -> "comb/ex_op2";
+	"r.x.data" -> "comb/ex_sari";
+	"r.x.data" -> "comb/ex_shcnt";
+	"r.x.data" -> "comb/ex_ymsb";
+	"r.x.data" -> "comb/v.x.data";
+	"r.x.data" -> "comb/xc_result";
+	"r.x.data" [shape=box]
+	"r.x.dci" -> "comb/v.x.dci";
+	"r.x.dci" [shape=box]
+	"r.x.dci.signed" -> "comb/me_signed";
+	"r.x.dci.signed" -> "comb/v.x.dci.signed";
+	"r.x.dci.signed" [shape=box]
+	"r.x.dci.size" -> "comb/me_size";
+	"r.x.dci.size" -> "comb/v.x.dci.size";
+	"r.x.dci.size" [shape=box]
+	"r.x.debug" -> "comb/sidle";
+	"r.x.debug" -> "comb/v.x.debug";
+	"r.x.debug" -> "dbgo.dsumode";
+	"r.x.debug" [shape=box]
+	"r.x.icc" -> "comb/v.x.icc";
+	"r.x.icc" [shape=box]
+	"r.x.intack" -> "comb/v.x.intack";
+	"r.x.intack" -> "dci.intack";
+	"r.x.intack" -> "irqo.intack";
+	"r.x.intack" [shape=box]
+	"r.x.ipend" -> "comb/v.x.ipend";
+	"r.x.ipend" [shape=box]
+	"r.x.laddr" -> "comb/me_laddr";
+	"r.x.laddr" -> "comb/v.x.laddr";
+	"r.x.laddr" [shape=box]
+	"r.x.mac" -> "comb/v.x.mac";
+	"r.x.mac" [shape=box]
+	"r.x.mexc" -> "comb/v.x.mexc";
+	"r.x.mexc" -> "comb/xc_trap";
+	"r.x.mexc" [shape=box]
+	"r.x.nerror" -> "comb/v.x.nerror";
+	"r.x.nerror" -> "dbgo.error";
+	"r.x.nerror" [shape=box]
+	"r.x.npc" -> "comb/v.x.npc";
+	"r.x.npc" [shape=box]
+	"r.x.result" -> "comb/v.x.result";
+	"r.x.result" -> "comb/xc_result";
+	"r.x.result" -> "comb/xc_vectt";
+	"r.x.result" [shape=box]
+	"r.x.rstate" -> "comb/v.x.rstate";
+	"r.x.rstate" [shape=box]
+	"r.x.set" -> "comb/v.x.set";
+	"r.x.set" [shape=box]
+	"r.x.y" -> "comb/v.x.y";
+	"r.x.y" -> "muli.acc";
+	"r.x.y" [shape=box]
+	"wpr" -> "comb/vwpr";
+	"wprin" -> "wpr";
+	"wpr" [shape=box]
+}

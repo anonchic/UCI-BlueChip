@@ -1,0 +1,35 @@
+digraph {
+	inputs [shape=trapezium, width=5.0]
+	outputs [shape=invtrapezium, width=5.0]
+	op_1 [label="CCSG"]
+	op_2 [label="CCSG"]
+	op_3 [label="CCSG"]
+	op_4 [label="CCSG"]
+	op_5 [label="CCSG"]
+
+	inputs -> op_1 [label="control[0]"];
+	inputs -> op_1 [label="control[0]"];
+	inputs -> op_1 [label="control[0]"];
+	inputs -> op_1 [label="control[0]"];
+
+	inputs -> op_2 [label="control[1]"];
+	inputs -> op_2 [label="control[1]"];
+	inputs -> op_2 [label="control[1]"];
+	inputs -> op_2 [label="control[1]"];
+
+	inputs -> op_3 [label="good"];
+	op_1 -> op_3 [label="selector0"];
+	op_1 -> op_3 [label="selector0"];
+	inputs -> op_3 [label="bad"];
+
+	inputs -> op_4 [label="good"];
+	inputs -> op_4 [label="bad"];
+	op_2 -> op_4 [label="selector1"];
+	op_2 -> op_4 [label="selector1"];
+
+	op_4 -> op_5 [label="interimB"];
+	op_1 -> op_5 [label="selector0"];
+	op_1 -> op_5 [label="selector0"];
+	op_3 -> op_5 [label="interimA"];
+	op_5 -> outputs [label="output"];
+}
