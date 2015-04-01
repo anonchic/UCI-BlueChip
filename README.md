@@ -4,7 +4,7 @@ Note that you will need <a href="http://www.oracle.com/technetwork/java/javase/d
 
 # Malicious hardware footholds for software exploitation
 
-AttackFiles
+AttackFiles - 
   Source code for each of the three attacks.
   Leon3 designs with each attack and corresponding bit files.
   Results of UCI analysis for each attack.
@@ -12,37 +12,37 @@ AttackFiles
 
 # UCI Analysis
 
-VHDLParser
+VHDLParser - 
   UCI analysis program.
 
-VHDLUtils
+VHDLUtils - 
   Support classes used by the UCI program.
   
-VHDLExpressionEval
+VHDLExpressionEval - 
   Copy of external java library for evaluating complex expressions.
   
 # Post UCI Analysis
 
-pair_remover
+pair_remover - 
   Program that removes code from a VHDL file based upon pairs that remain after UCI analysis.
 
-Visuals
+Visuals - 
   Contains visualizations of the Leon3 and highlighting based-upon UCI analysis.
   
-Highlighter
+Highlighter - 
   Contains a program to highlight nodes in a graph given UCI analysis.
 
 # BlueChip
 
-PairsToVHDL
+PairsToVHDL - 
   Program that creates run-time hardware monitors that trigger BlueChip for the pairs that remain after UCI analysis.
   
-BlueChip
+BlueChip - 
   BlueChip SPARC-v8 instruction set simulator to be run as a Linux Kernel driver.
 
-snapgear_linux
+snapgear_linux - 
   Linux that runs on the Leon3 SoC.
   
-benchmarks
+benchmarks - 
   Programs used to check for the software run-time overhead due to false activations of BlueChip.
   
