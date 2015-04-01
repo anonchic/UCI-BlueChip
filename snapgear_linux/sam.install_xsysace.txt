@@ -1,0 +1,134 @@
+Matt:
+Make sure that /opt/sparc-linux-x.x.x/ is available
+Run "make clean"
+Copy snapgear xsa config file in place as .config
+Copy linux.../ xsa config in place as .config
+Run "make menuconfig" for both snapgear and linux
+Run "make" (to build everything including busybox)
+Run "make linux" to build the kernel
+Run "make image" to build the binary images
+
+Matt: To go between BlueChip'd and non-BlueChip'd kernel toggle the
+obj-y/n lines after led.o of the makefile in the
+linux.../arch/sparc/kernel/ directory.  Also need to uncomment the
+handle_watchpoint functin in traps.c in the same directory for the
+non-BlueChip'd kernel or comment it out for the Chiped kernel.
+
+First, don't even bother with BusyBox.  The ext2 file system utilities
+appear to be broken and did not actually work with the sysace block
+driver.  Instead, I used NFS root mount to boot and I saved my
+configurations as sam.nfsroot.config.  When compiling, make sure you
+execute only "make" from the snapgear directory, don't use make -j4
+and don't use make image, I had problems with both of these.
+
+On the server side I disabled my firewall and installed the nfs server
+in /mnt/debinst and unpacked the splack distro there.  Then I added
+the following line to my /etc/exports file:
+
+/mnt/debinst                   imp0.cs.uiuc.edu(rw,sync,no_root_squash)
+
+!!!!!!!!!
+Note: you set the ethernet mac address in the linux kernel
+configuration.  The default value, 00:00:7A:CC:00:12 is registered to
+imp0.cs.uiuc.edu, so please make sure you change it so that we don't
+confuse the dhcp servers.  You can find this configuration value under
+the "General machine setup -> Grlib -> Vendor Gaisler -> GRETH_MACMSB,
+GRETH_MACLSB"
+!!!!!!!!!
+
+To get nfsroot to work, I had to modify the /etc/fstab file that I was
+exporting so that the root directory had an entry.  You need this when
+you remount / to r/w.
+
+128.174.236.238:/mnt/debinst  /         nfs             noatime  0 0
+
+I also made some changes to the initialization script, it is unclear
+if this actually does anything.
+
+Next, I installed my authorized_keys file in the root account and I
+updated the sshd configuration to allow root login and to only accept
+public keys.  With this in place, I could boot using nfs root and ssh
+in as root.  Note, I found ssh to be much faster since I think the USB
+cable is much slower than the ethernet connection.
+
+Once I was logged in, setup device nodes for xsysace
+
+mknod /dev/xsa b 254 0
+mknod /dev/xsa1 b 254 1
+mknod /dev/xsa2 b 254 2
+mknod /dev/xsa3 b 254 3
+mknod /dev/xsa4 b 254 4
+
+These are the block devices I use for the system ace cf card.
+
+Next, I repartitioned the cf card
+
+fdisk /dev/xsa
+
+and deleted the existing partition and setup one large linux partition
+that spanned the entire card.
+
+Next, I installed a file system on the cfcard
+
+mkfs.ext2 /dev/xsa1
+
+Then, I mounted this and installed the splack tar ball on the cf disk
+
+mkdir /mnt/cf
+mount /dev/xsa1 /mnt/cf
+cd /mnt/cf
+tar -xvzf /splack-1.0.tar.gz
+mknod /mnt/cf/dev/xsa b 254 0
+mknod /mnt/cf/dev/xsa1 b 254 1
+mknod /mnt/cf/dev/xsa2 b 254 2
+mknod /mnt/cf/dev/xsa3 b 254 3
+mknod /mnt/cf/dev/xsa4 b 254 4
+
+# edit /mnt/cf/etc/fstab to change the root partition so that it looks
+  like this:
+###############################################################
+/dev/xsa1               /               ext2            noatime 0 0
+#/dev/hda2              none            swap            sw 0 0
+#/dev/cdroms/cdrom0     /mnt/cdrom      iso9660         noauto,ro 0 0
+#/dev/fd0               /mnt/floppy     auto            noauto 0 0
+
+# NOTE: The next line is critical for boot!
+proc                    /proc           proc            defaults 0 0
+
+none /dev/pts devpts mode=620 0 0
+###############################################################
+
+update /mnt/cf/etc/sshd_config
+
+uncomment PermitRootLogin yet
+
+uncomment PubkeyAuthentication yes
+uncomment AuthorizedKeysFile      .ssh/authorized_keys
+
+# change value from yet to no here
+uncomment PasswordAuthentication no
+
+copy authorized_keys into /mnt/cp/root/.ssh/authorized_keys
+
+cd /
+umount /mnt/cf
+halt
+
+Random notes about install:
+
+I had to update the /etc/resolve.conf file directly to get dns to
+work, I put this in the file, which I got from one of my x86 machines:
+
+domain cs.uiuc.edu
+search cs.uiuc.edu
+nameserver 128.174.252.4
+nameserver 128.174.252.5
+nameserver 130.126.2.131
+
+I deleted the existing wget since it was complaining about not having
+libssl
+
+mv /usr/bin/wget /usr/bin/wget.orig
+ln -s /root/busybox /usr/bin/wget
+
+
