@@ -1,0 +1,23 @@
+12000+12_0E0_2 + 12E3-12000 *3
+12000+12_0E0_2 + 12E3+12000 *-3
+332 * (2#10_1110_11_100_0_00# - 7#46662# + 8#27340# - (16#2EE0# / 16#1#))
+'1' + '0' - '1' + '1' + '1'
+true XOR FALSe AND tRUe XNOR true NAND TRUE
+B"010_1110_1110_0000"- O"27340"
+B"0010_1110_1110_0000" -X"2EE0"
+y = 5
+x = -7
+z = x + y
+a = (-10 + 2) + 3
+10/2
+10/2 * 4
+10/2 * 4 MOD 15
+10/2 * 4 REM 15
+(10/2 * 4 MOD 15) ** 1
+b = abs(((10/2 * 4 mod 15) ** 1) * (-1))
+abs((10/2 * 4 mod 15) ** 1 * -1)
+show
+quit
+// Doesn't support either sign in the exponent part of an interger literal
+// Can be sensitive to parenthesis and operator precedence
+// What happens when I give the value 16#F_FFFF_FFFF# or 16#FFFF_FFFF#

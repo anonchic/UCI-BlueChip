@@ -1,0 +1,3 @@
+#!/bin/sh
+rm ../VHDLUtils/*.class
+javac -classpath .:.. PairsToVHDL.java

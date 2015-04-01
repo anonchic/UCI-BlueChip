@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<!--
+ Copyright 2008  Reg Whitton
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<project default="jar">
+
+	<property name="project.name" value="eval" />
+	<property name="project.home" value="https://eval.dev.java.net" />
+	<property name="release" value="0.X" />
+
+	<property name="main.jar.name" value="${project.name}-${release}.jar" />
+	<property name="distribution.zip.name" value="${project.name}-dist-${release}.zip" />
+	<property name="java.debug.setting" value="on" />
+	<property name="java.target.version" value="1.5" />
+	<property name="java.api.javadoc" value="http://java.sun.com/j2se/1.5.0/docs/api/" />
+	<property name="javadoc.access" value="protected" />
+
+	<target name="clean" description="Removes all temporary files and directories.">
+		<delete dir="build" />
+	</target>
+
+	<target name="prepare" description="Prepares the build target.">
+		<tstamp>
+			<format property="DATE" pattern="yyyy-MM-dd" />
+		</tstamp>
+		<mkdir dir="build" />
+	</target>
+
+	<target name="compile" depends="prepare" description="Compiles the main sources.">
+		<mkdir dir="build/classes" />
+		<javac srcdir="src" destdir="build/classes" debug="${java.debug.setting}" source="${java.target.version}" />
+	</target>
+
+	<target name="javadoc" depends="prepare" description="Creates the API documentation">
+		<mkdir dir="build/api" />
+		<javadoc destdir="build/api" overview="src/overview.html" author="true" version="true" use="true" access="${javadoc.access}" link="${java.api.javadoc}" doctitle="Eval ${release} - A Simple Expression Evaluator for Java" packagenames="*">
+			<sourcepath>
+				<pathelement location="src" />
+				<pathelement location="srcExamples" />
+			</sourcepath>
+		</javadoc>
+	</target>
+
+	<target name="jar" depends="compile" description="Creates the main jar.">
+		<copy todir="build/classes">
+			<fileset dir="src">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.xsd" />
+			</fileset>
+		</copy>
+		<copy todir="build/classes" file="LICENSE" />
+		<copy todir="build/classes" file="NOTICE" />
+
+		<jar destfile="build/${main.jar.name}">
+			<fileset dir="build/classes" />
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${DATE}" />
+				<attribute name="Project-name" value="${project.name}" />
+				<attribute name="Project-home" value="${project.home}" />
+				<attribute name="Release" value="${release}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="calculator-compile" depends="compile" description="Compile the calculator example">
+		<mkdir dir="build/calculator-classes" />
+		<javac classpath="build/${main.jar.name}" destdir="build/calculator-classes" debug="${java.debug.setting}" source="${java.target.version}">
+			<src path="srcExamples" />
+		</javac>
+		<copy todir="build/calculator-classes">
+			<fileset dir="srcExamples">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.xsd" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="calculator-jar" depends="calculator-compile" description="Creates the example calculator jar.">
+		<copy todir="build/calculator-classes">
+			<fileset dir="build/classes" />
+			<fileset dir="srcExamples">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.xsd" />
+			</fileset>
+		</copy>
+		<copy todir="build/calculator-classes" file="LICENSE" />
+		<copy todir="build/calculator-classes" file="NOTICE" />
+
+		<jar destfile="build/calculator.jar">
+			<fileset dir="build/calculator-classes" />
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${DATE}" />
+				<attribute name="Project-name" value="${project.name}" />
+				<attribute name="Project-home" value="${project.home}" />
+				<attribute name="Release" value="${release}" />
+				<attribute name="Main-Class" value="net.java.dev.eval.example.calculator.Calculator" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="tests" depends="jar,calculator-jar" description="Compile and run the tests.">
+		<mkdir dir="build/test-classes" />
+		<javac destdir="build/test-classes" debug="${java.debug.setting}" source="${java.target.version}">
+			<src path="srcTest" />
+			<classpath>
+				<pathelement location="build/${main.jar.name}" />
+				<pathelement location="build/calculator.jar" />
+			</classpath>
+		</javac>
+		<copy todir="build/test-classes">
+			<fileset dir="srcTest">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.xsd" />
+			</fileset>
+		</copy>
+
+		<mkdir dir="build/test-reports" />
+		<junit haltonfailure="yes">
+			<classpath>
+				<pathelement location="build/${main.jar.name}" />
+				<pathelement location="build/calculator.jar" />
+				<pathelement location="build/test-classes" />
+			</classpath>
+			<formatter type="plain" />
+			<batchtest todir="build/test-reports">
+				<fileset dir="build/test-classes">
+					<include name="**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="package-assemble" depends="clean, compile, javadoc, jar, calculator-jar, tests" description="Creates the distribution directory tree.">
+
+		<mkdir dir="build/distzip/${project.name}" />
+
+		<copy todir="build/distzip/${project.name}" file="build.xml" />
+		<copy todir="build/distzip/${project.name}" file="LICENSE" />
+		<copy todir="build/distzip/${project.name}" file="NOTICE" />
+		<copy todir="build/distzip/${project.name}" file="build/${main.jar.name}" />
+		<copy todir="build/distzip/${project.name}" file="build/calculator.jar" />
+
+		<copy todir="build/distzip/${project.name}/doc/api">
+			<fileset dir="build/api" />
+		</copy>
+
+		<copy todir="build/distzip/${project.name}/src">
+			<fileset dir="src" />
+		</copy>
+		<copy todir="build/distzip/${project.name}/srcExamples">
+			<fileset dir="srcExamples" />
+		</copy>
+		<copy todir="build/distzip/${project.name}/srcTest">
+			<fileset dir="srcTest" />
+		</copy>
+
+	</target>
+
+	<target name="package" depends="package-assemble" description="Packages the distribution as a zip file.">
+
+		<zip destfile="build/${distribution.zip.name}" basedir="build/distzip" includes="**/*" />
+	</target>
+
+</project>

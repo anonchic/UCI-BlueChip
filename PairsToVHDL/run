@@ -1,0 +1,2 @@
+#!/bin/sh
+java -classpath .:.. PairsToVHDL types.txt objects.txt pairs.txt > output.txt 2> errors.txt
