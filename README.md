@@ -15,9 +15,6 @@ VHDLExpressionEval
   
 # Post UCI Analysis
 
-PairsToVHDL
-  Program that creates run-time hardware monitors that trigger BlueChip for the pairs that remain after UCI analysis.
-
 pair_remover
   Program that removes code from a VHDL file based upon pairs that remain after UCI analysis.
 
@@ -26,3 +23,18 @@ Visuals
   
 Highlighter
   Contains a program to highlight nodes in a graph given UCI analysis.
+
+# BlueChip
+
+PairsToVHDL
+  Program that creates run-time hardware monitors that trigger BlueChip for the pairs that remain after UCI analysis.
+  
+BlueChip
+  BlueChip SPARC-v8 instruction set simulator to be run as a Linux Kernel driver.
+
+snapgear_linux
+  Linux that runs on the Leon3 SoC.
+  
+benchmarks
+  Programs used to check for the software run-time overhead due to false activations of BlueChip.
+  
