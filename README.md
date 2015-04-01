@@ -2,6 +2,14 @@
 
 Note that you will need <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">Java</a> to compile and run many of the programs in this repo and <a href="https://java.net/projects/javacc/downloads">JavaCC 5</a> to re-build the VHDL parser that is used for UCI analysis.
 
+# Malicious hardware footholds for software exploitation
+
+AttackFiles
+  Source code for each of the three attacks.
+  Leon3 designs with each attack and corresponding bit files.
+  Results of UCI analysis for each attack.
+  New design files with hardware monitors for each pair remaining after UCI analysis.
+
 # UCI Analysis
 
 VHDLParser
