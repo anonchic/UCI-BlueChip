@@ -1,0 +1,33 @@
+Put input file in some canonical form
+Assign values to generics and constants
+	Either user specified or use default values
+	A final version of the program would go top down (system module wise), tracking and assigning correct values to all generics and constants
+Replace conditional blocks that have a constant result
+	if-elsif-else
+	when-else
+	switch
+Remove signals that aren't used in a conditional statement of as the LHS of an assignment
+Unroll/replace for/if generate statements
+Unroll loops
+Replace implicit null statements with explicit nulls
+
+De-obfuscate the file
+	Correct indentation
+	Always use block opening and closing constructs
+	One statement per line
+	Remove excessive white-space
+
+Output the resulting file
+	No generics
+	No constants
+	No generate statements
+	No loops
+	No constant conditionals
+	No clearly unused signals
+	No stacked statements
+	Clear structure
+
+Show how elaboration significantly increases code coverage results
+Generate control/data flow graph of the file
+Given a set of signals that don't affect output, remove all code that now becomes useless
+	Show that this doesn't affect simulation output

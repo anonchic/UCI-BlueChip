@@ -1,0 +1,3472 @@
+options
+{
+  //DEBUG_PARSER = true;
+  //DEBUG_LOOKAHEAD = true;
+  //DEBUG_TOKEN_MANAGER = true;
+  //CHOICE_AMBIGUITY_CHECK=3;
+  IGNORE_CASE=true;
+  NODE_SCOPE_HOOK=true;
+  MULTI=true;
+  STATIC=false;
+}
+
+/**
+ * The parser is instantiated in the file vhdl.java
+ * Create a name+value table to send to VHDL expression evaluator
+ * 		Name replacement engine
+ */
+PARSER_BEGIN(VhdlParser)
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Iterator;
+import net.java.dev.eval.Expression;
+
+public class VhdlParser
+{
+	private String FILENAME = "NoName";
+	private String DIRECTORY = "NoDirec";
+	private VHDLUniversalScope usedLibraryScope;
+	
+	// Static identifier used to label anonymous types
+	private static long currentAnonID = 0;
+	
+	// Contains temporary information during the construction of new types
+	private VHDLTypeProps globalType = new VHDLTypeProps();
+	
+	// Scope used as a storage space for functionality included in use clauses that requires passing to the next design unit
+	//private VHDLUniversalScope usedLibraryScope;
+	
+	// Current working library scope
+	public VHDLWorkingLibraryScope workingLibraryScope = new VHDLWorkingLibraryScope("work");
+	
+	// Reference to the current scope or null if in-between scopes
+	private VHDLScope currentScope = null;
+	
+  /**
+   * Called, whenever a new node in jjtree is generated.
+   * - store first token of the production.
+   * - check, if production is supported in subsets that are to be
+   *   checked.
+   */
+  void jjtreeOpenNodeScope(Node n)
+  {
+    ((SimpleNode) n).first_token = getToken(1);
+  }
+
+  /**
+   * Called, whenever a node in jjtree is closed.
+   */
+  void jjtreeCloseNodeScope(Node n)
+  {
+    ((SimpleNode) n).last_token = getToken(0); 
+  }
+
+  ErrorHandler errs = new ErrorHandler();
+  
+  public VhdlParser(java.io.InputStream stream, String fileName, String libDirec, VHDLWorkingLibraryScope cheat)throws ParseException
+  {
+  	this(stream);
+  	
+  	FILENAME = fileName;
+  	DIRECTORY = libDirec;
+  	
+  	System.out.println("Parser created for file " + FILENAME + " from directory " + DIRECTORY);
+  	
+  	// Directly load the data from the pre-load into the now-constant used lib scope
+  	try{usedLibraryScope = new VHDLUniversalScope();}
+  	catch(Exception e)
+  	{exit("" + e.getMessage());}
+  	
+  	if(cheat != null)
+    {
+		// Load the information contained in each scope in the library
+		for(Iterator<VHDLScope> topScope = cheat.designUnits.iterator(); topScope.hasNext();)
+		{
+			VHDLScope currentScope = topScope.next();
+
+			// Only handle package scopes
+			if(!(currentScope instanceof VHDLPackageScope))
+			{
+				exit("Can't load library information from non-package scopes");
+			}
+                    	
+			// Add subprograms
+			for(Iterator<VHDLScope> scope = currentScope.getScopeListIterator(); scope.hasNext();)
+			{
+				VHDLScope temp = scope.next();
+                        	
+				// Only add subprogram scopes
+				if(!(temp instanceof VHDLSubprogramScope))
+				{
+					exit("Wasn't expecting non-subprogram scope in package " + currentScope.getName());
+				}
+
+				try
+				{
+					usedLibraryScope.addScope(temp);
+				}
+				catch(Exception e)
+				{
+					;
+				}
+			}
+			// Add constants
+			for(Iterator<VHDLConstant> constant = currentScope.getConstantListIterator(); constant.hasNext();)
+			{
+				try
+				{
+					usedLibraryScope.addConstant(constant.next());
+				}
+				catch(Exception e)
+				{
+					;
+				}
+			}
+			// Add types
+			for(Iterator<VHDLType> type = currentScope.getTypeListIterator(); type.hasNext();)
+			{
+				try
+				{
+					usedLibraryScope.addType(type.next());
+				}
+				catch(Exception e)
+				{
+					;
+				}
+			}
+		}
+	}
+  }
+}
+
+PARSER_END(VhdlParser)
+
+
+SKIP :
+{
+    " "
+  | "\n"
+  | "\r"
+  | "\t"
+}
+
+
+SPECIAL_TOKEN :
+{
+  <COMMENT: "--" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+}
+
+
+/** 
+ * Section 13: Lexical elements
+ * with extensions from IEEE 1076.1
+ */
+TOKEN [IGNORE_CASE] :
+{
+    <ABS:          "abs">
+  | <ALIAS:        "alias">
+  | <ALL:          "all">
+  | <AND:          "and">
+  | <ARCHITECTURE: "architecture">
+  | <ARRAY:        "array">
+  | <ATTRIBUTE:    "attribute">
+  | <BEGIN:        "begin">
+  | <BLOCK:        "block">
+  | <BODY:         "body">
+  | <BREAK:        "break">
+  | <BUFFER:       "buffer">
+  | <BUS:          "bus">
+  | <CASE:         "case">
+  | <COMPONENT:    "component">
+  | <CONFIGURATION: "configuration">
+  | <CONSTANT:      "constant">
+  | <DOWNTO:        "downto">
+  | <ELSE:          "else">
+  | <ELSIF:         "elsif">
+  | <END:           "end">
+  | <ENTITY:        "entity">
+  | <EXIT:          "exit">
+  | <FOR:           "for">
+  | <FUNCTION:      "function">
+  | <GENERATE:      "generate">
+  | <GENERIC:       "generic">
+  | <GUARDED:       "guarded">
+  | <IF:            "if">
+  | <IMPURE:        "impure">
+  | <IN:            "in">
+  | <INOUT:         "inout">
+  | <IS:            "is">
+  | <LABEL:         "label">
+  | <LIBRARY:       "library">
+  | <LITERAL:       "literal">
+  | <LOOP:          "loop">
+  | <MAP:           "map">
+  | <MOD:           "mod">
+  | <NAND:          "nand">
+  | <NEW:           "new">
+  | <NEXT:          "next">
+  | <NOR:           "nor">
+  | <NOT:           "not">
+  | <NULL:          "null">
+  | <OF:            "of">
+  | <ON:            "on">
+  | <OPEN:          "open">
+  | <OR:            "or">
+  | <OTHERS:        "others">
+  | <OUT:           "out">
+  | <PACKAGE:       "package">
+  | <PORT:          "port">
+  | <PROCEDURE:     "procedure">
+  | <PROCESS:       "process">
+  | <PURE:          "pure">
+  | <RANGE:         "range">
+  | <REVERSE_RANGE: "reverse_range">
+  | <RECORD:        "record">
+  | <REGISTER:      "register">
+  | <REM:           "rem">
+  | <RETURN:        "return">
+  | <ROL:           "rol">
+  | <ROR:           "ror">
+  | <SELECT:        "select">
+  | <SIGNAL:        "signal">
+  | <SLA:           "sla">
+  | <SLL:           "sll">
+  | <SRA:           "sra">
+  | <SRL:           "srl">
+  | <SUBTYPE:       "subtype">
+  | <THEN:          "then">
+  | <TO:            "to">
+  | <TYPE:          "type">
+  | <UNAFFECTED:    "unaffected">
+  | <UNITS:         "units">
+  | <UNTIL:         "until">
+  | <USE:           "use">
+  | <VARIABLE:      "variable">
+  | <WAIT:          "wait">
+  | <WHEN:          "when">
+  | <WHILE:         "while">
+  | <WITH:          "with">
+  | <XNOR:          "xnor">
+  | <XOR:           "xor">
+}
+
+
+
+TOKEN :
+{
+    <#upper_case_letter:               ["A"-"Z"]>
+  | <#lower_case_letter:               ["a"-"z"]>
+  | <#digit:                           ["0"-"9"]>
+  | <#extended_digit:                  ["0"-"9","A"-"F"]>
+  | <#special_character:               ["#","&","'","(",")","*","+",",","-",
+                                        ".","/",":",";","<","=",">","[","]",
+                                        "_","|"]>
+  | <#other_special_character:         ["!","$","%","@","?","^","`","{","}","~",
+                                        "\\"]>
+  | <#format_effector:                 ["\n","\t"]>
+  | <#base_specifier:                  ["B","O","X"]>
+  | <#underline:                       "_">
+  | <#letter:                          ["a"-"z","A"-"Z"]>
+  | <#letter_or_digit:                 ["a"-"z","A"-"Z","0"-"9"]>
+  | <#integer: <digit> (("_")? <digit>)*>
+  | <#base: <integer>>
+  | <#based_integer: (("_")? <extended_digit>)*>
+  | <based_literal: <base> "#" <based_integer> ("." <based_integer>)? "#" (<exponent>)?>
+  | <#basic_character: (<basic_graphic_character>|<format_effector>)>
+  | <#basic_graphic_character: (["A"-"Z"]|<digit>|<special_character>|" ")>
+  | <basic_identifier: <letter> ( ("_")? <letter_or_digit> )*>
+  | <bit_string_literal: <base_specifier> "\"" <bit_value> "\"">
+  | <#bit_value: <extended_digit> ( ("_")? <extended_digit>)*>
+  | <character_literal:  "'" <graphic_character> "'">
+  | <decimal_literal: <integer> ( "." <integer>)? ( <exponent> )?>
+  | <#exponent: ("E" ("+")? <integer>) | ("E" "-" <integer>)>
+  | <extended_identifier: "\\" <graphic_character> ( <graphic_character> )* "\\">
+  | <#graphic_character: (<basic_graphic_character>
+                          | <lower_case_letter>
+                          | <other_special_character>)>
+  | <string_literal: "\"" (<graphic_character>|"\"\"")* "\"">
+
+  | <EXP: "**">
+  | <MUL: "*">
+  | <DIV: "/">
+  | <ADD: "+">
+  | <SUB: "-">
+  | <CONCAT: "&">
+  | <EQ:  "=">
+  | <NEQ: "/=">
+  | <GE:  ">=">
+  | <LE:  "<=">
+  | <GT:  ">">
+  | <LO:  "<">
+  | <SEMICOLON: ";">
+}
+
+
+String abstract_literal() :
+{Token t;}
+{
+	(
+    	t=<decimal_literal>
+  		| t=<based_literal>
+  	)
+  	{return t.image.toUpperCase();}
+}
+
+String actual_designator() :
+{String desig;}
+{
+    LOOKAHEAD(expression()) 
+    desig=expression()
+    {return desig;}
+  | LOOKAHEAD(signal_name())
+    desig=signal_name()
+    {return desig;}
+  | LOOKAHEAD(variable_name())
+    desig=variable_name()
+    {return desig;}
+  | <OPEN>
+  {return "OPEN";}
+}
+
+String actual_parameter_part() :
+{String temp;}
+{
+  temp=parameter_association_list()
+  {return temp;}
+}
+
+String actual_part() :
+{
+	String name;
+	String desig;
+}
+{
+    LOOKAHEAD( function_name() consume_left_paren() actual_designator() consume_right_paren())
+    name=function_name() consume_left_paren() desig=actual_designator() consume_right_paren()
+    {return name + "( " + desig + " )";}
+  | LOOKAHEAD({currentScope.containsType(getToken(1).image.toUpperCase())})
+    name=type_mark() consume_left_paren() desig=actual_designator() consume_right_paren()
+    {return name + "( " + desig + " )";}
+  | desig=actual_designator()
+  	{return desig;}
+}
+
+String adding_operator():
+{}
+{
+    <ADD>               { return "+"; }
+  | <SUB>               { return "-"; }
+  | <CONCAT>            { return "&"; }
+}
+
+String aggregate() :
+{
+	String aggregate;
+	String temp;
+}
+{
+	consume_left_paren()
+	aggregate=element_association()
+	( "," temp=element_association() {aggregate += ", " + temp;})*
+	consume_right_paren()
+	{return "(" + aggregate + ")";}
+}    
+
+void alias_declaration() :
+{}
+{
+  <ALIAS> 
+  {
+  	exit("No support for aliases");
+  }
+}
+
+void architecture_body() :
+{
+	String entityName = null;
+	String archName = null;
+}
+{
+  <ARCHITECTURE> archName=identifier() <OF> entityName=entity_name() <IS>
+  {
+   		jjtThis.newBlock();
+   		try
+   		{
+   			// Non-primary units must have a previously declared, accessible, related scope, in this case, an entity scope
+   			VHDLScope parentUnit = workingLibraryScope.getDesignUnit(entityName);
+   			if(parentUnit == null || !(parentUnit instanceof VHDLEntityScope))
+   			{
+   				exit("Cannot find related entity " + entityName + " for architecture " + archName);
+   			}
+   			
+   			// Create the new scope
+   			VHDLArchitectureScope newScope = new VHDLArchitectureScope(archName, FILENAME, getToken(0).beginLine, (VHDLEntityScope)parentUnit, usedLibraryScope);
+   		
+   			// Add the new scope to this files scope list
+   			workingLibraryScope.addDesignUnit(newScope);
+   		
+   			// Set the global scope pointer to the new scope
+   			currentScope = newScope;
+   		}
+   		catch(Exception e)
+   		{
+   			exit("Cannot create architecture " + archName + ": " + e.getMessage());
+   		}
+   }
+    architecture_declarative_part()
+  <BEGIN>
+    architecture_statement_part()
+  <END> [ <ARCHITECTURE> ] [ architecture_simple_name() ] ";"
+
+  {
+    	jjtThis.endBlock();
+    	jjtThis.Check();
+    
+    	// Reset the global scope pointer
+   		currentScope = null;
+  }
+}
+
+void architecture_declarative_part() :
+{}
+{
+  ( block_declarative_item() )*
+}
+
+void architecture_statement_part() :
+{}
+{
+  ( architecture_statement() )*
+}
+
+/**
+ *  This rule also contains the concurrent statements.
+ */
+void architecture_statement():
+{}
+{
+  // 
+  // lookahead would really be annoying here. Therefore I have
+  // moved the concurrent statement into this rule.
+  // concurrent_statements:
+  //
+
+  try {
+
+    LOOKAHEAD([block_label() ":"] <BLOCK>)
+    block_statement()
+  | LOOKAHEAD([process_label() ":"] <PROCESS>)
+    process_statement()
+  | LOOKAHEAD([label() ":"] procedure_call() ";")
+    concurrent_procedure_call_statement()
+  | LOOKAHEAD([label() ":"] conditional_signal_assignment()|
+              [label() ":"] selected_signal_assignment())
+    concurrent_signal_assignment_statement()
+  | LOOKAHEAD(instantiation_label() ":" instantiated_unit() )
+    component_instantiation_statement()
+  | LOOKAHEAD(generate_statement())
+    generate_statement()
+
+  }
+
+  /** Error handling: Skip until next semicolon */
+  catch(ParseException e)
+  {
+    error_skipto(SEMICOLON, "syntax error in statement");
+  }
+}
+
+void array_type_definition() :
+{globalType.isArray=true;}
+{
+    LOOKAHEAD(unconstrained_array_definition())
+    unconstrained_array_definition()
+  | constrained_array_definition()
+}
+
+String association_element() :
+{
+	String element = "";
+	String part;
+}
+{
+  [
+  	LOOKAHEAD( formal_part() "=>" )
+  	element=formal_part() "=>"
+  	{element += " =>";}
+  ]
+  part=actual_part()
+  {return element + " " + part;}
+}
+
+String association_list() :
+{
+	String list;
+	String temp;}
+{
+  list=association_element() ( "," temp=association_element() {list += ", " + temp;})*
+  {return list;}
+}
+
+void attribute_declaration() :
+{}
+{
+  <ATTRIBUTE> identifier() ":" type_mark() ";"
+}
+
+String attribute_designator():
+{String asn;}
+{
+  asn=attribute_simple_name()
+  {return asn;}
+}
+
+void attribute_name() :
+{}
+{
+  prefix() [ LOOKAHEAD({currentScope.containsType(getToken(1).image.toUpperCase())}) signature() ] "'" attribute_designator() [ consume_left_paren() expression() consume_right_paren() ]
+}
+
+void attribute_specification() :
+{}
+{
+  <ATTRIBUTE> attribute_designator() <OF>
+  entity_specification() <IS> expression() ";"
+}
+
+void binding_indication() :
+{}
+{
+  [ <USE> entity_aspect() ]
+  [ generic_map_aspect() ]
+  [ port_map_aspect() ]
+}
+
+void block_configuration() :
+{}
+{
+  <FOR> block_specification()
+                ( use_clause() )*
+                ( configuration_item() )*
+  <END> <FOR> ";"
+}
+
+void block_declarative_item():
+{}
+{
+  try {
+
+    LOOKAHEAD(subprogram_declaration())
+    subprogram_declaration()
+  | subprogram_body()
+  | type_declaration()
+  | subtype_declaration()
+  | constant_declaration()
+  | signal_declaration()
+  | alias_declaration()
+  | component_declaration()
+  | LOOKAHEAD(attribute_declaration())
+    attribute_declaration()
+  | attribute_specification()
+  | configuration_specification()
+  | use_clause()
+
+  }
+  // Error handling: skip until next semicolon
+  catch (ParseException e)
+  {
+    error_skipto(SEMICOLON, "syntax error in declarative item");
+  }
+}
+
+void block_declarative_part() :
+{}
+{
+  ( block_declarative_item() )*
+}
+
+void block_specification() :
+{}
+{
+    LOOKAHEAD(architecture_name())
+    architecture_name()
+  | LOOKAHEAD(block_statement_label())
+    block_statement_label()
+  | LOOKAHEAD(generate_statement_label())
+    generate_statement_label() [ consume_left_paren() index_specification() consume_right_paren() ]
+}
+
+void block_statement() :
+{}
+{
+  block_label() ":"
+                <BLOCK> [ consume_left_paren() guard_expression() consume_right_paren() ] [ <IS> ]
+                        block_declarative_part()
+                <BEGIN>
+                        block_statement_part()
+                <END> <BLOCK> [ block_label() ] ";"
+}
+
+void block_statement_part() :
+{}
+{
+  (architecture_statement() )*
+}
+
+void case_statement() :
+{}
+{
+  [ case_label() ":" ]
+                <CASE> expression() <IS>
+                        case_statement_alternative()
+                        ( case_statement_alternative() )*
+                <END> <CASE> [ case_label() ] ";"
+}
+
+void case_statement_alternative() :
+{}
+{
+  <WHEN> choices() "=>"
+                sequence_of_statements()
+}
+
+String choice() :
+{String choice;}
+{
+	(
+		LOOKAHEAD(simple_expression())
+		choice=simple_expression()
+		|
+		LOOKAHEAD(discrete_range())
+		choice=discrete_range()
+		|
+		choice=element_simple_name()
+		|
+		<OTHERS>
+  		{return "OTHERS";}
+  	)
+  	{return choice;}
+}
+
+String choices() :
+{
+	String choice;
+	String temp;
+}
+{
+  choice=choice() ( "|" temp=choice() {choice += " | " + temp;})*
+  {return choice;}
+}
+
+void component_configuration() :
+{}
+{
+  <FOR> component_specification()
+                [ binding_indication() ";" ]
+                [ block_configuration() ]
+  <END> <FOR> ";"
+}
+
+void component_declaration() :
+{}
+{
+  <COMPONENT> identifier() [ <IS> ]
+      [ local_generic_clause() ]
+      [ local_port_clause() ]
+  <END> <COMPONENT> [ component_simple_name() ] ";"
+}
+
+void component_instantiation_statement() :
+{}
+{
+  instantiation_label() ":"
+         instantiated_unit()
+         [ generic_map_aspect() ]
+         [ port_map_aspect() ] ";"
+}
+
+void component_specification() :
+{}
+{
+  instantiation_list() ":" component_name()
+}
+
+void composite_type_definition() :
+{}
+{
+    array_type_definition()
+  | record_type_definition()
+}
+
+void concurrent_procedure_call_statement() :
+{}
+{
+  [ LOOKAHEAD( label() ":") label() ":" ]
+  procedure_call() ";"
+}
+
+void concurrent_signal_assignment_statement() :
+{}
+{
+    [ LOOKAHEAD( label() ":") label() ":" ]
+    ( LOOKAHEAD(  target() "<=" options_() conditional_waveforms() ";") 
+        conditional_signal_assignment() 
+      | selected_signal_assignment() )
+}
+
+void condition():
+{}
+{
+  boolean_expression()
+}
+
+void condition_clause():
+{}
+{
+  <UNTIL> condition()
+}
+
+void conditional_signal_assignment() :
+{}
+{
+  target() "<=" options_() conditional_waveforms() ";"
+}
+
+
+void conditional_waveforms() :
+{}
+{
+  waveform()
+    ( LOOKAHEAD( <WHEN> condition() <ELSE>) <WHEN> condition() <ELSE> waveform() )*
+    [ <WHEN> condition() ]
+}
+
+void configuration_declaration() :
+{}
+{
+  <CONFIGURATION> identifier() <OF> entity_name() <IS>
+    configuration_declarative_part()
+    block_configuration()
+  <END> [ <CONFIGURATION> ] [ configuration_simple_name() ] ";"
+}
+
+void configuration_declarative_item():
+{}
+{
+  try {
+    use_clause()
+  | attribute_specification()
+  }
+
+  catch(ParseException e)
+  {
+    error_skipto(SEMICOLON, "syntax error in declarative item");
+  }
+}
+
+void configuration_declarative_part() :
+{}
+{
+  ( configuration_declarative_item() )*
+}
+
+void configuration_item():
+{}
+{
+    LOOKAHEAD(block_configuration())
+    block_configuration()
+  | component_configuration()
+}
+
+void configuration_specification() :
+{}
+{
+  <FOR> component_specification() binding_indication() ";"
+}
+
+void constant_declaration() :
+{
+	String[] identList;
+	String typeName;
+	String express = null;
+	String value = null;
+}
+{
+  <CONSTANT> identList=identifier_list() ":" typeName=subtype_indication() ":=" express=expression() ";"
+ 	{
+  		// Get the type or create an anonymous one
+		VHDLType type = null;
+  		
+  		try
+		{
+			type = lookupType(typeName);
+		}
+		catch(Exception e)
+		{
+			exit("While parsing constant declaration: " + e.getMessage());
+		}
+  	
+  		// Get the value assigned to the constant
+  		try{value = evaluateVHDLExpression(express);}
+  		catch(Exception e)
+		{
+			exit("Can't convert the value expression " + express + " into a usable value: " + e.getMessage());
+		}
+  		
+  		// For each name listed, create the constant and add it to this scope's list
+  		for(int i = 0; i < identList.length; ++i)
+  		{
+  			try
+  			{
+  				currentScope.addConstant(new VHDLConstant(identList[i], type, value));
+  			}
+  			catch(Exception e)
+  			{
+  				exit("" + e.getMessage());
+  			}
+  		}
+	}
+}
+
+void constrained_array_definition() :
+{}
+{
+  <ARRAY> index_constraint() <OF> element_subtype_indication()
+  {globalType.isConstrained=true;}
+}
+
+String constraint():
+{String constraint;}
+{
+	(
+    	constraint=range_constraint()
+  		|
+  		constraint=index_constraint()
+  	)
+  	{return constraint;}
+}
+
+void context_clause() :
+{}
+{
+  ( context_item() )*
+}
+
+void context_item():
+{}
+{
+    library_clause()
+  | use_clause()
+}
+
+/** 
+ * Section 4:
+ * Declarations
+ */
+
+void design_file() :
+{}
+{
+  ( design_unit() )+ <EOF>
+}
+
+void design_unit() :
+{
+	// Reset the loaded library information for each design unit
+	/*try
+	{
+		usedLibraryScope = new VHDLUniversalScope();
+	}
+	catch(Exception e)
+	{
+		exit("Problem while loading libraries: " + e.getMessage());
+	}
+	*/
+}
+{
+  context_clause() library_unit()
+}
+
+String designator():
+{String desig;}
+{
+  (
+  	desig=identifier()
+  	|
+  	desig=operator_symbol()
+  )
+  {return desig;}
+}
+
+String direction() :
+{}
+{
+  <TO> {return "TO";}| <DOWNTO> {return "DOWNTO";}
+}
+
+String discrete_range() :
+{String range = null;}
+{
+	(
+    	LOOKAHEAD(range())
+    	range=range()
+  		|
+  		LOOKAHEAD({isDiscreteSubtype(getToken(1).image.toUpperCase())})
+  		range=discrete_subtype_indication()
+  		{
+  			// Look-up the type that serves as the range
+  			VHDLType rangeType = null;
+		
+			try
+			{
+				rangeType = lookupType(range);
+			}
+			catch(Exception e)
+			{
+				exit("While parsing discrete range: " + e.getMessage());
+			}
+
+  			// Set bounds for the new type according to the range type
+  			if(rangeType instanceof VHDLEnumerationType)
+  			{
+  				VHDLEnumerationType temp = (VHDLEnumerationType)rangeType;
+  				globalType.setLeftBound(temp.getPossibleValueAt(0));
+  				globalType.setRightBound(temp.getPossibleValueAt(temp.numPossibleValues() - 1));
+  			}
+  			else if(rangeType instanceof VHDLIntegerType)
+  			{
+  				globalType.setLeftBound("" + ((VHDLIntegerType)rangeType).getLeftIndex());
+  				globalType.setRightBound("" + ((VHDLIntegerType)rangeType).getRightIndex());
+  			}
+  			else
+  			{
+  				exit("Type " + range + " isn't an enumeration or integer subtype, can't build a range from it");
+  			}
+  		}
+  	)
+  	{return range;}
+}
+
+String element_association():
+{
+	String assoc;
+	String temp = "";
+}
+{
+  [
+  	LOOKAHEAD(choices() "=>")
+  	temp=choices() "=>"
+  	{temp = temp + " =>";}
+  ]
+  assoc=expression()
+  {return temp + " " + assoc;}
+}
+
+void element_declaration() :
+{String[] fields;}
+{
+  fields=identifier_list() ":" element_subtype_definition() ";"
+  
+  // Add each field and a reference to its type to the field list for the global type
+  {
+  	for(int fieldName = 0; fieldName < fields.length; ++fieldName)
+  	{
+  		// Type of field stored in global type's parent field
+  		globalType.addField(fields[fieldName], globalType.parentType);
+  	}
+  }
+}
+
+void element_subtype_definition():
+{}
+{
+  subtype_indication()
+}
+
+void entity_aspect() :
+{}
+{
+    <ENTITY> entity_name()
+    [ LOOKAHEAD(consume_left_paren() architecture_identifier() consume_right_paren())
+    consume_left_paren() architecture_identifier() consume_right_paren() ]
+  | <CONFIGURATION> configuration_name()
+  | <OPEN>
+}
+
+/**
+ * Section 5: Specifications
+ */
+int entity_class():
+{}
+{
+    <ENTITY>                    { return ENTITY; }
+  | <ARCHITECTURE>              { return ARCHITECTURE; }
+  | <CONFIGURATION>             { return CONFIGURATION; }
+  | <PROCEDURE>                 { return PROCEDURE; }
+  | <FUNCTION>                  { return FUNCTION; }
+  | <PACKAGE>                   { return PACKAGE; }
+  | <TYPE>                      { return TYPE; }
+  | <SUBTYPE>                   { return SUBTYPE; }
+  | <CONSTANT>                  { return CONSTANT; }
+  | <SIGNAL>                    { return SIGNAL; }
+  | <VARIABLE>                  { return VARIABLE; }
+  | <COMPONENT>                 { return COMPONENT; }
+  | <LABEL>                     { return LABEL; }
+  | <LITERAL>                   { return LITERAL; }
+  | <UNITS>                     { return UNITS; }
+}
+
+void entity_declaration() :
+{
+	String name = null;
+}
+{
+  <ENTITY> name=identifier() <IS>
+  {
+   		jjtThis.newBlock();
+   		
+   		// Create the new scope with no parent (primary unit)
+   		VHDLEntityScope newScope = new VHDLEntityScope(name, FILENAME, getToken(0).beginLine, usedLibraryScope);
+   		
+   		// Add the new scope to this files scope list
+   		workingLibraryScope.addDesignUnit(newScope);
+   		
+   		// Set the global scope pointer to the new scope
+   		currentScope = newScope;
+   }
+          entity_header()
+          entity_declarative_part()
+  <END> [ <ENTITY> ] [ entity_simple_name() ] ";"
+
+  {
+    	jjtThis.Check();
+    	jjtThis.endBlock();
+    	
+    	// Reset the global scope pointer
+   		currentScope = null;
+  }
+}
+
+void entity_declarative_item():
+{}
+{
+  try {
+    LOOKAHEAD(subprogram_declaration())
+    subprogram_declaration()
+  | subprogram_body()
+  | type_declaration()
+  | subtype_declaration()
+  | constant_declaration()
+  | signal_declaration()
+  | alias_declaration()
+  | LOOKAHEAD(attribute_declaration())
+    attribute_declaration()
+  | attribute_specification()
+  | use_clause()
+  }
+  catch( ParseException e )
+  {
+    error_skipto(SEMICOLON, "syntax error in declarative item");
+  }
+}
+
+void entity_declarative_part() :
+{}
+{
+  ( entity_declarative_item() )*
+}
+
+void entity_designator() :
+{}
+{
+  entity_tag() [LOOKAHEAD({currentScope.containsType(getToken(1).image.toUpperCase())}) signature() ]
+}
+
+void entity_header() :
+{}
+{
+  [ formal_generic_clause() ]
+  [ formal_port_clause() ]
+}
+
+void entity_name_list() :
+{}
+{
+  entity_designator() ( "," entity_designator() )*
+  | <OTHERS>
+  | <ALL>
+}
+
+void entity_specification() :
+{}
+{
+        entity_name_list() ":" entity_class()
+}
+
+void entity_tag() :
+{}
+{
+    simple_name()
+  | <character_literal>
+  | operator_symbol()
+}
+
+String enumeration_literal() :
+{
+	Token t;
+	String ident;
+}
+{
+  t=<character_literal>
+  {
+  	globalType.addPossibleValue(t.image.toUpperCase());
+  	return t.image.toUpperCase();
+  }
+  |
+  ident=identifier()
+  {
+  	globalType.addPossibleValue(ident);
+  	return ident;	
+  }
+}
+
+void enumeration_type_definition() :
+{
+	globalType.isEnumeration = true;
+	globalType.newPossibleValueList();
+}
+{
+  consume_left_paren() enumeration_literal() ( "," enumeration_literal())* consume_right_paren()
+}
+
+void exit_statement() :
+{}
+{
+  [ label() ":" ] <EXIT> [ loop_label() ]
+    [ <WHEN> condition() ] ";"
+}
+
+String expression():
+{
+	String op;
+	String relation;
+	String temp;
+}
+{
+/**  relation() (
+ *   ( <AND> relation() )* |
+ *    ( <OR> relation() )*  |
+ *    ( <XOR> relation() )* |
+ *    [ <NAND> relation() ] |
+ *    [ <NOR> relation() ]  |
+ *    ( <XNOR> relation() )*
+ *  )
+ */
+  relation=relation() 
+  (
+  	LOOKAHEAD(1)
+  	op=logical_operator()
+  	temp=relation()
+  	{relation = relation + " " + op + " " + temp;}
+  )*
+  {return relation;}
+}
+
+String factor():
+{
+	String primary;
+	String factor;
+}
+{
+    <ABS> primary=primary()
+    {return "ABS" + " " + primary;}
+  | <NOT> primary=primary()
+  	{return "NOT" + " " + primary;}
+  | factor=primary()
+  	[
+  		LOOKAHEAD("**" primary())
+  		<EXP> primary=primary()
+  		{factor = factor + " " + "**" + " " + primary;}
+  	]
+  	{return factor;}
+}
+
+String formal_designator():
+{String name;}
+{
+    LOOKAHEAD( generic_name() )
+    name=generic_name()
+    {return name;}
+  | LOOKAHEAD( port_name() )
+    name=port_name()
+    {return name;}
+  | name=parameter_name()
+  	{return name;}
+}
+
+void formal_parameter_list() :
+{}
+{
+  parameter_interface_list()
+}
+
+String formal_part():
+{
+	String name;
+	String desig;
+}
+{
+    LOOKAHEAD( function_name() consume_left_paren() formal_designator() consume_right_paren())
+    name=function_name() consume_left_paren() desig=formal_designator() consume_right_paren()
+    {return name + "( " + desig + " )";}
+  | LOOKAHEAD({currentScope.containsType(getToken(1).image.toUpperCase())})
+    name=type_mark() consume_left_paren() desig=formal_designator() consume_right_paren()
+    {return name + "( " + desig + " )";}
+  | desig=formal_designator()
+  {return desig;}
+}
+
+void full_type_declaration() :
+{String temp; globalType.reset();}
+{
+  <TYPE> temp=identifier() {globalType.setName(temp);} <IS> type_definition() ";"
+  {
+  	try{currentScope.addType(globalType.generateTypeFromProps());}
+  	catch(Exception e)
+  	{
+  		exit("Conflicting definition of type " + globalType.getName());
+  	}
+  	globalType.reset();
+  }
+}
+
+String function_call() :
+{
+	String call = null;
+	String temp;
+}
+{
+  //LOOKAHEAD(call=function_name(), {currentScope.containsScope(call)})
+  call=function_name()
+  [
+  	LOOKAHEAD( consume_left_paren() actual_parameter_part() consume_right_paren() )
+  	consume_left_paren() temp=actual_parameter_part() consume_right_paren()
+  	{call += "( " + temp + " )";}
+  ]
+  {return call;}
+}
+
+/**
+ * Section 9.7
+ */
+void generate_statement() :
+{}
+{
+  generate_label() ":"
+  generation_scheme() <GENERATE>
+    [ LOOKAHEAD(2) ( block_declarative_item() )* <BEGIN> ]
+    ( architecture_statement() )*
+  <END> <GENERATE> [ generate_label() ] ";"
+}
+
+void generation_scheme() :
+{}
+{
+    <FOR> generate_parameter_specification()
+  | <IF> condition()
+}
+
+void generic_association_list():
+{}
+{
+  association_list()
+}
+
+void generic_clause() :
+{}
+{
+  <GENERIC> consume_left_paren() interface_constant_declaration() ( ";" interface_constant_declaration() )* consume_right_paren() ";"
+}
+
+void generic_map_aspect():
+{}
+{
+  <GENERIC> <MAP> consume_left_paren() generic_association_list() consume_right_paren()
+}
+
+void guarded_signal_specification() :
+{}
+{
+  guarded_signal_list() ":" type_mark()
+}
+
+String identifier() :
+{ Token t; }
+{  
+     t=<basic_identifier>    { jjtThis.name = t.image.toUpperCase(); return t.image.toUpperCase();}
+  |  t=<extended_identifier> { jjtThis.name = t.image.toUpperCase(); return t.image.toUpperCase();}
+}
+
+String[] identifier_list() :
+{
+	ArrayList<String> identList = new ArrayList<String>();
+	String ident;
+}
+{
+  ident=identifier() {identList.add(ident);}
+  ( "," ident=identifier() {identList.add(ident);})*
+  
+  {return (String[])identList.toArray(new String[identList.size()]);}
+}
+
+void if_statement() :
+{}
+{
+  [ if_label() ":" ]
+  <IF> condition() <THEN>
+  sequence_of_statements()
+  ( <ELSIF> condition() <THEN>
+    sequence_of_statements() )*
+  [ <ELSE>
+    sequence_of_statements() ]
+  <END> <IF> [ if_label() ] ";"
+}
+
+String index_constraint() :
+{String range;}
+{
+  consume_left_paren() range=discrete_range() consume_right_paren()
+  {return "( " + range + " )";}
+}
+
+void index_specification() :
+{}
+{
+    LOOKAHEAD( discrete_range() )
+    discrete_range()
+  | static_expression()
+}
+
+void index_subtype_definition() :
+{}
+{
+  type_mark() <RANGE> "<>"
+}
+
+void indexed_name() :
+{}
+{
+  prefix() consume_left_paren() expression() ( "," expression() )* consume_right_paren()
+}
+
+void instantiated_unit() :
+{}
+{
+    [ <COMPONENT> ] component_name()
+  | <ENTITY> entity_name() [ consume_left_paren() architecture_identifier() consume_right_paren() ]
+  | <CONFIGURATION> configuration_name()
+}
+
+void instantiation_list() :
+{}
+{
+    instantiation_label() ( "," instantiation_label() )*
+  | <OTHERS>
+  | <ALL>
+}
+
+void integer_type_definition():
+{globalType.isInteger=true;}
+{
+  range_constraint()
+}
+
+void interface_constant_declaration() :
+{
+	String[] identList;
+	String typeName = null;
+	String express = null;
+	String value = null;
+}
+{
+  [ <CONSTANT> ] identList=identifier_list() ":" [ <IN> ]
+    typeName=subtype_indication() [ ":=" express=static_expression() ]
+	{
+  		// Get the type of create an anonymous one
+		VHDLType type = null;
+  		
+  		try
+		{
+			type = lookupType(typeName);
+		}
+		catch(Exception e)
+		{
+			exit("While parsing interface constant declaration: " + e.getMessage());
+		}
+  	
+  		// Get the value assigned to the constant
+  		if(express != null)
+  		{
+  			try{value = evaluateVHDLExpression(express);}
+  			catch(Exception e)
+			{
+				exit("Can't convert the value expression " + express + " into a usable value: " + e.getMessage());
+			}
+  		}
+  		
+  		// For each name listed, create the constant and add it to this scope's list
+  		for(int i = 0; i < identList.length; ++i)
+  		{
+  			try
+  			{
+  				if(value == null)
+  				{
+  					currentScope.addConstant(new VHDLConstant(identList[i], type, true));
+  				}
+  				else
+  				{
+  					currentScope.addConstant(new VHDLConstant(identList[i], type, value, true));
+  				}
+  			}
+  			catch(Exception e)
+  			{
+  				exit("" + e.getMessage());
+  			}
+  		}
+	}
+}
+
+/**
+ * Section 4.3.2:
+ */
+void interface_signal_declaration() :
+{
+	String[] identList;
+	String typeName = null;
+}
+{
+    [ <SIGNAL> ] identList=identifier_list() ":" [ mode() ] typeName=subtype_indication() [ <BUS> ]
+ 	{
+  		// Get the type of create an anonymous one
+		VHDLType type = null;
+  	
+  		try
+  		{
+  			type = lookupType(typeName);
+  		}
+  		catch(Exception e)
+  		{
+  			exit("While parsing interface signal declaration: " + e.getMessage());
+  		}
+  	
+  		// For each name listed, create the signal and add it to this scope's list
+  		for(int i = 0; i < identList.length; ++i)
+  		{
+  			try
+  			{
+  				currentScope.addSignal(new VHDLSignal(identList[i], type));
+  			}
+  			catch(Exception e)
+  			{
+  				exit(e.getMessage());
+  			}
+  		}
+  	}
+}
+
+void interface_variable_declaration() :
+{
+	String[] identList;
+	String typeName = null;
+}
+{
+  [ <VARIABLE> ] identList=identifier_list() ":" [ mode() ] typeName=subtype_indication()
+  	{
+  		// Get the type of create an anonymous one
+		VHDLType type = null;
+		
+		try
+  		{
+  			type = lookupType(typeName);
+  		}
+  		catch(Exception e)
+  		{
+  			exit("While parsing interface variable declaration: " + e.getMessage());
+  		}
+  	
+  		// For each name listed, create the variable and add it to this scope's list
+  		for(int i = 0; i < identList.length; ++i)
+  		{
+  			try
+  			{
+  				currentScope.addVariable(new VHDLVariable(identList[i], type));
+  			}
+  			catch(Exception e)
+  			{
+  				exit(e.getMessage());
+  			}
+  		}
+  	}
+}
+
+void iteration_scheme() :
+{}
+{
+    <FOR> loop_parameter_specification()
+}
+
+String label():
+{String ident;}
+{
+  ident=identifier()
+  {return ident;}
+}
+
+void library_clause():
+{String[] libNameList;}
+{
+  <LIBRARY> libNameList=logical_name_list() ";"
+}
+
+void library_unit():
+{}
+{   LOOKAHEAD(<ENTITY> | <CONFIGURATION> | <PACKAGE> identifier() )
+    primary_unit()
+  | secondary_unit()
+}
+
+String literal() :
+{
+	Token t;
+	String literal;	
+}
+{
+	(
+    	LOOKAHEAD( numeric_literal() )
+    	literal=numeric_literal()
+  		|
+  		literal=enumeration_literal()
+  		|
+  		t=<string_literal>
+  		{return t.image.toUpperCase();}
+  		|
+  		t=<bit_string_literal>
+  		{return t.image.toUpperCase();}
+  	)
+  	{return literal;}
+}
+
+String logical_name():
+{String name;}
+{
+  name=identifier()
+  {return name;}
+}
+
+String[] logical_name_list() :
+{
+	ArrayList<String> nameList = new ArrayList<String>();
+	String name;
+}
+{
+  name=logical_name() {nameList.add(name);}
+  ( "," name=logical_name() {nameList.add(name);})*
+  
+  {return (String[])nameList.toArray(new String[nameList.size()]);}
+}
+
+String logical_operator():
+{}
+{
+    <AND>             { return "AND"; }
+  | <OR>              { return "OR"; }
+  | <NAND>            { return "NAND"; }
+  | <NOR>             { return "NOR"; }
+  | <XOR>             { return "XOR"; }
+  | <XNOR>            { return "XNOR"; }
+}
+
+void loop_statement() :
+{}
+{
+  [ loop_label() ":" ]
+  [ iteration_scheme() ] <LOOP>
+                        sequence_of_statements()
+  <END> <LOOP> [ loop_label() ] ";"
+}
+
+int miscellaneous_operator():
+{}
+{
+    <EXP>               { return EXP; }
+  | <ABS>               { return ABS; }
+  | <NOT>               { return NOT; }
+}
+
+void mode() :
+{}
+{
+    <IN>
+  | <OUT>
+  | <INOUT>
+  | <BUFFER>
+}
+
+String multiplying_operator():
+{}
+{
+    "*"                 { return "*"; }
+  | "/"                 { return "/"; }
+  | <MOD>               { return "MOD"; }
+  | <REM>               { return "REM"; }
+}
+
+String name() :
+{
+	String name;
+	String ext = "";
+}
+{
+/**  simple_name()
+ * | operator_symbol()
+ *  | selected_name()
+ *  | indexed_name()
+ *  | slice_name()
+ *  | attribute_name()
+ *
+ * Can be written without link recursion as follows:
+ */
+  (
+  	name=simple_name()
+  	|
+  	name=operator_symbol()
+  )
+  [
+  	LOOKAHEAD(name_extension())
+  	ext=name_extension()
+  ]
+  {return name + ext;}
+}
+
+String name_extension():
+{
+	String sig = "";
+	String desig;
+	String ext;
+}
+{
+  (
+        LOOKAHEAD( [signature()] "'"  )
+        [
+        	sig=signature()
+        ] "'" desig=attribute_designator()
+        {ext = sig + "'" + desig;}
+      | "." sig=suffix()
+      	{ext = "." + sig;}
+      | LOOKAHEAD( index_constraint() ) 
+        ext=index_constraint()  
+      | LOOKAHEAD( consume_left_paren() expression() consume_right_paren() )
+        consume_left_paren() sig=expression() consume_right_paren()
+        {ext = "( " + sig + " )";}
+  )
+  [
+  	LOOKAHEAD(name_extension() )
+  	desig=name_extension()
+  	{ext += desig;}
+  ]
+  {return ext;}
+}
+
+void next_statement() :
+{}
+{                                                               
+  [ label() ":" ] <NEXT> [ loop_label() ] [ <WHEN> condition() ] ";"
+}
+
+void null_statement() :
+{}
+{
+  [ label() ":" ] <NULL> ";"
+}
+
+String numeric_literal():
+{String temp;}
+{
+    temp=abstract_literal()
+    {return temp;}
+}
+
+String operator_symbol() :
+{Token t;}
+{
+  t=<string_literal>
+  {return t.image.toUpperCase();}
+}
+
+void options_() :
+{}
+{
+  [ <GUARDED> ]
+}
+
+void package_body() :
+{}
+{
+  <PACKAGE> <BODY> package_simple_name() <IS>
+       package_body_declarative_part()
+  <END> [ <PACKAGE> <BODY> ] [ package_simple_name() ] ";"
+}
+
+void package_body_declarative_item():
+{}
+{
+  try {
+    LOOKAHEAD(subprogram_declaration())
+    subprogram_declaration()
+  | subprogram_body()
+  | type_declaration()
+  | subtype_declaration()
+  | constant_declaration()
+  | alias_declaration()
+  | use_clause()
+  }
+  catch( ParseException e )
+  {
+    error_skipto(SEMICOLON, "syntax error in declarative item");
+  }
+}
+
+void package_body_declarative_part() :
+{}
+{
+  ( package_body_declarative_item() )*
+}
+
+void package_declaration() :
+{String name = null;}
+{
+  <PACKAGE> name=identifier() <IS>
+  {
+   		// Create the new scope with no parent (primary unit) with used namespaces
+   		VHDLPackageScope newScope = new VHDLPackageScope(name, FILENAME, getToken(0).beginLine, usedLibraryScope);
+   		
+   		// Add the new scope to this files scope list
+   		workingLibraryScope.addDesignUnit(newScope);
+   		
+   		// Set the global scope pointer to the new scope
+   		currentScope = newScope;
+   }
+     package_declarative_part()
+  <END> [ <PACKAGE> ] [ package_simple_name() ] ";"
+  {
+  		// Reset the global scope pointer
+   		currentScope = null;
+  }
+}
+
+void package_declarative_item():
+{}
+{
+  try {
+    subprogram_declaration()
+  | type_declaration()
+  | subtype_declaration()
+  | constant_declaration()
+  | signal_declaration()
+  | alias_declaration()
+  | component_declaration()
+  | LOOKAHEAD( attribute_declaration() )
+    attribute_declaration()
+  | attribute_specification()
+  | use_clause()
+  }
+  catch(ParseException e)
+  {
+    error_skipto(SEMICOLON, "syntax error in declaration");
+  }
+}
+
+void package_declarative_part() :
+{}
+{
+  ( package_declarative_item() )*
+}
+
+void parameter_specification() :
+{}
+{
+  identifier() <IN> discrete_range()
+}
+
+void port_clause() :
+{}
+{
+  <PORT> consume_left_paren() port_list() consume_right_paren() ";"
+}
+
+void port_list():
+{}
+{
+  port_interface_list()
+}
+
+void port_map_aspect() :
+{}
+{
+  <PORT> <MAP> consume_left_paren() port_association_list() consume_right_paren()
+}
+
+void prefix() :
+{}
+{
+    LOOKAHEAD( function_call() )
+    function_call()
+  | name()
+}
+
+String primary():
+{String primary;}
+{
+	(
+    	LOOKAHEAD( qualified_expression() )
+    	primary=qualified_expression()
+  		|
+  		LOOKAHEAD( function_call() )
+ 		primary=function_call()
+  		|
+  		LOOKAHEAD(name())
+    	primary=name()
+  		|
+  		LOOKAHEAD(literal())
+    	primary=literal()
+  		|
+  		LOOKAHEAD( aggregate() )
+    	primary=aggregate()
+  		|
+  		LOOKAHEAD( consume_left_paren() expression() consume_right_paren())
+    	consume_left_paren() primary=expression() consume_right_paren()
+    	{primary = "( " + primary + " )";}
+  		|
+  		primary=type_conversion()
+  	)
+  	{return primary;}
+}
+
+void primary_unit():
+{}
+{
+    entity_declaration()
+  | configuration_declaration()
+  | LOOKAHEAD(<PACKAGE> identifier())
+    package_declaration()
+}
+
+void procedure_call() :
+{}
+{
+  procedure_name() [ consume_left_paren() actual_parameter_part() consume_right_paren() ]
+}
+
+void procedure_call_statement() :
+{}
+{
+   [ LOOKAHEAD( label() ";") label() ":" ]
+   procedure_call() ";"
+}
+
+void process_declarative_item():
+{}
+{
+    LOOKAHEAD(subprogram_declaration())
+    subprogram_declaration()
+  | subprogram_body()
+  | type_declaration()
+  | subtype_declaration()
+  | constant_declaration()
+  | variable_declaration()
+  | alias_declaration()
+  | LOOKAHEAD( attribute_declaration() )
+    attribute_declaration()
+  | attribute_specification()
+  | use_clause()
+}
+
+void process_declarative_part() :
+{}
+{
+  ( process_declarative_item() )*
+}
+
+void process_statement() :
+{
+	String name = null;
+	VHDLScope parentUnit = null;
+}
+{
+   [ name=process_label() ":" ]
+   <PROCESS>
+   {
+   		try
+   		{
+   			jjtThis.newBlock();
+   		
+   			// Non-primary units must have a previously declared, accessible, related scope, in this case, an architecture scope
+   			parentUnit = currentScope;
+   			if(currentScope == null || !(parentUnit instanceof VHDLArchitectureScope))
+   			{
+   				exit("Process declaration with no architecture as a parent");
+   			}
+   		
+   			// Create the new scope
+   			VHDLProcessScope newScope;
+   			if(name == null)
+   			{
+   				newScope = new VHDLProcessScope(FILENAME, getToken(0).beginLine, (VHDLArchitectureScope)currentScope);
+   			}
+   			else
+   			{
+   				newScope = new VHDLProcessScope(name, FILENAME, getToken(0).beginLine, (VHDLArchitectureScope)currentScope);
+   			}
+   		
+   			// Add the new scope as a child of the current scope
+   			parentUnit.addScope(newScope);
+   			
+   			// Set the global scope pointer to the new scope
+   			currentScope = newScope;
+   		}
+   		catch(Exception e)
+   		{
+   			exit("Can't create the process " + name + ": " + e.getMessage());
+   		}
+   }
+   [ consume_left_paren() sensitivity_list() consume_right_paren() ] [ <IS> ]
+     process_declarative_part()
+   <BEGIN>
+     process_statement_part()
+   <END> <PROCESS> [ process_label() ] ";"
+
+   {
+     	jjtThis.Check();
+     	jjtThis.endBlock();
+     
+     	// Set the global scope pointer to the previous scope
+   		currentScope = parentUnit;
+   }
+}
+
+void process_statement_part() :
+{}
+{
+  ( sequential_statement() )*
+}
+
+String qualified_expression() :
+{
+	String qualExpress;
+	String agg;
+}
+{
+  qualExpress=type_mark() "'"
+  {qualExpress += "'";}
+  (
+  	LOOKAHEAD( aggregate() )
+	agg=aggregate()
+	{qualExpress += agg;}
+    |
+    consume_left_paren() agg=expression() consume_right_paren()
+    {qualExpress = "( " + agg + " )";}
+  )
+  {return qualExpress;}
+}
+
+String range() :
+{
+	String sExpression;
+	String direction;
+	String bound = null;
+}
+{
+    LOOKAHEAD( simple_expression() direction() )
+    sExpression=simple_expression()
+    {
+    	sExpression = sExpression.trim();
+    	//System.out.println("Range bounds expression: " + sExpression);
+    	//System.out.println("Evaluated value: " + evaluateVHDLExpression(sExpression));
+    	
+    	// Evaluate the expression to an integer and save as the left bound
+    	try
+    	{
+    		bound = evaluateVHDLExpression(sExpression);
+    	}
+    	catch(Exception e)
+    	{
+    		bound = sExpression;
+    		//exit("Problem evaluating range expression " + sExpression + ": " + e.getMessage());
+    	}
+    	try{globalType.setLeftBound(bound);}catch(Exception e){;}
+    }
+    direction=direction()
+    {direction = bound + " " + direction;}
+    sExpression=simple_expression()
+    {
+    	sExpression = sExpression.trim();
+    	//System.out.println("Range bounds expression: " + sExpression);
+    	//System.out.println("Evaluated value: " + evaluateVHDLExpression(sExpression));
+    	
+    	// Evaluate the expression to an integer and save as the right bound
+    	try
+    	{
+    		bound = evaluateVHDLExpression(sExpression);
+    	}
+    	catch(Exception e)
+    	{
+    		bound = sExpression;
+    		//exit("Problem evaluating range expression " + sExpression + ": " + e.getMessage());
+    	}
+    	
+    	try{globalType.setRightBound(bound);}catch(Exception e){;}
+    }
+    {return direction + " " + bound;}
+  | sExpression=range_attribute_name()
+    {
+    	//System.out.println("Range expression: " + sExpression); return sExpression.trim();
+    	sExpression = sExpression.trim();
+    	if(sExpression.length() > 2 && (sExpression.charAt(0) == '-' || sExpression.charAt(0) == '+') && sExpression.charAt(1) == ' ')
+    	{
+    		sExpression = sExpression.charAt(0) + sExpression.substring(2);
+    	}
+    	try{System.out.println("Range integer value: " + Integer.parseInt(sExpression.trim()));}catch(Exception e){;}
+    }
+}
+
+String range_constraint():
+{String range;}
+{
+  <RANGE> range=range()
+  {return "RANGE " + range;}
+}
+
+void record_type_definition() :
+{globalType.newFieldList();}
+{
+  <RECORD>
+  ( element_declaration() )+
+  <END> <RECORD> [ record_type_simple_name() ]
+  {
+  	globalType.isRecord = true;
+  	globalType.parentType = null;
+  }
+}
+
+String relation():
+{
+	String op;
+	String shift;
+	String temp;
+}
+{
+  shift=shift_expression() 
+  [
+  	LOOKAHEAD(1)
+  	op=relational_operator()
+  	temp=shift_expression()
+  	{shift = shift + " " + op + " " + temp;}
+  ]
+  {return shift;}
+}
+
+String relational_operator():
+{}
+{
+    <EQ>                { return "="; }
+  | <NEQ>               { return "/="; } 
+  | <LO>                { return "<"; }
+  | <LE>                { return "<="; }
+  | <GT>                { return ">"; }
+  | <GE>                { return ">="; }
+}
+
+void return_statement() :
+{}
+{
+  [ label() ":" ] <RETURN> [ expression() ] ";"
+}
+
+void scalar_type_definition():
+{}
+{
+    LOOKAHEAD(enumeration_type_definition())
+    enumeration_type_definition()
+    | integer_type_definition()
+}
+
+void secondary_unit():
+{}
+{
+    LOOKAHEAD(<ARCHITECTURE>)
+    architecture_body()
+  | LOOKAHEAD( <PACKAGE> <BODY> )
+    package_body()
+}
+
+String selected_name() :
+{
+	String pre = "";
+	String post = "";
+}
+{
+  /**
+   * prefix() "." suffix()
+   * results in left-recursion...
+   * the follwoing does the same (i hope ...)
+   */
+
+  ( pre=simple_name() | pre=operator_symbol() )
+  [ LOOKAHEAD( name_extension() )  post=name_extension() ]
+
+  /**
+   * semantic analysis has to ensure that last production
+   * was "." suffix()
+   */
+   {
+   	pre = pre + post;
+   	if(post.charAt(0) != '.')
+   	{
+   		exit(pre + " isn't a correctly formatted selected name");
+   	}
+   	return pre;
+   }
+}
+
+void selected_signal_assignment() :
+{}
+{
+  <WITH> expression() <SELECT>
+  target()  "<=" options_() selected_waveforms() ";"
+}
+
+void selected_waveforms() :
+{}
+{
+  waveform() <WHEN> choices()
+  ("," waveform() <WHEN> choices() )*
+}
+
+void sensitivity_clause():
+{}
+{
+  <ON> sensitivity_list()
+}
+
+void sensitivity_list() :
+{}
+{
+  signal_name() ( "," signal_name() )*
+}
+
+void sequence_of_statements() :
+{}
+{
+  ( sequential_statement() )*
+}
+
+void sequential_statement():
+{}
+{
+  try {
+    (
+      LOOKAHEAD(3)
+      wait_statement()
+    | LOOKAHEAD(  [ label() ":" ] target() "<=" )
+      signal_assignment_statement()
+    | LOOKAHEAD(  [ label() ":" ] target() ":=" )
+      variable_assignment_statement()
+    | LOOKAHEAD(3)
+      procedure_call_statement()
+    | LOOKAHEAD(3)
+      if_statement()
+    | LOOKAHEAD(3)
+      case_statement()
+    | LOOKAHEAD(3)
+      loop_statement()
+    | LOOKAHEAD(3)
+      next_statement()
+    | LOOKAHEAD(3)
+      exit_statement()
+    | LOOKAHEAD(3)
+      return_statement()
+    | LOOKAHEAD(3)
+      null_statement()
+    )
+  }
+
+  // Error handling: skip till next semicolon.
+  catch (ParseException e)
+  {
+    error_skipto(SEMICOLON, "syntax error in sequential statement");
+  } 
+}
+
+String shift_expression():
+{
+	String op;
+	String express;
+	String temp;
+}
+{
+  express=simple_expression() 
+  [
+  	LOOKAHEAD(2)
+  	op=shift_operator()
+  	temp=simple_expression()
+  	{express += " " + op + " " + temp;}
+  ]
+  {return express;}
+}
+
+String shift_operator():
+{}
+{
+    <SLL>               { return "SLL"; }
+  | <SRL>               { return "SRL"; }
+  | <SLA>               { return "SLA"; }
+  | <SRA>               { return "SRA"; }
+  | <ROL>               { return "ROL"; }
+  | <ROR>               { return "ROR"; }
+}
+
+String sign() :
+{}
+{
+    "+"
+    {return "+";}
+  | "-"
+  	{return "-";}
+}
+
+void signal_assignment_statement() :
+{}
+{
+  [ LOOKAHEAD( label() ":") label() ":" ]
+  target() "<=" waveform() ";"
+
+}
+
+void signal_declaration() :
+{
+	String[] identList;
+	String typeName;
+}
+{
+    <SIGNAL> identList=identifier_list() ":" typeName=subtype_indication() [ signal_kind() ] [ ":=" expression() ] ";"
+    {
+  		// Get the type of create an anonymous one
+		VHDLType type = null;
+  	
+  		try
+  		{
+  			type = lookupType(typeName);
+  		}
+  		catch(Exception e)
+  		{
+  			exit("While parsing signal declaration: " + e.getMessage());
+  		}
+  	
+  		// For each name listed, create the signal and add it to this scope's list
+  		for(int i = 0; i < identList.length; ++i)
+  		{
+  			try
+  			{
+  				currentScope.addSignal(new VHDLSignal(identList[i], type));
+  			}
+  			catch(Exception e)
+  			{
+  				exit(e.getMessage());
+  			}
+  		}
+  	}
+}
+
+void signal_kind() :
+{}
+{
+    <REGISTER>
+  | <BUS>
+}
+
+void signal_list() :
+{}
+{
+    signal_name() ( "," signal_name() )*
+  | <OTHERS>
+  | <ALL>
+}
+
+String signature() :
+{
+	String sig;
+	String type;
+}
+{
+  sig=type_mark()
+  ( LOOKAHEAD({getToken(1).image.toUpperCase().charAt(0) == ',' && currentScope.containsType(getToken(2).image.toUpperCase())}) "," type=type_mark() {sig += ", " + type;} )*
+  [
+  	<RETURN>
+  	type=type_mark()
+  	{sig += " RETURN " + type;}
+  ]
+  {return sig;}
+}
+
+String simple_expression():
+{
+	String op = "";
+	String sign = "";
+	String term = "";
+	String expression = "";
+}
+{
+   [ sign=sign() ] term=term()
+   {expression = sign + " " + term;}
+   
+   (
+		LOOKAHEAD(2)
+		op=adding_operator()
+		term=term()
+		{expression = expression + " " + op + " " + term;}
+	)*
+   
+   {return expression;}
+}
+
+String simple_name():
+{String toRet;}
+{
+  toRet=identifier()
+  {return toRet;}
+}
+
+void slice_name() :
+{}
+{
+  prefix() consume_left_paren() discrete_range() consume_right_paren()
+}
+
+void subprogram_body() :
+{}
+{
+  subprogram_specification() <IS>
+     subprogram_declarative_part()
+  <BEGIN>
+         subprogram_statement_part()
+  <END> [ subprogram_kind() ] [ designator() ] ";"
+  
+  {
+  		// Set the global scope pointer to the previous scope
+  		currentScope = ((VHDLSubprogramScope)currentScope).getParent();
+  }
+}
+
+void subprogram_declaration():
+{}
+{
+  subprogram_specification() ";"
+}
+
+void subprogram_declarative_item():
+{}
+{
+    LOOKAHEAD(subprogram_declaration())
+    subprogram_declaration()
+  | subprogram_body()
+  | type_declaration()
+  | subtype_declaration()
+  | constant_declaration()
+  | variable_declaration()
+  | alias_declaration()
+  | LOOKAHEAD(attribute_declaration())
+    attribute_declaration()
+  | attribute_specification()
+  | use_clause()
+}
+
+void subprogram_declarative_part() :
+{}
+{
+  ( subprogram_declarative_item() )*
+}
+
+int subprogram_kind():
+{}
+{
+    <PROCEDURE>                 { return PROCEDURE; }
+  | <FUNCTION>                  { return FUNCTION; }
+}
+
+void subprogram_specification() :
+{
+	String name = null;
+	VHDLSubprogramScope newScope;
+}
+{
+  <PROCEDURE> name=designator() 
+  {
+   		// Non-primary units must have a parent scope
+   		if(currentScope == null)
+   		{
+   			exit("Subprogram with no parent scope");
+   		}
+   		
+   		// Create the new scope
+   		newScope = new VHDLSubprogramScope(name, FILENAME, getToken(0).beginLine, currentScope);
+   		
+   		// Add the new scope as a child of the current scope
+   		currentScope.addScope(newScope);
+   		
+   		// Set the global scope pointer to the new scope
+   		currentScope = newScope;
+   }
+   [ consume_left_paren() formal_parameter_list() consume_right_paren() ]
+  | [ <PURE> | <IMPURE> ]  <FUNCTION> name=designator()
+    {
+   		// Non-primary units must have a parent scope
+   		if(currentScope == null)
+   		{
+   			exit("Subprogram with no parent scope");
+   		}
+   		
+   		// Create the new scope
+   		newScope = new VHDLSubprogramScope(name, FILENAME, getToken(0).beginLine, currentScope);
+   		
+   		// Add the new scope as a child of the current scope
+   		currentScope.addScope(newScope);
+   		
+   		// Set the global scope pointer to the new scope
+   		currentScope = newScope;
+   }
+    [ consume_left_paren() formal_parameter_list() consume_right_paren() ]
+                <RETURN> type_mark()
+}
+
+void subprogram_statement_part() :
+{}
+{
+  ( sequential_statement() )*
+}
+
+void subtype_declaration() :
+{
+	String temp;
+	globalType.reset();
+	globalType.isSubtype = true;
+}
+{
+  <SUBTYPE> temp=identifier() {globalType.setName(temp);} <IS> subtype_indication() ";"
+  {
+  	try{currentScope.addType(globalType.generateTypeFromProps());}
+	catch(Exception e)
+  	{
+  		exit("Conflicting definition of type " + globalType.getName());
+  	}
+  	globalType.reset();
+  }
+}
+
+/**
+ * Section 4.1:
+ */
+String subtype_indication() :
+{
+	String type;
+	String constraint;
+}
+{
+  /*
+   * enumeration resolves conflict ! After implementation of symbol tables
+   * this can be replaced by semantic lookahead.
+   */ 
+	LOOKAHEAD( type_mark() constraint() )
+    type=type_mark() constraint=constraint()
+    {return type + " " + constraint;} 
+ 	|
+ 	LOOKAHEAD( type_mark() )
+    type=type_mark()
+    {return type;}
+}
+
+String suffix():
+{String temp;Token t;}
+{
+    temp=simple_name()
+    {return temp;}
+  | t=<character_literal>
+  {return t.image;}
+  | temp=operator_symbol()
+  {return temp;}
+  | <ALL>
+  {return "ALL";}
+}
+
+void target():
+{}
+{
+    name()
+  | aggregate()
+}
+
+String term():
+{
+	String factor;
+	String op; 
+	String term;
+}
+{
+	term=factor()
+	(
+		LOOKAHEAD(2)
+		op=multiplying_operator()
+		factor=factor()
+		{term = term + " " + op + " " + factor;}
+	)*
+	{return term;}
+}
+
+String type_conversion() :
+{
+	String type;
+	String express;
+}
+{
+  type=type_mark() consume_left_paren() express=expression() consume_right_paren()
+  {return type + "( " + express + " )";}
+}
+
+void type_declaration():
+{}
+{
+    full_type_declaration()
+}
+
+void type_definition():
+{}
+{
+    scalar_type_definition()
+  | composite_type_definition()
+}
+
+String type_mark():
+{String type;}
+{
+    type=type_subtype_name()
+    {
+    	return type;
+    }
+}
+
+void unconstrained_array_definition() :
+{}
+{
+  <ARRAY> consume_left_paren() index_subtype_definition() consume_right_paren()
+      <OF> element_subtype_indication()
+}
+
+void use_clause() :
+{String name;}
+{
+   <USE> name=selected_name()
+   {
+   	// Currently only handels inclusion of all parts of a library
+   	if(!name.endsWith(".ALL"))
+   	{
+   		exit("VHDL parser doesn't currently support loading of partial parts of a library");
+   	}
+   	loadLibrary(name);
+   }
+   (
+   		","
+   		name=selected_name()
+   		{System.out.println("Include names from: " + name);}
+   )*
+   ";"
+}
+
+void variable_assignment_statement() :
+{}
+{
+  [ LOOKAHEAD( label() ":") label() ":" ]
+  target()  ":=" expression() ";"
+}
+
+void variable_declaration() :
+{
+	String[] identList;
+	String typeName;
+}
+{
+  <VARIABLE> identList=identifier_list() ":" typeName=subtype_indication() [ ":=" expression() ] ";"
+  {
+		// Get the type of create an anonymous one
+		VHDLType type = null;
+  		
+  		try
+  		{
+  			type = lookupType(typeName);
+  		}
+  		catch(Exception e)
+  		{
+  			exit("While parsing variable declaration: " + e.getMessage());
+  		}
+  		
+	  	// For each name listed, create the variable and add it to this scope's list
+	  	for(int i = 0; i < identList.length; ++i)
+	  	{
+  			try
+  			{
+	  			currentScope.addVariable(new VHDLVariable(identList[i], type));
+  			}
+  			catch(Exception e)
+  			{
+	  			exit(e.getMessage());
+  			}
+  		}
+  	}
+}
+
+void wait_statement() :
+{}
+{
+   [ LOOKAHEAD( label() ) ":" label() ":"]
+   <WAIT> [ sensitivity_clause() ]
+   [ condition_clause() ] ";"
+}
+
+void waveform() :
+{}
+{
+  waveform_element()
+  | <UNAFFECTED>
+}
+
+void waveform_element() :
+{}
+{
+     LOOKAHEAD(<NULL>)
+     <NULL>
+  |  value_expression()
+}
+
+//
+// parts of grammar, which have to be checked during semantic analysis
+// by semantic lookahead:
+//
+void block_label():
+{}
+{
+  label()
+}
+
+void block_statement_label():
+{}
+{
+  label()
+}
+
+void case_label():
+{}
+{
+  label()
+}
+
+void generate_label():
+{}
+{
+  label()
+}
+
+void generate_statement_label():
+{}
+{
+  label()
+}
+
+void if_label():
+{}
+{
+  label()
+}
+
+void instantiation_label():
+{}
+{
+  label()
+}
+
+void loop_label():
+{}
+{
+  label()
+}
+
+String process_label():
+{String label;}
+{
+  label=label()
+  {return label;}
+}
+
+void architecture_simple_name():
+{}
+{
+  simple_name()
+}
+
+String attribute_simple_name():
+{String name;}
+{
+  name=simple_name()
+  {return name;}
+  | <RANGE>
+  {return "RANGE";}
+  |<REVERSE_RANGE>
+  {return "REVERSE_RANGE";}
+}
+
+void component_simple_name():
+{}
+{
+  simple_name()
+}
+
+void configuration_simple_name():
+{}
+{
+  simple_name()
+}
+
+String element_simple_name():
+{String name;}
+{
+  name=simple_name()
+  {return name;}
+}
+
+void entity_simple_name():
+{}
+{
+  simple_name()
+}
+
+void package_simple_name():
+{}
+{
+  simple_name()
+}
+
+void architecture_name():
+{}
+{
+  name()
+}
+
+String entity_name():
+{
+	String name;
+}
+{
+  name=name()
+  {return name;}           
+}
+
+String function_name():
+{String name;}
+{
+  name=name()
+  {return name;}
+}
+
+void configuration_name():
+{}
+{
+  name()
+}
+
+void component_name():
+{}
+{
+  name()
+}
+
+String generic_name():
+{String name;}
+{
+  name=name()
+  {return name;}
+}
+
+String parameter_name():
+{String name;}
+{
+  name=name()
+  {return name;}
+}
+
+void physical_type_simple_name():
+{}
+{
+  simple_name() 
+}
+
+String port_name():
+{String name;}
+{
+  name=name()
+  {return name;}
+}
+
+void procedure_name():
+{}
+{
+  name()
+}
+
+String range_attribute_name():
+{String type;}
+{
+  type=discrete_subtype_indication() "'" (<RANGE> {return type + "'RANGE";}| <REVERSE_RANGE> {return type + "'REVERSE_RANGE";})
+}
+
+String signal_name() :
+{String name;}
+{
+  name=name()
+  {return name;}
+}
+
+//
+// Name, which designates types...
+//
+String type_subtype_name() :
+{String parent;}
+{
+	
+  parent=name()
+  {
+  	VHDLType parentType = null;
+  	
+  	try
+  	{
+  		// Error if we are building a new type and can't find the specified parent type
+  		if((parentType = lookupType(parent)) == null)
+  		{
+  			if(globalType.getName().length() > 0)
+  			{
+  				exit("Can't find parent type " + parent + " in the list of previously defined types.  Used in definition of type " + globalType.getName());
+  			}
+  			else
+  			{
+  				exit("Can't find parent type " + parent + " in the list of previously defined types.  Used in definition of type ");
+  			}
+  		}
+  		else if(globalType.getName().length() > 0)
+  		{
+  			globalType.parentType = parentType;
+  		  	return parentType.getName();
+  		}
+  	}
+  	catch(Exception e)
+  	{
+  		exit("While parsing subtype name: " + e.getMessage());
+  	}
+  	
+  	return parent;
+  }
+}
+
+void record_type_simple_name():
+{}
+{
+  simple_name()
+}
+
+void resolution_function_name():
+{}
+{
+  name()
+}
+
+void unit_name():
+{}
+{
+  name()
+}
+
+String variable_name():
+{String name;}
+{
+  name=name()
+  {return name;}
+}
+
+void architecture_identifier():
+{}
+{
+  identifier()
+}
+
+String static_expression():
+{String express = "";}
+{
+  express=expression()
+  {return express;}
+}
+
+
+void boolean_expression():
+{}
+{
+  expression()
+}
+
+void guard_expression():
+{}
+{
+  expression()
+}
+
+void time_expression():
+{}
+{
+  expression() // unit_name()
+  // unit_name can be derived by expression!!! 
+}
+
+void value_expression():
+{}
+{
+  expression()
+}
+
+void string_expression():
+{}
+{
+  expression()
+}
+
+void guarded_signal_list():
+{}
+{
+  signal_list()
+}
+
+String parameter_association_list():
+{String temp;}
+{
+  temp=association_list()
+  {return temp;}
+}
+
+void port_association_list():
+{}
+{
+  association_list()
+}
+
+void parameter_interface_list():
+{}
+{
+  interface_variable_declaration() ( ";" interface_variable_declaration() )*
+}
+
+void port_interface_list():
+{}
+{
+  interface_signal_declaration() ( ";" interface_signal_declaration() )*
+}
+
+//
+// Questionable:
+//
+void formal_port_clause():
+{}
+{
+  port_clause()
+}
+
+void local_port_clause():
+{}
+{
+  port_clause()
+}
+
+void formal_generic_clause():
+{}
+{
+  generic_clause()
+}
+
+void local_generic_clause():
+{}
+{
+  generic_clause()
+}
+
+void element_subtype_indication():
+{}
+{
+  subtype_indication()
+}
+
+String discrete_subtype_indication():
+{String subtype;}
+{
+  subtype=subtype_indication()
+  
+  {
+  	// Ensure that the type exists and that is is an enumeration or an integer type
+  	VHDLType discreteType = null;
+  	
+  	try
+  	{	
+  		if((discreteType = lookupType(subtype)) == null)
+  		{
+  			exit("Can't find type " + subtype + " used in discrete subtype indication");
+  		}
+  		// Ensure that the type is an enumeration and set bounds according to indices
+  		if(!(discreteType instanceof VHDLEnumerationType) && !(discreteType instanceof VHDLIntegerType))
+  		{
+  			exit("Type " + subtype + " used in discrete subtype indication isn't a discrete type (integer or enumeration)");
+  		}
+  	}
+  	catch(Exception e)
+  	{
+  		exit("While parsing discrete subtype: " + e.getMessage());
+  	}
+  	
+  	return discreteType.getName();
+  }
+}
+
+void loop_parameter_specification():
+{}
+{
+  parameter_specification()
+}
+
+void generate_parameter_specification():
+{}
+{
+  parameter_specification()
+}
+
+void consume_left_paren():
+{}
+{
+	"("
+}
+
+void consume_right_paren():
+{}
+{
+	")"
+}
+
+/**
+ *
+ * for error recovery:
+ *
+ */
+JAVACODE void error_skipto(int kind, String message) 
+{
+  errs.Error(message);
+  Token t;
+  do 
+  {
+    t = getNextToken();
+  } while ((t.kind != kind));
+}
+
+JAVACODE String evaluateVHDLExpression(String vhdlExpression)throws Exception #void
+{
+	try
+	{
+		vhdlExpression = vhdlExpression.trim();
+	
+		// Use the constants available in the current scope as the variable the expression evaluator may use
+		HashMap<String, String> variables = new HashMap<String, String>(currentScope.constantList.size());
+	
+		for(Iterator<VHDLConstant> constant = currentScope.constantList.values().iterator(); constant.hasNext(); )
+		{
+			VHDLConstant temp = constant.next();
+			variables.put(temp.getName(), temp.getValue());
+		}
+	
+		// For each constant, type, signal, and variable add the availabe attribute values to the variable list
+		// in the for name'attribute value
+		return Expression.eval(vhdlExpression, variables, null);
+	}
+	catch(Exception e)
+	{
+		System.out.println("Can't reduce expression " + vhdlExpression);
+		return vhdlExpression;
+	}
+}
+
+JAVACODE String getNextAnonymousTypeName() #void
+{
+	return "anonymousName" + currentAnonID++;
+}
+
+JAVACODE void loadLibrary(String lib) #void
+{
+	final String PATH_TO_LIBS = "..\\grlib-gpl-1.0.20-b3403\\lib";
+	String[] pathAndLib = lib.split("\\.");
+	System.out.println("Use lib: " + lib);
+}
+
+// Returns true if the passed string represents the name of a discrete subtype
+JAVACODE private boolean isDiscreteSubtype(String name) #void
+{
+	VHDLType type = null;
+	
+	// See if this is or can be made into a type
+	try
+	{
+		type = lookupType(name);
+	}
+	catch(Exception e)
+	{
+		return false;
+	}
+	
+	// A discrete type is either a integer or a enumeration
+	if(!(type instanceof VHDLIntegerType) && !(type instanceof VHDLEnumerationType))
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+// Given a string from a subtype indication, this method ensures that the root type exists
+// then creates a new anonymous type that is added to the current scope's type list and returned
+JAVACODE private VHDLType lookupType(String typeString)throws Exception #void
+{
+	String rootTypeName = typeString.split(" ")[0].split("\\(")[0].split("'")[0].split("\\.")[0];
+	
+	// Get the root type
+	VHDLType rootType = currentScope.getType(rootTypeName);
+	
+	// Check for errors
+	if(rootType == null)
+	{
+		throw new Exception("Root type " + rootTypeName + " from " + typeString + " not found in scope " + currentScope);
+	}
+	
+	// Don't create anon types for subtypes
+	if(globalType.isSubtype)
+	{
+		return rootType;
+	}
+	
+	// Check that the type exists in scope
+  	if(currentScope.containsType(typeString))
+  	{
+  		return currentScope.getType(typeString);
+  	}
+  	// Handle integer subtypes
+  	else if(rootType instanceof VHDLIntegerType)
+  	{
+  		String[] tokens = typeString.split(" ");
+  		String parent = "";
+  		VHDLType parentType = null;
+  		String direction = "";
+  		int leftBound = Integer.MIN_VALUE;
+  		int rightBound = Integer.MIN_VALUE;
+  		
+  		try
+  		{	
+  			for(int token = 0; token < tokens.length; ++token)
+  			{
+  				// Skip blank tokens and RANGE token
+  				if(tokens[token].length() == 0 || tokens[token].equals("RANGE"))
+  				{
+  					continue;
+  				}
+  				
+  				// Parse new integer subtype information
+  				if(parent.length() == 0)
+  				{
+  					parent = tokens[token];
+  					
+  					// Make sure the parent type exists in scope
+  					if(!currentScope.containsType(parent) || !((parentType = currentScope.getType(parent)) instanceof VHDLIntegerType))
+  					{
+  						throw new Exception("Cannot find integer or enumeration parent type " + parent);
+  					}
+  				}
+  				else if(leftBound == Integer.MIN_VALUE)
+  				{
+  					leftBound = Integer.parseInt(tokens[token]);
+  				}
+  				else if(direction.length() == 0)
+  				{
+  					direction = tokens[token];
+  					
+  					// Make sure the direction is valid
+  					if(!direction.equalsIgnoreCase("TO") && !direction.equalsIgnoreCase("DOWNTO"))
+  					{
+  						throw new Exception("No valid direction");
+  					}
+  				}
+  				else if(rightBound == Integer.MIN_VALUE)
+  				{
+  					rightBound = Integer.parseInt(tokens[token]);
+  					
+  					// Make sure the bounds match the direction
+  					if(direction.equalsIgnoreCase("TO") && leftBound > rightBound)
+  					{
+  						throw new Exception("Range bounds and direction mismatch");
+  					}
+  					else if(direction.equalsIgnoreCase("DOWNTO") && leftBound < rightBound)
+  					{
+  						throw new Exception("Range bounds and direction mis-match");
+  					}
+  				}
+  				else
+  				{
+  					throw new Exception("Invalid token in range specification " + tokens[token]);
+  				}
+  			}
+  		}
+  		catch(Exception e)
+  		{
+  			throw new Exception("Cannot transform integer subtype range expression " + typeString + " into valid components: " + e.getMessage());
+  		}
+  		
+  		// Check to see if a type with the exact same parameters already exists
+  		for(Iterator<VHDLType> index = currentScope.getTypeListIterator(); index.hasNext(); )
+  		{
+  			VHDLType currentType = index.next();
+  			
+  			if(currentType.isIntegerType() && ((VHDLIntegerType)currentType).getParentType() == parentType && ((VHDLIntegerType)currentType).getLeftIndex() == leftBound && ((VHDLIntegerType)currentType).getRightIndex() == rightBound)
+  			{
+  				return currentType;
+  			}    
+  		}
+  		
+  		try
+  		{
+  			// Create a new anonymous subtype add it to the current scope's type list and keep its name
+  			typeString = getNextAnonymousTypeName();
+  			currentScope.addType(new VHDLIntegerType(typeString, (VHDLIntegerType)parentType, leftBound, rightBound));
+  		}
+  		catch(Exception e)
+  		{
+  			throw new Exception("Can't create anonymous type for subtype of " + parentType.getName() + ": " + e.getMessage());
+  		}
+  		
+  		return currentScope.getType(typeString);
+  	}
+  	else if(rootType instanceof VHDLEnumerationType)
+  	{
+  		String[] tokens = typeString.split(" ");
+  		String parent = "";
+  		VHDLType parentType = null;
+  		String direction = "";
+  		int leftBound = Integer.MIN_VALUE;
+  		int rightBound = Integer.MIN_VALUE;
+  		
+  		try
+  		{	
+  			for(int token = 0; token < tokens.length; ++token)
+  			{
+  				// Skip blank tokens and RANGE token
+  				if(tokens[token].length() == 0 || tokens[token].equals("RANGE"))
+  				{
+  					continue;
+  				}
+  				
+  				// Parse new integer subtype information
+  				if(parent.length() == 0)
+  				{
+  					parent = tokens[token];
+  					
+  					// Make sure the parent type exists in scope
+  					if(!currentScope.containsType(parent) || !((parentType = currentScope.getType(parent)) instanceof VHDLEnumerationType))
+  					{
+  						exit("Cannot find integer or enumeration parent type " + parent);
+  					}
+  				}
+  				else if(leftBound == Integer.MIN_VALUE)
+  				{
+  					leftBound = ((VHDLEnumerationType)parentType).getIndexOfPossibleValue(tokens[token]);
+  						
+  					// Check for bad enum element
+  					if(leftBound == -1)
+  					{
+  						exit("Enumeration type " + parentType.getName() + " doesn't contain element " + tokens[token]);
+  					}
+  				}
+  				else if(direction.length() == 0)
+  				{
+  					direction = tokens[token];
+  					
+  					// Make sure the direction is valid
+  					if(!direction.equalsIgnoreCase("TO") && !direction.equalsIgnoreCase("DOWNTO"))
+  					{
+  						throw new Exception("No valid direction");
+  					}
+  				}
+  				else if(rightBound == Integer.MIN_VALUE)
+  				{
+  					rightBound = ((VHDLEnumerationType)parentType).getIndexOfPossibleValue(tokens[token]);
+  						
+  					// Check for bad enum element
+  					if(rightBound == -1)
+  					{
+  						exit("Enumeration type " + parentType.getName() + " doesn't contain element " + tokens[token]);
+  					}
+  					
+  					// Make sure the bounds match the direction
+  					if(direction.equalsIgnoreCase("TO") && leftBound > rightBound)
+  					{
+  						throw new Exception("Range bounds and direction mismatch");
+  					}
+  					else if(direction.equalsIgnoreCase("DOWNTO") && leftBound < rightBound)
+  					{
+  						throw new Exception("Range bounds and direction mis-match");
+  					}
+  				}
+  				else
+  				{
+  					throw new Exception("Invalid token in range specification " + tokens[token]);
+  				}
+  			}
+  		}
+  		catch(Exception e)
+  		{
+  			exit("Cannot transform integer subtype range expression " + typeString + " into valid components: " + e.getMessage());
+  		}
+  		
+  		// Check to see if a type with the exact same parameters already exists
+  		for(Iterator<VHDLType> index = currentScope.getTypeListIterator(); index.hasNext(); )
+  		{
+  			VHDLType currentType = index.next();
+  			
+  			if(currentType.isEnumerationType() && ((VHDLEnumerationType)currentType).getParentType() == parentType && ((VHDLEnumerationType)currentType).numPossibleValues() == (rightBound - leftBound + 1))
+  			{
+  				return currentType;
+  			}    
+  		}
+  		
+  		try
+  		{
+  			// Create a new anonymous subtype add it to the current scope's type list and keep its name
+  			typeString = getNextAnonymousTypeName();
+  			currentScope.addType(new VHDLEnumerationType(typeString, (VHDLEnumerationType)parentType, leftBound, rightBound));
+  		}
+  		catch(Exception e)
+  		{
+  			exit("" + e.getMessage());
+  		}
+  		
+  		return currentScope.getType(typeString);
+  	}
+  	else if(rootType instanceof VHDLArrayType)
+  	{
+  		int leftBound = 0;
+  		int rightBound = 0;
+  		
+  		// Get and check the root type
+  		String parentTypeName = typeString.split("\\(")[0].trim();
+  		VHDLType parentType = currentScope.getType(parentTypeName);
+  		
+  		// Make sure the root type is valid in this scope
+  		if(parentType == null)
+  		{
+  			exit("Cannot find the root type " + parentTypeName + " in scope " + currentScope);
+  		}
+  		
+  		// Get the part of the slice betweem the parens
+  		String range = typeString.replace( ')', ' ').split("\\(")[1].trim();
+  		
+  		// Get the left and right bounds
+  		String[] bounds = null;
+  		if(range.contains("DOWNTO"))
+  		{
+  			bounds = range.split("DOWNTO");
+  			
+  			// Verify the bounds
+  			try
+  			{
+  				if((leftBound = Integer.parseInt(bounds[0].trim())) < (rightBound = Integer.parseInt(bounds[1].trim())))
+  				{
+  					exit("For " + typeString + " left bound less than right bound");
+  				}
+  			}
+  			catch(Exception e)
+  			{
+  				exit("Invalid bounds specification in " + typeString);
+  			}
+  		}
+  		else if(range.contains("TO"))
+  		{
+  			bounds = range.split("TO");
+  			
+  			// Verify the bounds
+  			try
+  			{
+  				if((leftBound = Integer.parseInt(bounds[0].trim())) > (rightBound = Integer.parseInt(bounds[1].trim())))
+  				{
+  					exit("For " + typeString + " left bound greater than right bound");
+  				}
+  			}
+  			catch(Exception e)
+  			{
+  				exit("Invalid bounds specification in " + typeString);
+  			}
+  		}
+  		else
+  		{
+  			exit("Can't find direction of array slice: " + typeString);
+  		}
+  		
+  		// Check to see if a type with the exact same parameters already exists
+  		for(Iterator<VHDLType> index = currentScope.getTypeListIterator(); index.hasNext(); )
+  		{
+  			VHDLType currentType = index.next();
+  			
+  			if(currentType.isArrayType() && ((VHDLArrayType)currentType).getParentType() == parentType && ((VHDLArrayType)currentType).getLeftIndex() == leftBound && ((VHDLArrayType)currentType).getRightIndex() == rightBound)
+  			{
+  				return currentType;
+  			}    
+  		}
+  		
+  		// Create the new type and add it to the current scopes type list
+  		try
+  		{
+  			// Create a new anonymous subtype add it to the current scope's type list and keep its name
+  			typeString = getNextAnonymousTypeName();
+  			currentScope.addType(new VHDLArrayType(typeString, (VHDLArrayType)parentType, leftBound, rightBound));
+  		}
+  		catch(Exception e)
+  		{
+  			exit("" + e.getMessage());
+  		}
+  		
+  		return currentScope.getType(typeString);
+  	}
+  	
+  	// Error on anything else
+  	exit("Parser cannot handle the type string " + typeString);
+  	return null;
+}
+
+JAVACODE void exit(String message)
+{
+	System.err.println("ERROR: " + message);
+	System.err.println("Problem occured on line: " + getToken(0).beginLine);
+	System.exit(-1);
+}

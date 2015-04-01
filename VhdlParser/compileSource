@@ -1,0 +1,7 @@
+#!/bin/bash
+cd source
+javac -classpath .:../../VHDLExpressionEval/src Vhdl.java > /dev/null
+zip vhdlParser.zip *.class > /dev/null
+rm -f *.class
+mv vhdlParser.zip ../vhdlParser.zip
+
