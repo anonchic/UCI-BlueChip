@@ -1,5 +1,6 @@
 # UCI-BlueChip
 
+Note that you will need <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">Java</a> to compile and run many of the programs in this repo and <a href="https://java.net/projects/javacc/downloads">JavaCC 5</a> to re-build the VHDL parser that is used for UCI analysis.
 
 # UCI Analysis
 
