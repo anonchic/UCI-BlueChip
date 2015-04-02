@@ -1,0 +1,119 @@
+Release 9.1.03i Map J.33
+Xilinx Map Application Log File for Design 'leon3mp'
+
+Design Information
+------------------
+Command Line   : map -timing -cm speed -logic_opt on -ol high -xe n -p
+xc2vp30-7-ff896 -register_duplication -t 7 leon3mp.ngd 
+Target Device  : xc2vp30
+Target Package : ff896
+Target Speed   : -7
+Mapper Version : virtex2p -- $Revision: 1.36 $
+Mapped Date    : Wed Sep 03 02:18:49 2008
+
+Mapping design into LUTs...
+Writing file leon3mp.ngm...
+Running directed packing...
+Running delay-based LUT packing...
+Running timing-driven packing...
+
+Phase 1.1
+Phase 1.1 (Checksum:a33d1f) REAL time: 33 secs 
+
+Phase 2.7
+Phase 2.7 (Checksum:1312cfe) REAL time: 33 secs 
+
+Phase 3.31
+Phase 3.31 (Checksum:1c9c37d) REAL time: 33 secs 
+
+Phase 4.2
+......
+Phase 4.2 (Checksum:98ea7b) REAL time: 41 secs 
+
+Phase 5.30
+Phase 5.30 (Checksum:2faf07b) REAL time: 41 secs 
+
+Phase 6.3
+Phase 6.3 (Checksum:39386fa) REAL time: 41 secs 
+
+Phase 7.5
+Phase 7.5 (Checksum:42c1d79) REAL time: 42 secs 
+
+Phase 8.4
+..................................................
+Phase 8.4 (Checksum:4c4b3f8) REAL time: 1 mins 25 secs 
+
+Phase 9.28
+Phase 9.28 (Checksum:55d4a77) REAL time: 1 mins 26 secs 
+
+Phase 10.8
+.....................................................................................................................
+................
+...................................................................................................................................
+.......................
+................
+...............
+Phase 10.8 (Checksum:39b4e40) REAL time: 6 mins 57 secs 
+
+Phase 11.29
+Phase 11.29 (Checksum:68e7775) REAL time: 6 mins 57 secs 
+
+Phase 12.5
+Phase 12.5 (Checksum:7270df4) REAL time: 6 mins 58 secs 
+
+Phase 13.18
+Phase 13.18 (Checksum:7bfa473) REAL time: 13 mins 37 secs 
+
+Phase 14.5
+Phase 14.5 (Checksum:8583af2) REAL time: 13 mins 38 secs 
+
+Phase 15.27
+Phase 15.27 (Checksum:8f0d171) REAL time: 13 mins 40 secs 
+
+Phase 16.24
+Phase 16.24 (Checksum:98967f0) REAL time: 13 mins 40 secs 
+
+REAL time consumed by placer: 13 mins 50 secs 
+CPU  time consumed by placer: 13 mins 42 secs 
+Invoking physical synthesis ...
+
+Physical synthesis completed.
+Inspecting route info ...
+Route info done.
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:   97
+Logic Utilization:
+  Number of Slice Flip Flops:       6,992 out of  27,392   25%
+  Number of 4 input LUTs:          17,503 out of  27,392   63%
+Logic Distribution:
+  Number of occupied Slices:       10,943 out of  13,696   79%
+Total Number of 4 input LUTs:         17,744 out of  27,392   64%
+  Number used as logic:            17,503
+  Number used as a route-thru:        193
+  Number used as Shift registers:      48
+
+  Number of bonded IOBs:              183 out of     556   32%
+    IOB Flip Flops:                   246
+    IOB Dual-Data Rate Flops:          87
+  Number of PPC405s:                   0 out of       2    0%
+  Number of Block RAMs:                51 out of     136   37%
+  Number of MULT18X18s:                 1 out of     136    1%
+  Number of GCLKs:                      8 out of      16   50%
+  Number of DCMs:                       4 out of       8   50%
+  Number of BSCANs:                     1 out of       1  100%
+  Number of GTs:                        0 out of       8    0%
+  Number of GT10s:                      0 out of       0    0%
+
+Total equivalent gate count for design:  3,556,919
+Additional JTAG gate count for IOBs:  8,784
+Peak Memory Usage:  628 MB
+Total REAL time to MAP completion:  15 mins 16 secs 
+Total CPU time to MAP completion:   15 mins 6 secs 
+
+Mapping completed.
+See MAP report file "leon3mp.mrp" for details.

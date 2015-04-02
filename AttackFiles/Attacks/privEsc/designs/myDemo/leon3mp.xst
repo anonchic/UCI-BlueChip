@@ -1,0 +1,17 @@
+elaborate -ifmt vhdl -ifn config.vhd
+elaborate -ifmt vhdl -ifn ahbrom.vhd
+elaborate -ifmt vhdl -ifn leon3mp.vhd
+run 
+-ifn leon3mp.vhd
+-ifmt vhdl
+-fsm_extract no
+-iob true
+-bus_delimiter ()
+-p xc2vp30-ff896-7
+-ofn leon3mp
+-uc leon3mp.xcf
+-sd ../../netlists/xilinx/virtex2p/xst
+-keep_hierarchy no
+-opt_level 1
+-opt_mode area
+-ram_style block

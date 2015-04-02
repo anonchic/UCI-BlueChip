@@ -1,0 +1,1483 @@
+Release 9.1.03i - xst J.33
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/stdlib/version.vhd" in Library grlib.
+CPU : 0.03 / 0.20 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/stdlib/stdlib.vhd" in Library grlib.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 186. In the function *, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 200. In the function signed_mul, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 216. In the function +, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 227. In the function +, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 238. In the function +, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 251. In the function +, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 267. In the function -, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 278. In the function -, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 289. In the function -, not all control paths contain a return statement.
+WARNING:HDLParsers:3534 - "../../lib/grlib/stdlib/stdlib.vhd" Line 302. In the function -, not all control paths contain a return statement.
+Architecture stdlib of Entity stdlib is up to date.
+CPU : 0.05 / 0.25 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/sparc/sparc.vhd" in Library grlib.
+CPU : 0.02 / 0.27 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/modgen/multlib.vhd" in Library grlib.
+CPU : 0.02 / 0.30 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/modgen/leaves.vhd" in Library grlib.
+Architecture flipflop of Entity flipflop is up to date.
+Architecture pp_low of Entity pp_low is up to date.
+Architecture pp_middle of Entity pp_middle is up to date.
+Architecture pp_high of Entity pp_high is up to date.
+Architecture r_gate of Entity r_gate is up to date.
+Architecture decoder of Entity decoder is up to date.
+Architecture full_adder of Entity full_adder is up to date.
+Architecture half_adder of Entity half_adder is up to date.
+Architecture invblock_regular of Entity invblock is up to date.
+Architecture xxor_regular of Entity xxor1 is up to date.
+Architecture block0_regular of Entity block0 is up to date.
+Architecture block1_regular of Entity block1 is up to date.
+Architecture block2_regular of Entity block2 is up to date.
+Architecture block1a_regular of Entity block1a is up to date.
+Architecture block2a_regular of Entity block2a is up to date.
+Architecture prestage of Entity prestage_64 is up to date.
+Architecture dblc_0 of Entity dblc_0_64 is up to date.
+Architecture dblc_1 of Entity dblc_1_64 is up to date.
+Architecture dblc_2 of Entity dblc_2_64 is up to date.
+Architecture dblc_3 of Entity dblc_3_64 is up to date.
+Architecture dblc_4 of Entity dblc_4_64 is up to date.
+Architecture dblc_5 of Entity dblc_5_64 is up to date.
+Architecture xorstage of Entity xorstage_64 is up to date.
+Architecture dblctree of Entity dblctree_64 is up to date.
+Architecture dblcadder of Entity dblcadder_64_64 is up to date.
+Architecture xxor_true of Entity xxor2 is up to date.
+Architecture dblc_0 of Entity dblc_0_32 is up to date.
+Architecture dblc_1 of Entity dblc_1_32 is up to date.
+Architecture dblc_2 of Entity dblc_2_32 is up to date.
+Architecture dblc_3 of Entity dblc_3_32 is up to date.
+Architecture dblc_4 of Entity dblc_4_32 is up to date.
+Architecture xorstage of Entity xorstage_32 is up to date.
+Architecture prestage of Entity prestage_32 is up to date.
+Architecture dblctree of Entity dblctree_32 is up to date.
+Architecture dblcadder of Entity dblcadder_32_32 is up to date.
+Architecture prestage of Entity prestage_128 is up to date.
+Architecture dblc_0 of Entity dblc_0_128 is up to date.
+Architecture dblc_1 of Entity dblc_1_128 is up to date.
+Architecture dblc_2 of Entity dblc_2_128 is up to date.
+Architecture dblc_3 of Entity dblc_3_128 is up to date.
+Architecture dblc_4 of Entity dblc_4_128 is up to date.
+Architecture dblc_5 of Entity dblc_5_128 is up to date.
+Architecture dblc_6 of Entity dblc_6_128 is up to date.
+Architecture xorstage of Entity xorstage_128 is up to date.
+Architecture dblctree of Entity dblctree_128 is up to date.
+Architecture dblcadder of Entity dblcadder_128_128 is up to date.
+Architecture boothcoder of Entity boothcoder_18_18 is up to date.
+Architecture wallace of Entity wallace_18_18 is up to date.
+Architecture multiplier of Entity multiplier_18_18 is up to date.
+Architecture boothcoder of Entity boothcoder_34_10 is up to date.
+Architecture wallace of Entity wallace_34_10 is up to date.
+Architecture multiplier of Entity multiplier_34_10 is up to date.
+Architecture a of Entity mul_33_9 is up to date.
+Architecture boothcoder of Entity boothcoder_34_18 is up to date.
+Architecture wallace of Entity wallace_34_18 is up to date.
+Architecture multiplier of Entity multiplier_34_18 is up to date.
+Architecture a of Entity mul_33_17 is up to date.
+Architecture boothcoder of Entity boothcoder_34_34 is up to date.
+Architecture wallace of Entity wallace_34_34 is up to date.
+Architecture multiplier of Entity multiplier_34_34 is up to date.
+Architecture a of Entity mul_33_33 is up to date.
+Architecture a of Entity add32 is up to date.
+Architecture a of Entity mul_17_17 is up to date.
+CPU : 0.39 / 0.69 s | Elapsed : 1.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/amba.vhd" in Library grlib.
+Architecture amba of Entity amba is up to date.
+CPU : 0.05 / 0.73 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/devices.vhd" in Library grlib.
+CPU : 0.03 / 0.77 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/defmst.vhd" in Library grlib.
+Architecture rtl of Entity ahbdefmst is up to date.
+CPU : 0.03 / 0.80 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/apbctrl.vhd" in Library grlib.
+Architecture rtl of Entity apbctrl is up to date.
+CPU : 0.03 / 0.83 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/ahbctrl.vhd" in Library grlib.
+Architecture rtl of Entity ahbctrl is up to date.
+CPU : 0.06 / 0.89 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/dma2ahb_pkg.vhd" in Library grlib.
+CPU : 0.03 / 0.92 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/grlib/amba/dma2ahb.vhd" in Library grlib.
+Architecture rtl of Entity dma2ahb is up to date.
+CPU : 0.05 / 0.97 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/gencomp/gencomp.vhd" in Library techmap.
+CPU : 0.08 / 1.05 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/gencomp/netcomp.vhd" in Library techmap.
+CPU : 0.08 / 1.13 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/inferred/memory_inferred.vhd" in Library techmap.
+Architecture behavioral of Entity generic_syncram is up to date.
+Architecture behav of Entity generic_syncram_2p is up to date.
+Architecture rtl of Entity generic_regfile_3p is up to date.
+CPU : 0.06 / 1.19 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/inferred/ddr_inferred.vhd" in Library techmap.
+Architecture rtl of Entity gen_iddr_reg is up to date.
+Architecture rtl of Entity gen_oddr_reg is up to date.
+CPU : 0.06 / 1.25 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/inferred/mul_inferred.vhd" in Library techmap.
+Architecture rtl of Entity gen_mul_61x61 is up to date.
+CPU : 0.06 / 1.31 s | Elapsed : 1.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/memory_unisim.vhd" in Library techmap.
+Architecture behav of Entity virtex_syncram is up to date.
+Architecture behav of Entity virtex_syncram_dp is up to date.
+Architecture behav of Entity virtex2_syncram is up to date.
+Architecture behav of Entity virtex2_syncram_dp is up to date.
+Architecture behav of Entity virtex2_syncram_2p is up to date.
+Architecture behav of Entity virtex2_syncram64 is up to date.
+CPU : 0.09 / 1.41 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/buffer_unisim.vhd" in Library techmap.
+Architecture rtl of Entity clkbuf_xilinx is up to date.
+Architecture rtl of Entity clkmux_xilinx is up to date.
+CPU : 0.06 / 1.47 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/pads_unisim.vhd" in Library techmap.
+Architecture rtl of Entity virtex_inpad is up to date.
+Architecture rtl of Entity virtex_iopad is up to date.
+Architecture rtl of Entity virtex_outpad is up to date.
+Architecture rtl of Entity virtex_toutpad is up to date.
+Architecture rtl of Entity virtex_skew_outpad is up to date.
+Architecture rtl of Entity virtex_clkpad is up to date.
+Architecture rtl of Entity virtex_outpad_ds is up to date.
+Architecture rtl of Entity virtex_inpad_ds is up to date.
+Architecture rtl of Entity virtex_clkpad_ds is up to date.
+Architecture rtl of Entity virtex4_inpad_ds is up to date.
+Architecture rtl of Entity virtex4_clkpad_ds is up to date.
+Architecture rtl of Entity virtex5_iopad_ds is up to date.
+Architecture rtl of Entity virtex5_outpad_ds is up to date.
+CPU : 0.09 / 1.56 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/clkgen_unisim.vhd" in Library techmap.
+Architecture struct of Entity clkgen_virtex2 is up to date.
+Architecture rtl of Entity clkgen_virtex is up to date.
+Architecture struct of Entity clkmul_virtex2 is up to date.
+Architecture struct of Entity clkgen_spartan3 is up to date.
+Architecture struct of Entity clkgen_virtex5 is up to date.
+Architecture rtl of Entity clkand_unisim is up to date.
+Architecture rtl of Entity clkmux_unisim is up to date.
+CPU : 0.06 / 1.63 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/tap_unisim.vhd" in Library techmap.
+Architecture rtl of Entity virtex_tap is up to date.
+Architecture rtl of Entity virtex2_tap is up to date.
+Architecture rtl of Entity spartan3_tap is up to date.
+Architecture rtl of Entity virtex4_tap is up to date.
+Architecture rtl of Entity virtex5_tap is up to date.
+CPU : 0.05 / 1.69 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/ddr_unisim.vhd" in Library techmap.
+Architecture rtl of Entity unisim_iddr_reg is up to date.
+Architecture rtl of Entity unisim_oddr_reg is up to date.
+Architecture rtl of Entity oddrv2 is up to date.
+Architecture rtl of Entity oddrc3e is up to date.
+CPU : 0.06 / 1.77 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/ddr_phy_unisim.vhd" in Library techmap.
+Architecture rtl of Entity virtex4_ddr_phy is up to date.
+Architecture rtl of Entity virtex2_ddr_phy is up to date.
+Architecture rtl of Entity spartan3e_ddr_phy is up to date.
+Architecture rtl of Entity virtex5_ddr2_phy is up to date.
+CPU : 0.09 / 1.86 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/grspwc_unisim.vhd" in Library techmap.
+Architecture rtl of Entity grspwc_unisim is up to date.
+CPU : 0.06 / 1.92 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/usbhc_unisimpkg.vhd" in Library techmap.
+Architecture usbhc_unisimpkg of Entity usbhc_unisimpkg is up to date.
+CPU : 0.08 / 2.00 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/usbhc_unisim.vhd" in Library techmap.
+Architecture rtl of Entity usbhc_unisim is up to date.
+CPU : 0.08 / 2.08 s | Elapsed : 0.00 / 2.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/unisim/ssrctrl_unisim.vhd" in Library techmap.
+Architecture beh of Entity ssrctrl_unisim_netlist is up to date.
+Architecture beh of Entity ssrctrl_unisim is up to date.
+CPU : 0.42 / 2.50 s | Elapsed : 1.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/allclkgen.vhd" in Library techmap.
+CPU : 0.06 / 2.56 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/allddr.vhd" in Library techmap.
+CPU : 0.06 / 2.63 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/allmem.vhd" in Library techmap.
+CPU : 0.06 / 2.69 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/allpads.vhd" in Library techmap.
+CPU : 0.08 / 2.77 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/alltap.vhd" in Library techmap.
+CPU : 0.05 / 2.81 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/clkgen.vhd" in Library techmap.
+Architecture struct of Entity clkgen is up to date.
+CPU : 0.06 / 2.88 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/clkmux.vhd" in Library techmap.
+Architecture rtl of Entity clkmux is up to date.
+CPU : 0.06 / 2.94 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/clkand.vhd" in Library techmap.
+Architecture rtl of Entity clkand is up to date.
+CPU : 0.05 / 3.00 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/ddr_ireg.vhd" in Library techmap.
+Architecture rtl of Entity ddr_ireg is up to date.
+CPU : 0.06 / 3.08 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/ddr_oreg.vhd" in Library techmap.
+Architecture rtl of Entity ddr_oreg is up to date.
+CPU : 0.06 / 3.14 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/ddrphy.vhd" in Library techmap.
+Architecture rtl of Entity ddrphy is up to date.
+Architecture rtl of Entity ddr2phy is up to date.
+CPU : 0.06 / 3.20 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/syncram.vhd" in Library techmap.
+Architecture rtl of Entity syncram is up to date.
+CPU : 0.06 / 3.27 s | Elapsed : 0.00 / 3.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/syncram64.vhd" in Library techmap.
+Architecture rtl of Entity syncram64 is up to date.
+CPU : 0.06 / 3.33 s | Elapsed : 1.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/syncram_2p.vhd" in Library techmap.
+Architecture rtl of Entity syncram_2p is up to date.
+CPU : 0.08 / 3.41 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/syncram_dp.vhd" in Library techmap.
+Architecture rtl of Entity syncram_dp is up to date.
+CPU : 0.06 / 3.47 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/syncfifo.vhd" in Library techmap.
+Architecture rtl of Entity syncfifo is up to date.
+CPU : 0.06 / 3.53 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/regfile_3p.vhd" in Library techmap.
+Architecture rtl of Entity regfile_3p is up to date.
+CPU : 0.06 / 3.59 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/tap.vhd" in Library techmap.
+Architecture rtl of Entity tap is up to date.
+CPU : 0.06 / 3.66 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/techbuf.vhd" in Library techmap.
+Architecture rtl of Entity techbuf is up to date.
+CPU : 0.06 / 3.72 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/clkpad.vhd" in Library techmap.
+Architecture rtl of Entity clkpad is up to date.
+CPU : 0.06 / 3.78 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/clkpad_ds.vhd" in Library techmap.
+Architecture rtl of Entity clkpad_ds is up to date.
+CPU : 0.06 / 3.84 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/inpad.vhd" in Library techmap.
+Architecture rtl of Entity inpad is up to date.
+Architecture rtl of Entity inpadv is up to date.
+CPU : 0.08 / 3.92 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/inpad_ds.vhd" in Library techmap.
+Architecture rtl of Entity inpad_ds is up to date.
+Architecture rtl of Entity inpad_dsv is up to date.
+CPU : 0.06 / 3.98 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/iodpad.vhd" in Library techmap.
+Architecture rtl of Entity iodpad is up to date.
+Architecture rtl of Entity iodpadv is up to date.
+CPU : 0.06 / 4.05 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/iopad.vhd" in Library techmap.
+Architecture rtl of Entity iopad is up to date.
+Architecture rtl of Entity iopadv is up to date.
+Architecture rtl of Entity iopadvv is up to date.
+CPU : 0.08 / 4.13 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/iopad_ds.vhd" in Library techmap.
+Architecture rtl of Entity iopad_ds is up to date.
+Architecture rtl of Entity iopad_dsv is up to date.
+Architecture rtl of Entity iopad_dsvv is up to date.
+CPU : 0.06 / 4.19 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/lvds_combo.vhd" in Library techmap.
+Architecture rtl of Entity lvds_combo is up to date.
+CPU : 0.08 / 4.27 s | Elapsed : 0.00 / 4.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/odpad.vhd" in Library techmap.
+Architecture rtl of Entity odpad is up to date.
+Architecture rtl of Entity odpadv is up to date.
+CPU : 0.06 / 4.33 s | Elapsed : 1.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/outpad.vhd" in Library techmap.
+Architecture rtl of Entity outpad is up to date.
+Architecture rtl of Entity outpadv is up to date.
+CPU : 0.06 / 4.39 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/outpad_ds.vhd" in Library techmap.
+Architecture rtl of Entity outpad_ds is up to date.
+Architecture rtl of Entity outpad_dsv is up to date.
+CPU : 0.06 / 4.47 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/toutpad.vhd" in Library techmap.
+Architecture rtl of Entity toutpad is up to date.
+Architecture rtl of Entity toutpadv is up to date.
+Architecture rtl of Entity toutpadvv is up to date.
+CPU : 0.06 / 4.53 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/skew_outpad.vhd" in Library techmap.
+Architecture rtl of Entity skew_outpad is up to date.
+CPU : 0.06 / 4.59 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/grspwc_net.vhd" in Library techmap.
+Architecture rtl of Entity grspwc_net is up to date.
+CPU : 0.06 / 4.66 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/grlfpw_net.vhd" in Library techmap.
+Architecture rtl of Entity grlfpw_net is up to date.
+CPU : 0.08 / 4.73 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/grfpw_net.vhd" in Library techmap.
+Architecture rtl of Entity grfpw_net is up to date.
+CPU : 0.06 / 4.80 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/mul_61x61.vhd" in Library techmap.
+Architecture rtl of Entity mul_61x61 is up to date.
+CPU : 0.06 / 4.86 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/cpu_disas_net.vhd" in Library techmap.
+Architecture behav of Entity cpu_disas_net is up to date.
+Architecture behav of Entity fpu_disas_net is up to date.
+CPU : 0.06 / 4.92 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/usbhc_net.vhd" in Library techmap.
+Architecture rtl of Entity usbhc_net is up to date.
+CPU : 0.09 / 5.02 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/ringosc.vhd" in Library techmap.
+Architecture rtl of Entity ringosc is up to date.
+CPU : 0.06 / 5.08 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/techmap/maps/ssrctrl_net.vhd" in Library techmap.
+Architecture rtl of Entity ssrctrl_net is up to date.
+CPU : 0.06 / 5.14 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/comp/ethcomp.vhd" in Library eth.
+CPU : 0.05 / 5.19 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/core/greth_pkg.vhd" in Library eth.
+Architecture grethpkg of Entity grethpkg is up to date.
+CPU : 0.08 / 5.27 s | Elapsed : 0.00 / 5.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/core/eth_rstgen.vhd" in Library eth.
+Architecture rtl of Entity eth_rstgen is up to date.
+CPU : 0.05 / 5.31 s | Elapsed : 1.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/core/eth_ahb_mst.vhd" in Library eth.
+Architecture rtl of Entity eth_ahb_mst is up to date.
+CPU : 0.06 / 5.38 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/core/greth_tx.vhd" in Library eth.
+Architecture rtl of Entity greth_tx is up to date.
+CPU : 0.08 / 5.45 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/core/greth_rx.vhd" in Library eth.
+Architecture rtl of Entity greth_rx is up to date.
+CPU : 0.08 / 5.53 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/core/grethc.vhd" in Library eth.
+Architecture rtl of Entity grethc is up to date.
+CPU : 0.22 / 5.75 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/wrapper/greth_gen.vhd" in Library eth.
+Architecture rtl of Entity greth_gen is up to date.
+CPU : 0.06 / 5.81 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/eth/wrapper/greth_gbit_gen.vhd" in Library eth.
+Architecture rtl of Entity greth_gbit_gen is up to date.
+CPU : 0.06 / 5.88 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/arith/arith.vhd" in Library gaisler.
+Architecture arith of Entity arith is up to date.
+CPU : 0.09 / 5.97 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/arith/mul32.vhd" in Library gaisler.
+Architecture rtl of Entity mul32 is up to date.
+CPU : 0.11 / 6.08 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/arith/div32.vhd" in Library gaisler.
+Architecture rtl of Entity div32 is up to date.
+CPU : 0.09 / 6.17 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/memctrl/memctrl.vhd" in Library gaisler.
+CPU : 0.11 / 6.28 s | Elapsed : 0.00 / 6.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/memctrl/sdctrl.vhd" in Library gaisler.
+Architecture rtl of Entity sdctrl is up to date.
+CPU : 0.16 / 6.44 s | Elapsed : 1.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/memctrl/sdmctrl.vhd" in Library gaisler.
+Architecture rtl of Entity sdmctrl is up to date.
+CPU : 0.14 / 6.58 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/memctrl/srctrl.vhd" in Library gaisler.
+Architecture rtl of Entity srctrl is up to date.
+CPU : 0.13 / 6.70 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/leon3.vhd" in Library gaisler.
+CPU : 0.13 / 6.83 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmuconfig.vhd" in Library gaisler.
+CPU : 0.09 / 6.92 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmuiface.vhd" in Library gaisler.
+CPU : 0.09 / 7.02 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/libmmu.vhd" in Library gaisler.
+Architecture libmmu of Entity libmmu is up to date.
+CPU : 0.11 / 7.13 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/libiu.vhd" in Library gaisler.
+CPU : 0.11 / 7.23 s | Elapsed : 0.00 / 7.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/libcache.vhd" in Library gaisler.
+Architecture libcache of Entity libcache is up to date.
+CPU : 0.16 / 7.39 s | Elapsed : 1.00 / 8.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/libproc3.vhd" in Library gaisler.
+CPU : 0.13 / 7.52 s | Elapsed : 0.00 / 8.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/cachemem.vhd" in Library gaisler.
+Architecture rtl of Entity cachemem is up to date.
+CPU : 0.14 / 7.66 s | Elapsed : 0.00 / 8.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmu_icache.vhd" in Library gaisler.
+Architecture rtl of Entity mmu_icache is up to date.
+CPU : 0.20 / 7.86 s | Elapsed : 0.00 / 8.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmu_dcache.vhd" in Library gaisler.
+Architecture rtl of Entity mmu_dcache is up to date.
+CPU : 0.39 / 8.25 s | Elapsed : 0.00 / 8.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmu_acache.vhd" in Library gaisler.
+Architecture rtl of Entity mmu_acache is up to date.
+CPU : 0.17 / 8.42 s | Elapsed : 1.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmutlbcam.vhd" in Library gaisler.
+Architecture rtl of Entity mmutlbcam is up to date.
+CPU : 0.13 / 8.55 s | Elapsed : 0.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmulrue.vhd" in Library gaisler.
+Architecture rtl of Entity mmulrue is up to date.
+CPU : 0.13 / 8.67 s | Elapsed : 0.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmulru.vhd" in Library gaisler.
+Architecture rtl of Entity mmulru is up to date.
+CPU : 0.13 / 8.80 s | Elapsed : 0.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmutlb.vhd" in Library gaisler.
+Architecture rtl of Entity mmutlb is up to date.
+CPU : 0.19 / 8.98 s | Elapsed : 0.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmutw.vhd" in Library gaisler.
+Architecture rtl of Entity mmutw is up to date.
+CPU : 0.13 / 9.11 s | Elapsed : 0.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmu.vhd" in Library gaisler.
+Architecture rtl of Entity mmu is up to date.
+CPU : 0.13 / 9.23 s | Elapsed : 0.00 / 9.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mmu_cache.vhd" in Library gaisler.
+Architecture rtl of Entity mmu_cache is up to date.
+CPU : 0.11 / 9.34 s | Elapsed : 1.00 / 10.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/acache.vhd" in Library gaisler.
+Architecture rtl of Entity acache is up to date.
+CPU : 0.14 / 9.48 s | Elapsed : 0.00 / 10.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/dcache.vhd" in Library gaisler.
+Architecture rtl of Entity dcache is up to date.
+CPU : 0.25 / 9.73 s | Elapsed : 0.00 / 10.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/icache.vhd" in Library gaisler.
+Architecture rtl of Entity icache is up to date.
+CPU : 0.17 / 9.91 s | Elapsed : 0.00 / 10.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/cache.vhd" in Library gaisler.
+Architecture rtl of Entity cache is up to date.
+CPU : 0.11 / 10.02 s | Elapsed : 0.00 / 10.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/cpu_disasx.vhd" in Library gaisler.
+Architecture behav of Entity cpu_disasx is up to date.
+CPU : 0.09 / 10.11 s | Elapsed : 0.00 / 10.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/iu3.vhd" in Library gaisler.
+Architecture rtl of Entity iu3 is up to date.
+CPU : 0.80 / 10.91 s | Elapsed : 1.00 / 11.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/grfpwx.vhd" in Library gaisler.
+Architecture rtl of Entity grfpwx is up to date.
+CPU : 0.11 / 11.02 s | Elapsed : 0.00 / 11.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/mfpwx.vhd" in Library gaisler.
+Architecture rtl of Entity mfpwx is up to date.
+CPU : 0.11 / 11.13 s | Elapsed : 0.00 / 11.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/grlfpwx.vhd" in Library gaisler.
+Architecture rtl of Entity grlfpwx is up to date.
+CPU : 0.11 / 11.23 s | Elapsed : 0.00 / 11.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/tbufmem.vhd" in Library gaisler.
+Architecture rtl of Entity tbufmem is up to date.
+CPU : 0.11 / 11.34 s | Elapsed : 1.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/dsu3x.vhd" in Library gaisler.
+Architecture rtl of Entity dsu3x is up to date.
+CPU : 0.19 / 11.53 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/dsu3.vhd" in Library gaisler.
+Architecture rtl of Entity dsu3 is up to date.
+CPU : 0.11 / 11.64 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/proc3.vhd" in Library gaisler.
+Architecture rtl of Entity proc3 is up to date.
+CPU : 0.13 / 11.77 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/leon3s.vhd" in Library gaisler.
+Architecture rtl of Entity leon3s is up to date.
+CPU : 0.11 / 11.88 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/leon3cg.vhd" in Library gaisler.
+Architecture rtl of Entity leon3cg is up to date.
+CPU : 0.13 / 12.00 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/irqmp.vhd" in Library gaisler.
+Architecture rtl of Entity irqmp is up to date.
+CPU : 0.13 / 12.13 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/grfpwxsh.vhd" in Library gaisler.
+Architecture rtl of Entity grfpwxsh is up to date.
+CPU : 0.11 / 12.23 s | Elapsed : 0.00 / 12.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/grfpushwx.vhd" in Library gaisler.
+Architecture rtl of Entity grfpushwx is up to date.
+CPU : 0.11 / 12.34 s | Elapsed : 1.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/leon3/leon3sh.vhd" in Library gaisler.
+Architecture rtl of Entity leon3sh is up to date.
+CPU : 0.11 / 12.45 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/misc.vhd" in Library gaisler.
+Architecture misc of Entity misc is up to date.
+CPU : 0.13 / 12.58 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/rstgen.vhd" in Library gaisler.
+Architecture rtl of Entity rstgen is up to date.
+CPU : 0.09 / 12.67 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/gptimer.vhd" in Library gaisler.
+Architecture rtl of Entity gptimer is up to date.
+CPU : 0.13 / 12.80 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/ahbram.vhd" in Library gaisler.
+Architecture rtl of Entity ahbram is up to date.
+CPU : 0.09 / 12.89 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/ahbtrace.vhd" in Library gaisler.
+Architecture rtl of Entity ahbtrace is up to date.
+CPU : 0.13 / 13.02 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/ahbmst.vhd" in Library gaisler.
+Architecture rtl of Entity ahbmst is up to date.
+CPU : 0.11 / 13.13 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/grgpio.vhd" in Library gaisler.
+Architecture rtl of Entity grgpio is up to date.
+CPU : 0.13 / 13.25 s | Elapsed : 0.00 / 13.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/ahbstat.vhd" in Library gaisler.
+Architecture rtl of Entity ahbstat is up to date.
+CPU : 0.11 / 13.36 s | Elapsed : 1.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/logan.vhd" in Library gaisler.
+Architecture rtl of Entity logan is up to date.
+CPU : 0.11 / 13.47 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/apbps2.vhd" in Library gaisler.
+Architecture rtl of Entity apbps2 is up to date.
+CPU : 0.13 / 13.59 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/charrom_package.vhd" in Library gaisler.
+CPU : 0.09 / 13.69 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/charrom.vhd" in Library gaisler.
+Architecture rtl of Entity charrom is up to date.
+CPU : 0.17 / 13.86 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/apbvga.vhd" in Library gaisler.
+Architecture rtl of Entity apbvga is up to date.
+CPU : 0.11 / 13.97 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/ahbdma.vhd" in Library gaisler.
+Architecture struct of Entity ahbdma is up to date.
+CPU : 0.13 / 14.09 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/svgactrl.vhd" in Library gaisler.
+Architecture rtl of Entity svgactrl is up to date.
+CPU : 0.14 / 14.23 s | Elapsed : 0.00 / 14.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/spictrl.vhd" in Library gaisler.
+Architecture rtl of Entity spictrl is up to date.
+CPU : 0.16 / 14.39 s | Elapsed : 1.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/i2cslv.vhd" in Library gaisler.
+Architecture rtl of Entity i2cslv is up to date.
+CPU : 0.13 / 14.52 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/wild.vhd" in Library gaisler.
+CPU : 0.08 / 14.59 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/misc/wild2ahb.vhd" in Library gaisler.
+Architecture rtl of Entity wild2ahb is up to date.
+CPU : 0.13 / 14.72 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/net/net.vhd" in Library gaisler.
+CPU : 0.09 / 14.81 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/uart/uart.vhd" in Library gaisler.
+CPU : 0.09 / 14.91 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/uart/libdcom.vhd" in Library gaisler.
+CPU : 0.09 / 15.00 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/uart/apbuart.vhd" in Library gaisler.
+Architecture rtl of Entity apbuart is up to date.
+CPU : 0.13 / 15.13 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/uart/dcom.vhd" in Library gaisler.
+Architecture struct of Entity dcom is up to date.
+CPU : 0.11 / 15.23 s | Elapsed : 0.00 / 15.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/uart/dcom_uart.vhd" in Library gaisler.
+Architecture rtl of Entity dcom_uart is up to date.
+CPU : 0.11 / 15.34 s | Elapsed : 1.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/uart/ahbuart.vhd" in Library gaisler.
+Architecture struct of Entity ahbuart is up to date.
+CPU : 0.11 / 15.45 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/jtag/jtag.vhd" in Library gaisler.
+CPU : 0.09 / 15.55 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/jtag/libjtagcom.vhd" in Library gaisler.
+CPU : 0.09 / 15.64 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/jtag/jtagcom.vhd" in Library gaisler.
+Architecture rtl of Entity jtagcom is up to date.
+CPU : 0.11 / 15.75 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/jtag/ahbjtag.vhd" in Library gaisler.
+Architecture struct of Entity ahbjtag is up to date.
+CPU : 0.11 / 15.86 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/jtag/ahbjtag_bsd.vhd" in Library gaisler.
+Architecture struct of Entity ahbjtag_bsd is up to date.
+CPU : 0.11 / 15.97 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/greth/ethernet_mac.vhd" in Library gaisler.
+CPU : 0.09 / 16.06 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/greth/greth.vhd" in Library gaisler.
+Architecture rtl of Entity greth is up to date.
+CPU : 0.13 / 16.19 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/greth/greth_gbit.vhd" in Library gaisler.
+Architecture rtl of Entity greth_gbit is up to date.
+CPU : 0.11 / 16.30 s | Elapsed : 0.00 / 16.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/greth/grethm.vhd" in Library gaisler.
+Architecture rtl of Entity grethm is up to date.
+CPU : 0.09 / 16.39 s | Elapsed : 1.00 / 17.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrrec.vhd" in Library gaisler.
+CPU : 0.14 / 16.53 s | Elapsed : 0.00 / 17.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/hs.vhd" in Library gaisler.
+Architecture rtl of Entity hs is up to date.
+CPU : 0.17 / 16.70 s | Elapsed : 0.00 / 17.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ahb_slv.vhd" in Library gaisler.
+Architecture rtl of Entity ahb_slv is up to date.
+CPU : 0.16 / 16.86 s | Elapsed : 0.00 / 17.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrctrl.vhd" in Library gaisler.
+Architecture rtl of Entity ddrctrl is up to date.
+CPU : 0.19 / 17.05 s | Elapsed : 0.00 / 17.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddr_phy.vhd" in Library gaisler.
+Architecture rtl of Entity ddr_phy is up to date.
+Architecture rtl of Entity ddr2_phy is up to date.
+CPU : 0.11 / 17.17 s | Elapsed : 0.00 / 17.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrsp.vhd" in Library gaisler.
+Architecture rtl of Entity ddrsp is up to date.
+CPU : 0.14 / 17.31 s | Elapsed : 1.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrsp16a.vhd" in Library gaisler.
+Architecture rtl of Entity ddrsp16a is up to date.
+CPU : 0.16 / 17.47 s | Elapsed : 0.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrsp32a.vhd" in Library gaisler.
+Architecture rtl of Entity ddrsp32a is up to date.
+CPU : 0.16 / 17.63 s | Elapsed : 0.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrsp64a.vhd" in Library gaisler.
+Architecture rtl of Entity ddrsp64a is up to date.
+CPU : 0.19 / 17.81 s | Elapsed : 0.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddrspa.vhd" in Library gaisler.
+Entity <ddrspa> compiled.
+Entity <ddrspa> (Architecture <rtl>) compiled.
+CPU : 0.11 / 17.92 s | Elapsed : 0.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddr2sp64a.vhd" in Library gaisler.
+Architecture rtl of Entity ddr2sp64a is up to date.
+CPU : 0.19 / 18.11 s | Elapsed : 0.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddr2sp32a.vhd" in Library gaisler.
+Architecture rtl of Entity ddr2sp32a is up to date.
+CPU : 0.17 / 18.28 s | Elapsed : 0.00 / 18.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddr2sp16a.vhd" in Library gaisler.
+Architecture rtl of Entity ddr2sp16a is up to date.
+CPU : 0.17 / 18.45 s | Elapsed : 1.00 / 19.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/gaisler/ddr/ddr2spa.vhd" in Library gaisler.
+Architecture rtl of Entity ddr2spa is up to date.
+CPU : 0.11 / 18.56 s | Elapsed : 0.00 / 19.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/esa/memoryctrl/memoryctrl.vhd" in Library esa.
+CPU : 0.09 / 18.66 s | Elapsed : 0.00 / 19.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "../../lib/esa/memoryctrl/mctrl.vhd" in Library esa.
+Architecture rtl of Entity mctrl is up to date.
+CPU : 0.20 / 18.86 s | Elapsed : 0.00 / 19.00 s
+ 
+--> 
+
+Total memory usage is 428256 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   10 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

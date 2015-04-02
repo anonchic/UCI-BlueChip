@@ -1,0 +1,313 @@
+Release 9.1.03i par J.33
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+
+XPMAINPC::  Wed Sep 03 02:34:04 2008
+
+par -ol high -w leon3mp.ncd leon3mp.ncd 
+
+
+Constraints file: leon3mp.pcf.
+Loading device for application Rf_Device from file '2vp30.nph' in environment C:\ISE.
+   "leon3mp" is an NCD, version 3.1, device xc2vp30, package ff896, speed -7
+
+Initializing temperature to 85.000 Celsius. (default - Range: -40.000 to 100.000 Celsius)
+Initializing voltage to 1.400 Volts. (default - Range: 1.400 to 1.600 Volts)
+
+WARNING:Timing:3224 - The clock erx_clk associated with OFFSET = IN 10 ns BEFORE COMP "erx_clk"; does not clock any
+   registered input components.
+WARNING:Timing:3225 - Timing constraint OFFSET = IN 10 ns BEFORE COMP "erx_clk"; ignored during timing analysis
+WARNING:Timing:3224 - The clock etx_clk associated with OFFSET = OUT 20 ns AFTER COMP "etx_clk"; does not clock any
+   registered output components.
+WARNING:Timing:3225 - Timing constraint OFFSET = OUT 20 ns AFTER COMP "etx_clk"; ignored during timing analysis
+WARNING:Timing:3224 - The clock etx_clk associated with OFFSET = IN 10 ns BEFORE COMP "etx_clk"; does not clock any
+   registered input components.
+WARNING:Timing:3225 - Timing constraint OFFSET = IN 10 ns BEFORE COMP "etx_clk"; ignored during timing analysis
+
+Device speed data version:  "PRODUCTION 1.93 2007-02-23".
+
+
+INFO:Par:252 - The Map -timing placement will be discarded and your design will be placed using the command line options
+   specified in PAR.
+
+Device Utilization Summary:
+
+   Number of BSCANs                          1 out of 1     100%
+   Number of BUFGMUXs                        8 out of 16     50%
+   Number of DCMs                            4 out of 8      50%
+      Number of LOCed DCMs                   2 out of 4      50%
+
+   Number of External IOBs                 183 out of 556    32%
+      Number of LOCed IOBs                 183 out of 183   100%
+
+   Number of MULT18X18s                      1 out of 136     1%
+   Number of RAMB16s                        51 out of 136    37%
+   Number of SLICEs                      10943 out of 13696  79%
+
+
+Overall effort level (-ol):   High 
+Placer effort level (-pl):    High 
+Placer cost table entry (-t): 1
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 19 secs 
+Finished initial Timing Analysis.  REAL time: 22 secs 
+
+WARNING:Par:289 - The signal emdc_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erxd(0)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erxd(1)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erxd(2)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erxd(3)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal etxd(0)_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal etxd(1)_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal etxd(2)_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal etxd(3)_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal emdio_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erx_clk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erx_col_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erx_crs_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal etx_clk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erx_er_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal erx_dv_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal etx_en_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal etx_er_OBUF has no driver.  PAR will not attempt to route this signal.
+
+Starting Placer
+
+Phase 1.1
+Phase 1.1 (Checksum:9bcedf) REAL time: 38 secs 
+
+Phase 2.7
+Phase 2.7 (Checksum:1312cfe) REAL time: 38 secs 
+
+Phase 3.31
+Phase 3.31 (Checksum:1c9c37d) REAL time: 38 secs 
+
+Phase 4.2
+......
+.............
+Phase 4.2 (Checksum:98ea7b) REAL time: 45 secs 
+
+Phase 5.30
+Phase 5.30 (Checksum:2faf07b) REAL time: 45 secs 
+
+Phase 6.3
+Phase 6.3 (Checksum:39386fa) REAL time: 46 secs 
+
+Phase 7.5
+Phase 7.5 (Checksum:42c1d79) REAL time: 46 secs 
+
+Phase 8.8
+.................................................................................................................
+.................
+.........................................................................................................
+.................
+...............
+..........................
+Phase 8.8 (Checksum:2cf6d08) REAL time: 4 mins 13 secs 
+
+Phase 9.5
+Phase 9.5 (Checksum:55d4a77) REAL time: 4 mins 13 secs 
+
+Phase 10.18
+Phase 10.18 (Checksum:5f5e0f6) REAL time: 5 mins 55 secs 
+
+Phase 11.5
+Phase 11.5 (Checksum:68e7775) REAL time: 5 mins 56 secs 
+
+Phase 12.27
+Phase 12.27 (Checksum:7270df4) REAL time: 6 mins 7 secs 
+
+Phase 13.24
+Phase 13.24 (Checksum:7bfa473) REAL time: 6 mins 7 secs 
+
+REAL time consumed by placer: 6 mins 17 secs 
+CPU  time consumed by placer: 6 mins 14 secs 
+Writing design to file leon3mp.ncd
+
+
+Total REAL time to Placer completion: 6 mins 20 secs 
+Total CPU time to Placer completion: 6 mins 17 secs 
+
+Starting Router
+
+Phase 1: 86364 unrouted;       REAL time: 6 mins 28 secs 
+
+Phase 2: 79538 unrouted;       REAL time: 6 mins 36 secs 
+
+Phase 3: 30054 unrouted;       REAL time: 6 mins 50 secs 
+
+Phase 4: 30054 unrouted; (324010)      REAL time: 7 mins 
+
+Phase 5: 30792 unrouted; (1142)      REAL time: 7 mins 49 secs 
+
+Phase 6: 30797 unrouted; (0)      REAL time: 7 mins 59 secs 
+
+Phase 7: 0 unrouted; (0)      REAL time: 8 mins 57 secs 
+
+Phase 8: 0 unrouted; (0)      REAL time: 9 mins 20 secs 
+
+WARNING:Route:455 - CLK Net:clkm may have excessive skew because 
+      0 CLK pins and 1 NON_CLK pins failed to route using a CLK template.
+
+Total REAL time to Router completion: 10 mins 7 secs 
+Total CPU time to Router completion: 10 mins 3 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|                clkm |     BUFGMUX6P| No   | 5623 |  0.290     |  1.267      |
++---------------------+--------------+------+------+------------+-------------+
+|               clkml |     BUFGMUX7P| No   |  335 |  0.162     |  1.257      |
++---------------------+--------------+------+------+------------+-------------+
+|ddrsp0.ddr0/ddr_phy0 |              |      |      |            |             |
+|/ddr_phy0/xc2v.ddr_p |              |      |      |            |             |
+|         hy0/rclk90b |     BUFGMUX5P| No   |  169 |  0.146     |  1.256      |
++---------------------+--------------+------+------+------------+-------------+
+|ddrsp0.ddr0/ddr_phy0 |              |      |      |            |             |
+|/ddr_phy0/xc2v.ddr_p |              |      |      |            |             |
+|          hy0/clk_0r |     BUFGMUX4S| No   |   44 |  0.254     |  1.257      |
++---------------------+--------------+------+------+------------+-------------+
+|ddrsp0.ddr0/ddr_phy0 |              |      |      |            |             |
+|/ddr_phy0/xc2v.ddr_p |              |      |      |            |             |
+|            hy0/mclk |     BUFGMUX0P| No   |    4 |  0.006     |  1.028      |
++---------------------+--------------+------+------+------------+-------------+
+|               clk1x |     BUFGMUX1S| No   |    6 |  0.081     |  1.183      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+
+   The Delay Summary Report
+
+
+The NUMBER OF SIGNALS NOT COMPLETELY ROUTED for this design is: 0
+
+   The AVERAGE CONNECTION DELAY for this design is:        1.222
+   The MAXIMUM PIN DELAY IS:                               8.689
+   The AVERAGE CONNECTION DELAY on the 10 WORST NETS is:   6.757
+
+   Listing Pin Delays by value: (nsec)
+
+    d < 2.00   < d < 4.00  < d < 6.00  < d < 8.00  < d < 9.00  d >= 9.00
+   ---------   ---------   ---------   ---------   ---------   ---------
+       72507       16163        1257         102          18           0
+
+Timing Score: 0
+
+Number of Timing Constraints that were not applied: 7
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+------------------------------------------------------------------------------------------------------
+  Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
+                                            |         |    Slack   | Achievable | Errors |    Score   
+------------------------------------------------------------------------------------------------------
+  TS_rclk270b_clkml_rise = MAXDELAY FROM TI | SETUP   |     0.038ns|     4.262ns|       0|           0
+  MEGRP "rclk270b_rise" TO TIMEGRP          |         |            |            |        |            
+  "clkml_rise" 4.3 ns                       |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_clkgen0_xc2v_v_clk0B = PERIOD TIMEGRP  | SETUP   |     0.123ns|    15.261ns|       0|           0
+  "clkgen0_xc2v_v_clk0B" TS_clk / 0.65      | HOLD    |     0.243ns|            |       0|           0
+      HIGH 50%                              |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_ddrsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr | SETUP   |     0.631ns|     6.738ns|       0|           0
+  _phy0_rclk90 = PERIOD TIMEGRP         "dd | HOLD    |     4.578ns|            |       0|           0
+  rsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr_phy0 |         |            |            |        |            
+  _rclk90" TS_ddr_clk_fb         PHASE 2 ns |         |            |            |        |            
+   HIGH 50%                                 |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_ddrsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr | SETUP   |     1.817ns|     9.294ns|       0|           0
+  _phy0_clk_270ro = PERIOD TIMEGRP          | HOLD    |     0.546ns|            |       0|           0
+  "ddrsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr_p |         |            |            |        |            
+  hy0_clk_270ro"         TS_ddrsp0_ddr0_ddr |         |            |            |        |            
+  _phy0_ddr_phy0_xc2v_ddr_phy0_mclkfx PHASE |         |            |            |        |            
+   8.333 ns         HIGH 50%                |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_ddrsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr | SETUP   |     4.814ns|     4.692ns|       0|           0
+  _phy0_clk_0ro = PERIOD TIMEGRP         "d | HOLD    |     0.632ns|            |       0|           0
+  drsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr_phy |         |            |            |        |            
+  0_clk_0ro"         TS_ddrsp0_ddr0_ddr_phy |         |            |            |        |            
+  0_ddr_phy0_xc2v_ddr_phy0_mclkfx HIGH 50%  |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_clkgen0_xc2v_v_clk_j = PERIOD TIMEGRP  | SETUP   |     8.480ns|     1.520ns|       0|           0
+  "clkgen0_xc2v_v_clk_j" TS_clk HIGH        | HOLD    |     0.728ns|            |       0|           0
+    50%                                     |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_ddrsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr | SETUP   |     9.776ns|     1.335ns|       0|           0
+  _phy0_mclkfx = PERIOD TIMEGRP         "dd | HOLD    |     0.774ns|            |       0|           0
+  rsp0_ddr0_ddr_phy0_ddr_phy0_xc2v_ddr_phy0 |         |            |            |        |            
+  _mclkfx"         TS_clkgen0_xc2v_v_clk_j  |         |            |            |        |            
+  / 0.9 HIGH 50%                            |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  NET "erx_clk_IBUF" PERIOD = 40 ns HIGH 50 | N/A     |         N/A|         N/A|     N/A|         N/A
+  %                                         |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  NET "etx_clk_IBUF" PERIOD = 40 ns HIGH 50 | N/A     |         N/A|         N/A|     N/A|         N/A
+  %                                         |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  TS_clk = PERIOD TIMEGRP "clk" 10 ns HIGH  | N/A     |         N/A|         N/A|     N/A|         N/A
+  50%                                       |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  PATH "TS_clkm_clkml_path" TIG             | SETUP   |         N/A|     8.921ns|     N/A|           0
+------------------------------------------------------------------------------------------------------
+  PATH "TS_clkml_clkm_path" TIG             | SETUP   |         N/A|     2.024ns|     N/A|           0
+------------------------------------------------------------------------------------------------------
+  TS_ddr_clk_fb = PERIOD TIMEGRP "ddr_clk_f | N/A     |         N/A|         N/A|     N/A|         N/A
+  b" 8 ns HIGH 50%                          |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  OFFSET = IN 10 ns BEFORE COMP "erx_clk"   | N/A     |         N/A|         N/A|     N/A|         N/A
+------------------------------------------------------------------------------------------------------
+  OFFSET = OUT 20 ns AFTER COMP "etx_clk"   | N/A     |         N/A|         N/A|     N/A|         N/A
+------------------------------------------------------------------------------------------------------
+  OFFSET = IN 10 ns BEFORE COMP "etx_clk"   | N/A     |         N/A|         N/A|     N/A|         N/A
+------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+INFO:Timing:2761 - N/A entries in the Constraints list may indicate that the 
+   constraint does not cover any paths or that it has no requested value.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+WARNING:Par:283 - There are 11 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+WARNING:Par:284 - There are 7 sourceless signals in this design. This design will not pass the DRC check run by Bitgen.
+
+Total REAL time to PAR completion: 10 mins 40 secs 
+Total CPU time to PAR completion: 10 mins 35 secs 
+
+Peak Memory Usage:  584 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+Timing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 29
+Number of info messages: 1
+
+Writing design to file leon3mp.ncd
+
+
+
+PAR done!

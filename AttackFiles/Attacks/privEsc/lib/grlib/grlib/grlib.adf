@@ -1,0 +1,83 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=1
+Current Config=compile
+
+[Configurations]
+compile=grlib
+
+[Settings]
+LANGUAGE=VHDL
+FLOW_TYPE=Schematic
+FAMILY=
+SYNTH_TOOL=<none>
+IMPL_TOOL=<none>
+REFRESH_FLOW=1
+
+[Library]
+grlib=.\grlib.LIB
+
+[$LibMap$]
+grlib=.
+
+[Files]
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\devices.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\sparc\sparc_disas.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\amba.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\defmst.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\stdlib.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\stdio.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\modgen\multlib.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\sparc\sparc.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\ahbctrl.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\util\util.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\version.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\dma2ahb_pkg.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\util\fpudummy.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\util\debug.in.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\apbctrl.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\dma2ahb_tp.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\dma2ahb.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\amba.in.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\stdio_tb.vhd=-1
+/c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\sparc\cpu_disas.vhd=-1
+
+[Files.Data]
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\devices.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\sparc\sparc_disas.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\amba.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\defmst.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\stdlib.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\stdio.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\modgen\multlib.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\sparc\sparc.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\ahbctrl.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\util\util.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\version.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\dma2ahb_pkg.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\util\fpudummy.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\util\debug.in.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\apbctrl.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\dma2ahb_tp.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\dma2ahb.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\amba\amba.in.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\stdlib\stdio_tb.vhd=VHDL Source Code
+c:\documents and settings\admin\my documents\my dropbox\maliproc\leon3\grlib-gpl-1.0.18-b2950\lib\grlib\sparc\cpu_disas.vhd=VHDL Source Code
+
+[Folders]
+Name3=Makefiles
+Directory3=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\grlib\grlib\
+Extension3=mak
+Name4=Memory
+Directory4=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\grlib\grlib\src
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\grlib\grlib\
+Extension5=dll
+Name6=PDF
+Directory6=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\grlib\grlib\
+Extension6=pdf
+Name7=HTML
+Directory7=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\grlib\grlib\
+Extension7=

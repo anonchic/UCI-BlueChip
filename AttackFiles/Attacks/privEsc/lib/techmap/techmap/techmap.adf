@@ -1,0 +1,39 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=1
+Current Config=compile
+
+[Configurations]
+compile=techmap
+
+[Settings]
+LANGUAGE=VHDL
+FLOW_TYPE=Schematic
+FAMILY=
+SYNTH_TOOL=<none>
+IMPL_TOOL=<none>
+REFRESH_FLOW=1
+
+[Library]
+techmap=.\techmap.LIB
+
+[$LibMap$]
+techmap=.
+
+[Folders]
+Name3=Makefiles
+Directory3=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\techmap\techmap\
+Extension3=mak
+Name4=Memory
+Directory4=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\techmap\techmap\src
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\techmap\techmap\
+Extension5=dll
+Name6=PDF
+Directory6=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\techmap\techmap\
+Extension6=pdf
+Name7=HTML
+Directory7=C:\Documents and Settings\admin\My Documents\My Dropbox\MaliProc\Leon3\grlib-gpl-1.0.18-b2950\lib\techmap\techmap\
+Extension7=
